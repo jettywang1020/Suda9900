@@ -1,17 +1,21 @@
 Week2
 
-7.31
+7.31 tues
+
 Group formed 
 Create account of Trello 
-Discuss chose which topic
+Mainly discussed the topic1 try to find out appropriate ways to implement the requirement.
+We list multiple ideas and think about what this idea needs and what other people’s opinion about this idea.
+However we discussed for a long time still cannot find a good method to do that which can both both meet the requirement and our skill limit.
+Therefore, unfortunately we have to give up using topic 1
 
-8.30
+
+8.30 Wednesday
 
 We started first group meeting
-Discuss three topic
+Discuss two topics because we have already give up using topic 1
 Firstly, we try to understand the requirement of each topic and
-Try to figure out the hard part of each topic.
-Then we started to think if we choose these topic all the ideas that I can have
-Discussing with group mates and try to figure out will we willing to write this idea
-Or not.
+Try to figure out the hard part of each topic. During this period we talking with each other share opinions.
+Then we started to think if we choose this topic all the ideas that we can have to implement this topic.
+Discussing with group mates and try to figure out each steps of these ideas then we can know that will we willing to write this idea or not.
 
