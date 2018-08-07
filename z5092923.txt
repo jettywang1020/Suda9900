@@ -1,3 +1,9 @@
 Week2 
 8.5
 Decedied to choose topic3 after discussion.
+
+Week3
+8.7
+Discussed topic3.
+Named the web application as S2S (somethere to sleep).
+Constructed the web application by Django.
