@@ -19,3 +19,8 @@ Try to figure out the hard part of each topic. During this period we talking wit
 Then we started to think if we choose this topic all the ideas that we can have to implement this topic.
 Discussing with group mates and try to figure out each steps of these ideas then we can know that will we willing to write this idea or not.
 
+Week 3
+
+Doing a weekly meeting with group mates decides the topic and what we need to do, consider these things and put it into the proposal. Taking notes of the ideas group mates think of and make sure it is realistic for us or not. Thinking of things of Airbnb, try to find something that Airbnb didn’t do well and if we can do some improvement.
+
+Completing the proposal, I wrote the part of background, aim and epics.
