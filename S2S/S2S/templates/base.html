@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>S2S</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/ionicons.css' %}">
+</head>
+<body>
+	<div id="header">
+		header
+	</div>
+	<div>
+	{% block content %}
+	{% endblock %}
+	</div>
+
+	<div id="footer">
+		footer
+	</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+html{
+	margin: 0;
+}
+
+body {
+	color: #4D5656;
+	margin:0;
+	padding:0;
+	font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+	display: flex;
+	flex-direction: column;
+	height: 100vh; /* Avoid the IE 10-11 `min-height` bug. */
+}
+
+a, u {
+	color: #1BB3E9;
+    text-decoration: none !important;
+    decoration: none; 
+}
