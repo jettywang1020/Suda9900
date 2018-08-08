@@ -1,4 +1,31 @@
 Week 2
 
+31 Jul  Tue 2-4 
+
 Group formed.
-Created the Trello accounts for the team.
+Added the Trello & Github accounts into the team Suda.
+Discuss the topics about the project.
+
+For the topic 1 X-o-bot, we could make it like:
+Basiclly, a talk-able robot, then add some function like weather, event and so on. But we think that we need a theme or direction to decide which function we really need. Also need to consider the workload and time for four persons in one semester and the extension in the future. 
+In my opinion, we just need to choice a theme what the robot can answer. No need to include all things that we can do, not several small function about different part.
+
+For the topic 3 Accommodations Web portal.
+It's create a website like Airbnb. This is a well-developed website, but we still need to find something drawback to improve, find some functions that we really want to see and use but the Airbnb doesn't support. Also where can add AI function to make it more technical.
+
+We don't have more time to talk about topic 2 and we all not familiar with BlockChain.
+
+-------
+
+1 Aug  Wed 2-4
+
+Since we cannot found a really good theme for all of us, we decide to adopt topic 1.
+
+For the topic 3, we can add a prediction of the price for the user about the rent, for instance, a trend chart. But it's no need any AI. It's a great topic, but just a little boring without any new technology. So we decide to learn about BlockChain for topic 2 firstly. If it's too complex for us, we will choice topic 3 at end.
+
+-------
+
+Week 3
+
+7 Aug  Tue 2-4
+
