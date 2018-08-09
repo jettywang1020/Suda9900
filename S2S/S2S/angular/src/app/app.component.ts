@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  results = '';
+
+  constructor(private http: HttpClient){
+
+  }
+
+  ngOnInit(): void {
+    this.http.get('https://api.github.com/users/seeschweiler').subscribe(data => {
+      console.log(data);
+    });
+  }
+
 }

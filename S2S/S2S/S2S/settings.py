@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'webpack_loader',
 ]
 
-#################### webpack_loader
+##### webpack_loader #####
 
 WEBPACK_LOADER = {
     'DEFAULT': {
@@ -115,7 +115,7 @@ WSGI_APPLICATION = 'S2S.wsgi.application'
 
 ConfPath = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
 config = configparser.ConfigParser()
-config.read(os.path.join(ConfPath,'settings.conf'))
+config.read(os.path.join(ConfPath, 'settings.conf'))
 
 DATABASES = {}
 if config.get('db', 'engine') == 'mysql':
