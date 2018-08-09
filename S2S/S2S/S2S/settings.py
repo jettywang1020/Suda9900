@@ -41,7 +41,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'webpack_loader',
 ]
+
+##### webpack_loader #####
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': '',
+
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}
+
+####################
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -102,7 +115,7 @@ WSGI_APPLICATION = 'S2S.wsgi.application'
 
 ConfPath = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
 config = configparser.ConfigParser()
-config.read(os.path.join(ConfPath,'settings.conf'))
+config.read(os.path.join(ConfPath, 'settings.conf'))
 
 DATABASES = {}
 if config.get('db', 'engine') == 'mysql':
