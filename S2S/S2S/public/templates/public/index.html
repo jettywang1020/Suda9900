@@ -1,7 +1,29 @@
-{% extends 'base.html' %}
-{% load staticfiles%}
-{% block content %}
-<div>
-	{{ hello }}
-</div>
-{% endblock %}
+<!-- {% extends 'base.html' %} -->
+<!-- {% load staticfiles%} -->
+<!-- {% block content %} -->
+<!-- <div> -->
+<!-- 	{{ hello }} -->
+<!-- </div> -->
+<!-- {% endblock %} -->
+
+
+{% load render_bundle from webpack_loader %}
+
+<html  lang="en">
+<head>
+<meta  charset="UTF-8">
+<base  href="/">
+<title>A Simple CRM with Django and Angular 6</title>
+</head>
+<body>
+
+<app-root></app-root>
+
+{% render_bundle 'inline' %}
+{% render_bundle 'polyfills' %}
+{% render_bundle 'styles' %}
+{% render_bundle 'vendor' %}
+{% render_bundle 'main' %}
+
+</body>
+</html>
