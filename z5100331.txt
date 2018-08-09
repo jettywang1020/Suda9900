@@ -21,6 +21,9 @@ Discussing with group mates and try to figure out each steps of these ideas then
 
 Week 3
 
-Doing a weekly meeting with group mates decides the topic and what we need to do, consider these things and put it into the proposal. Taking notes of the ideas group mates think of and make sure it is realistic for us or not. Thinking of things of Airbnb, try to find something that Airbnb didn’t do well and if we can do some improvement.
+Doing a weekly meeting with group mates decides the topic and what we need to do, consider
+these things and put it into the proposal.
+Taking notes of the ideas group mates think of and make sure it is realistic for us or not. 
+Thinking of things of Airbnb, try to find something that Airbnb didn’t do well and if we can do some improvement.
 
 Completing the proposal, I wrote the part of background, aim and epics.
