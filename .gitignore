@@ -110,3 +110,4 @@ bin/
 include/
 pyvenv.cfg
 pip-selfcheck.json
+.DS_Store
