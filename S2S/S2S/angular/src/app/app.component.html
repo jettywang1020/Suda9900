@@ -1,6 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <h3>from angular</h3>
 
-<input type="text" name="data">
-<button (submit)="ngOnInit()"></button>
 
+<input
+  type="text"
+  [(ngModel)]="mydata">
+
+
+<button
+  (click)="ngOnInit()">Add data</button>
