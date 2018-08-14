@@ -4,3 +4,6 @@ from django.shortcuts import render
 def index(request):
 	hello = 'hello, everyone'
 	return render(request, 'public/index.html', {'hello': hello})
+
+def test(request):
+	return render(request, 'public/test.html')
