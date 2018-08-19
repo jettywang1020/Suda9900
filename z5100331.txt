@@ -32,4 +32,7 @@ Week4
 
 I have decided the database and started to split the job, we also consider the functions based on the proposal we submitted.
 
-Now, I spent time to learn something about the html and try to do some pages of the website, which would be the most useful such as the homepage or login page something like That, my group mates will help to do about other part can make us work in parallel .
+Now, I spent time to learn something about the html and try to do some pages of the
+website, 
+which would be the most useful such as the homepage or login page something like That, 
+my group mates will help to do about other part can make us work in parallel .
