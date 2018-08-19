@@ -27,3 +27,9 @@ Taking notes of the ideas group mates think of and make sure it is realistic for
 Thinking of things of Airbnb, try to find something that Airbnb didn’t do well and if we can do some improvement.
 
 Completing the proposal, I wrote the part of background, aim and epics.
+
+Week4
+
+I have decided the database and started to split the job, we also consider the functions based on the proposal we submitted.
+
+Now, I spent time to learn something about the html and try to do some pages of the website, which would be the most useful such as the homepage or login page something like That, my group mates will help to do about other part can make us work in parallel .
