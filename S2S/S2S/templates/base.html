@@ -6,10 +6,23 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/ionicons.css' %}">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  	<link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+  	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 </head>
 <body>
 	<div id="header">
-		header
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header" style="padding-left: 80%">
+					<a class="navbar-brand" href="#">Login</a>
+				</div>
+				<div>
+					<a class="navbar-brand" href="#">Contact</a>
+				</div>
+			</div>
+		</nav>
 	</div>
 	<div>
 	{% block content %}

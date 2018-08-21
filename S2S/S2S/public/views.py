@@ -6,4 +6,4 @@ def index(request):
 	return render(request, 'public/index.html', {'hello': hello})
 
 def test(request):
-	return render(request, 'public/test.html')
+	return render(request, 'public/Home.html')
