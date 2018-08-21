@@ -8,4 +8,5 @@ app_name = 'public'
 
 urlpatterns = [
 	path('', views.index, name='index'),
+	path('Home', views.test, name='Home'),
 ]

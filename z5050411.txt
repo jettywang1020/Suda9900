@@ -1,3 +1,21 @@
 Week2:
 
+31 Jul  Tue 2-4 
+
 The aim of week2 is to select our project topic. Then brainstorming the themes or design ideas our focus as much as possible and choose some more reasonable one for application. We have discussed these three topics. For our final decision of the topic, we want to choose topic3. This is because we are all familiar with the skills related to this topic. And we would like to make it greater to create some new function as innovation from our knowledge. For the first two topics, it is hard for us to control the theory. We have already understand some knowledge related to first two topic. However, we think we can not do well in them. So finally we choose topic 3.
+
+1 Aug  Wed 2-4
+
+Group meeting: discussing our topic and brainstorming.
+
+
+Week3:
+
+7 Aug  Tue 2-4
+
+In week3, we have done the proposal finished in lab. Because we were choosing topic 3, we have to come up with some change idea for a more innovative web than Airbnb. In this section, I have come up with two great ideas. One is to create a traveller evaluation system. Why do we create this? Airbnb do have a rate system for traveller comment for every landlord, even they have the comment posted in follows. The ideas is from the extension of this. We would like to build a function that we can help landlord like this. This comment system previously is to let traveller know how good are the landlords or their property. However, this should have a system that let landlords know how good are the traveller. Therefore, landlord can have a choice that whether or not want to accept this client to live their house. This can reduce the conflict because of a bad traveller. Also, because of a more benefit for landlord, it will attract more people to become a landlord and trust our platform. Finally our website design can be successfully running.
+
+The second idea is from the recommendation part. We would like to use AI technology to better struct our recommendation part. We collect client detail of every choice, such as what type of house they choose like classic, high price, etc. These can be some tags that client set initially. In AI, we want to create a function that can predict some houses that clients like when they have already chosen a region. It is according to the tag and history they choose in the past. This idea would be a effort that we will face on. It is a really good idea for my points of views.
+
+Week4:
+This week we are doing the construction of admin system and database system. We are using django to build our framework. We are doing our framework based on the idea of MVT. Models connected to the link to database. View to the link of webpage. Also, the database we have design by google doc firstly in text form. Then I translate to code written in the models. Finally I test the database. It can be successfully used.
