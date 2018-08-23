@@ -7,3 +7,8 @@ def index(request):
 
 def test(request):
 	return render(request, 'public/Home.html')
+
+
+# display home page with eight images
+def Display(request):
+	return render(request, 'public/Display.html')
