@@ -11,3 +11,27 @@ def test(request):
 	test_id = request.GET.get("test_id")
 	data = {"test_id":test_id}
 	return JsonResponse(data)
+
+
+
+
+
+
+
+
+
+
+
+
+def RunSQL(sql):
+	with connection.cursor() as cursor:
+		cursor.execute(sql)
+		rows = cursor.fetchall()
+		fieldnames = [name[0] for name in cursor.description]
+		results = []
+		for row in rows:
+			result = {}
+			for i in range(len(row)):
+				result[fieldnames[i]] = row[i]
+			results.append(result)
+	return results
