@@ -13,6 +13,16 @@ def index(request):
 	hello = 'hello, everyone'
 	return render(request, 'public/index.html', {'hello': hello})
 
+<<<<<<< HEAD
+def Home(request):
+	return render(request, 'public/Home.html')
+
+def Register(request):
+	return render(request, 'public/Register.html')
+
+def View_Detail(request):
+	return render(request, 'public/View_Detail.html')
+=======
 def test(request):
 	return render(request, 'public/Home.html')
 
@@ -34,3 +44,4 @@ def RunSQL(sql):
 				result[fieldnames[i]] = row[i]
 			results.append(result)
 	return results
+>>>>>>> 6f6fe038488bc8defdd0fb640013d263b231ad19

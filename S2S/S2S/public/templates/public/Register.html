@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% block content %}
+    <div>
+        <form style="padding-left: 2%" id="Register" class="form-group">
+            <div id="email_address">
+
+                <input type="text" placeholder="Email Address">
+            </div>
+            <div>
+                <input type="text" placeholder="First Name">
+            </div>
+            <div>
+                <input type="text" placeholder="Last Name">
+            </div>
+            <div>
+                <input type="text" placeholder="Create Password">
+
+            </div>
+            <div>
+                <label>Birthday</label>
+                 <input type="text" class="form-control" id="birthday"  placeholder="Birthday">
+            </div>
+
+        </form>
+    </div>
+<script>
+    $(function() {
+    $( "#birthday" ).datepicker();
+
+
+  });
+    </script>
+{% endblock %}

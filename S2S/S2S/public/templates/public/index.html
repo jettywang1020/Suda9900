@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% block content %}
+
+<script src="https://unpkg.com/ionicons@4.3.0/dist/ionicons.js"></script>
+<link href="https://unpkg.com/ionicons@4.3.0/dist/css/ionicons.min.css" rel="stylesheet">
+
+<div >
+ <form style="" class="form-group">
+  <div style="padding-left: 2%" id="email_adress">
+  <label style="width: 150px">Email Address</label>
+   <input type="text" placeholder="Email Address">
+  </div>
+  <div style="padding-left: 2%" id="password">
+    <label style="width: 150px;">Password   </label>
+   <input  type="password" placeholder="Password">
+  </div>
+  <br>
+  <br>
+  <div style="padding-left: 6%">
+   <button type="submit" id="login_in" style="width: 7%">Login in</button>
+
+  </div>
+
+
+
+ </form>
+</div>
+
+<!--v2-->
+<i class="ion-heart"></i>
+
+<i class="ion-wifi"></i>
+<!--v4-->
+<ion-icon name="ios-heart"></ion-icon>
+
+{% endblock %}
