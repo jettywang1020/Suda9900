@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/ionicons.css' %}">
+<<<<<<< HEAD
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
   	<link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
@@ -16,27 +17,85 @@
 	<link href="https://unpkg.com/ionicons@4.3.0/dist/css/ionicons.min.css" rel="stylesheet">
 
 
+=======
+>>>>>>> 6f6fe038488bc8defdd0fb640013d263b231ad19
 </head>
 <body>
-	<div id="header">
-		<nav class="navbar navbar-default" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header" style="padding-left: 80%">
-					<a class="navbar-brand" href="#">Login</a>
-				</div>
-				<div>
-					<a class="navbar-brand" href="#">Contact</a>
+	<button onclick="topFunction()" id="toTop"><i class="ion-android-arrow-up icon-style"></i></button>
+	<div id="header" class="shadow">
+		<nav class="navbar navbar-expand-lg navbar-light bg-white navi-bottom">
+			<a class="navbar-brand text-primary" href="#"><b>S2S</b></a>
+
+			<!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+			<div class="col-md-11">
+				<div class="row" id="navbarSupportedContent">
+					<form class="form-inline my-2 my-lg-0 mr-auto navi-search text-left" action="#" method="post">
+						{% csrf_token %}
+						<input type="hidden" name="page" value=1>
+						<input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search for ..." aria-label="Search" required>
+						<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+					</form>
+					{% if request.session.account %}
+					<ul class="my-navbar-nav text-right">
+						<li class="nav-item">
+							<a class="navbar-brand text-success" href="#">Hi, {{ request.session.account.username }}</a>
+						</li>
+						<li class="nav-item">
+							<a class="navi-btn my-btn-color" href="#"><i class="ion-ios-bell"></i></a>
+						</li>
+						<li class="nav-item">
+							<a class="navi-btn my-btn-color" href="#"><i class="ion-ios-compose"></i></a>
+						</li>
+						<li class="nav-item">
+							<a class="navi-btn" href="{% url 'blog:logout' %}"><i class="ion-log-out text-danger"></i></a>
+						</li>
+					{% else %}
+					<ul class="my-navbar-nav text-right">
+						<li class="nav-item">
+							<a class="btn btn-outline-success mr-2" href="http://localhost:8000/login">Log in</a>
+						</li>
+						<li class="nav-item">
+							<a class="btn btn-outline-success" href="http://localhost:8000/signup">Sign up</a>
+						</li>
+					</ul>
+					{% endif %}
 				</div>
 			</div>
 		</nav>
 	</div>
-	<div>
+	<div id="content">
 	{% block content %}
 	{% endblock %}
 	</div>
 
-	<div id="footer">
-		footer
-	</div>
+	<footer id="footer">
+		<div>
+			<small>
+				<span>Coded by Team <span class="text-primary">Suda</span></span>
+			</small>
+		</div>
+		<div>
+			<small>Copyright 2018</small>
+		</div>
+	</footer>
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="reply-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="myModalLabel">Please Login!</h5>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<a class="btn btn-primary" href="#">Go to Login</a>
+			</div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
