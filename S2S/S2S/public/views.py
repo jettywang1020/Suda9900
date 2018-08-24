@@ -13,6 +13,7 @@ def Display(request):
 	return render(request, 'public/Display.html')
 
 
+
 def RunSQL(sql):
 	with connection.cursor() as cursor:
 		cursor.execute(sql)
