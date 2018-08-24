@@ -1,34 +1,36 @@
 from django.shortcuts import render
 
-
+##### login page #####
 def login(request):
 	return render(request, 'public/login.html')
 
-def signup(request):
-	return render(request, 'public/signup.html')
-
-
-# Create your views here.
+##### login page raw #####
 def index(request):
 	hello = 'hello, everyone'
 	return render(request, 'public/index.html', {'hello': hello})
 
-<<<<<<< HEAD
-def Home(request):
-	return render(request, 'public/Home.html')
+##### signup page #####
+def signup(request):
+	return render(request, 'public/signup.html')
 
+##### signup page raw #####
 def Register(request):
 	return render(request, 'public/Register.html')
 
-def View_Detail(request):
-	return render(request, 'public/View_Detail.html')
-=======
-def test(request):
+
+##### search house page #####
+def Home(request):
 	return render(request, 'public/Home.html')
 
-# display home page with eight images
+##### row houses page #####
 def Display(request):
 	return render(request, 'public/Display.html')
+
+##### house detial page #####
+def View_Detail(request):
+	return render(request, 'public/View_Detail.html')
+
+
 
 
 
@@ -44,4 +46,3 @@ def RunSQL(sql):
 				result[fieldnames[i]] = row[i]
 			results.append(result)
 	return results
->>>>>>> 6f6fe038488bc8defdd0fb640013d263b231ad19
