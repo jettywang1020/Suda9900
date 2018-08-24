@@ -7,7 +7,9 @@ from . import views
 app_name = 'public'
 
 urlpatterns = [
-	path('index', views.index, name='index'),
+	path('login', views.login, name='login'),
+	path('signup', views.signup, name='signup'),
+	
 	path('Home', views.test, name='Home'),
 	path('Display', views.Display, name='Display'),
 ]

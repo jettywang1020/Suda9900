@@ -1,5 +1,13 @@
 from django.shortcuts import render
 
+
+def login(request):
+	return render(request, 'public/login.html')
+
+def signup(request):
+	return render(request, 'public/signup.html')
+
+
 # Create your views here.
 def index(request):
 	hello = 'hello, everyone'
