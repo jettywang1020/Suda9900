@@ -23,6 +23,9 @@ def index(request):
 	hello = 'hello, everyone'
 	return render(request, 'public/index.html', {'hello': hello})
 
+def search(request):
+	return render(request, 'public/search.html')
+
 ##### signup page #####
 def signup(request):
 	originalform = signup_form()
@@ -40,14 +43,14 @@ def signup(request):
 	else:
 		return render(request, 'public/signup.html', {'form': originalform})
 
-##### signup page raw #####
-def register(request):
-	return render(request, 'public/register.html')
+
+def view_detail(request):
+	return render(request, 'public/ciew_detail.html')
 
 
-##### search house page #####
 def home(request):
 	return render(request, 'public/home.html')
+
 
 ##### row houses page #####
 def display(request):
