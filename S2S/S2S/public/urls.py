@@ -11,9 +11,9 @@ urlpatterns = [
 	path('index', views.index, name='index'),	# login page raw
 
 	path('signup', views.signup, name='signup'),	# signup page
-	path('Register', views.Register, name='Register'),	# signup page raw
+	path('Register', views.register, name='register'),	# signup page raw
 	
-	path('Home', views.Home, name='Home'),	# search house page
-	path('Display', views.Display, name='Display'),	# row houses page
-	path('View_Detail',views.View_Detail, name= 'View_Detail'),	# house detial page
+	path('home', views.home, name='home'),	# search house page
+	path('display', views.display, name='display'),	# row houses page
+	path('view_detail',views.view_detail, name= 'view_detail'),	# house detial page
 ]

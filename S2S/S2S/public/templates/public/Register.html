@@ -4,8 +4,8 @@
 {% block content %}
     <div>
         <form style="padding-left: 2%" id="Register" class="form-group">
+            {% csrf_token %}
             <div id="email_address">
-
                 <input type="text" placeholder="Email Address">
             </div>
             <div>
@@ -16,7 +16,6 @@
             </div>
             <div>
                 <input type="text" placeholder="Create Password">
-
             </div>
             <div>
                 <label>Birthday</label>

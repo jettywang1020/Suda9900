@@ -15,7 +15,17 @@ def test(request):
 
 
 
-
+def login(request):
+	originalform = login_form()
+	if request.method == 'POST':
+		form = login_form(request.POST)
+		if form.is_valid():
+			username = form.cleaned_data['username']
+			password = form.cleaned_data['password']
+			print(username, password)
+		return render(request, 'landlord/login.html', {'form': originalform})
+	else:
+		return render(request, 'landlord/login.html', {'form': originalform})
 
 
 

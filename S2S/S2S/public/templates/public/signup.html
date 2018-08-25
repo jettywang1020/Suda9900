@@ -3,36 +3,39 @@
 {% block content %}
 
 <div style="width:50%;margin: 0 auto">
-	<form>
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label for="Username">Username</label>
-				<input type="text" class="form-control" id="Username">
-			</div>
-			<div class="form-group col-md-6">
-				<label for="Password">Password</label>
-				<input type="password" class="form-control" id="Password">
-			</div>
+	<form method="post" enctype="multipart/form-data" class="theme-signin">
+		{% csrf_token %}
+		<div class="form-group">
+			<label for="Username">Username</label>
+			{{ form.username }}
 		</div>
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="FirstName">First Name</label>
-				<input type="text" class="form-control" id="FirstName">
+				{{ form.first_name }}
 			</div>
 			<div class="form-group col-md-6">
 				<label for="LastName">Last Name</label>
-				<input type="password" class="form-control" id="LastName">
+				{{ form.last_name }}
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="Email">Email</label>
-			<input type="email" class="form-control" id="Email" placeholder>
+			{{ form.email }}
+		</div>
+		<div class="form-group">
+			<label for="Password">Password</label>
+			{{ form.password }}
+		</div>
+		<div class="form-group">
+			<label for="Password">Confirm Password</label>
+			{{ form.confirm_password }}
 		</div>
 
 		<div class="form-group">
 			<div class="form-check">
 				<label class="form-check-label" style="font-weight: 800;font-size: 18px;">
-					<input class="form-check-input" type="checkbox"> I want to be a Landlord.
+					{{ form.is_landlord }} I want to be a Landlord.
 				</label>
 			</div>
 		</div>
