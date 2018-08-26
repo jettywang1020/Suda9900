@@ -2,9 +2,6 @@
 {% block content %}
 
 <div style="width: 50%;margin: 0 auto;max-width: 500px">
-	<div class="form-group btn-warning">
-		here is an error only display when login unsuccess.
-	</div>
 	<form method="post" enctype="multipart/form-data" class="theme-signin">
 		{% csrf_token %}
 		<div class="form-group">
@@ -24,6 +21,10 @@
 		</div>
 		<button type="submit" class="btn btn-primary btn-lg" style="width: 50%;margin: 10px 25%;">Login</button>
 	</form>
+
+	<div class="form-group text-center text-danger">
+		{{ error }}
+	</div>
 </div>
 
 {% endblock %}
