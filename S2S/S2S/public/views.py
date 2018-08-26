@@ -81,7 +81,7 @@ def signup(request):
 					user.save()
 					request.session['account'] = {'id':user.id, 'username':username, 'email':email, 'activate':False}
 
-					return render(request, 'public/index.html')		
+					return render(request, 'public/login.html')
 
 	else:
 		return render(request, 'public/signup.html', {'form': originalform})

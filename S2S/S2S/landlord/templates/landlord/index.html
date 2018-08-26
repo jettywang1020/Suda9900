@@ -1,7 +1,22 @@
 {% extends 'base.html' %}
 {% load staticfiles%}
 {% block content %}
-<div>
-	{{ request.session.account.email }}
+
+<div style="width:80%;margin: 0 auto;">
+	<div class="row">
+		<div class="col-3">
+			<nav id="navbar" class="navbar navbar-light">
+				<nav class="nav nav-pills flex-column">
+					<a class="nav-link" href="#">Edit Profile</a>
+					<a class="nav-link" href="#">Photo</a>
+					<a class="nav-link" href="#">Manage Houses</a>
+				</nav>
+			</nav>
+		</div>
+		<div class="col-9">
+			{% block index %}
+			{% endblock %}
+		</div>
+	</div>
 </div>
 {% endblock %}

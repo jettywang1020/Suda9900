@@ -1,5 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'landlord/index.html' %}
 {% load staticfiles%}
-{% block content %}
+{% block index %}
+<div>
+	{{ request.session.account.email }}
+	<p>here is landlord index page.</p>
+</div>
 
 {% endblock %}
