@@ -33,7 +33,6 @@ def View_Detail(request):
 
 
 
-
 def RunSQL(sql):
 	with connection.cursor() as cursor:
 		cursor.execute(sql)

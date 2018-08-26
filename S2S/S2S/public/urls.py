@@ -15,5 +15,5 @@ urlpatterns = [
 	
 	path('Home', views.Home, name='Home'),	# search house page
 	path('Display', views.Display, name='Display'),	# row houses page
-	path('View_Detail',views.View_Detail, name= 'View_Detail'),	# house detial page
+	path('View_Detail', views.View_Detail, name='View_Detail'),	# house detial page
 ]

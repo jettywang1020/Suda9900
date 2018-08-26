@@ -7,6 +7,11 @@ def index(request):
 	return render(request, 'landlord/index.html', {'landlord': landlord})
 
 
+##### Landlord add house #####
+def add_house(request):
+	return render(request, 'landlord/add_house.html')
+
+
 def RunSQL(sql):
 	with connection.cursor() as cursor:
 		cursor.execute(sql)

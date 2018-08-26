@@ -8,4 +8,6 @@ app_name = 'landlord'
 
 urlpatterns = [
 	path('', views.index, name='index'),
+	
+	path('add_house', views.add_house, name='add_house'),	# Landlord add house
 ]
