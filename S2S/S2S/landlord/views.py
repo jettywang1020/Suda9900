@@ -1,10 +1,13 @@
 from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse
 from public.models import Tenant, Landlord, House
 
 # Create your views here.
 def index(request):
-	landlord = Landlord.objects.get(pk = 1)
-	return render(request, 'landlord/index.html', {'landlord': landlord})
+	print(request.session['account']['email'])
+	#landlord = Landlord.objects.get(pk = 1)
+	return render(request, 'landlord/index.html')
+
 
 
 ##### Landlord add house #####

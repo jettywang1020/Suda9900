@@ -8,12 +8,13 @@ app_name = 'public'
 
 urlpatterns = [
 	path('login', views.login, name='login'),	# login page
-	path('index', views.index, name='index'),	# login page raw
 
 	path('signup', views.signup, name='signup'),	# signup page
-	path('Register', views.Register, name='Register'),	# signup page raw
 	
-	path('Home', views.Home, name='Home'),	# search house page
-	path('Display', views.Display, name='Display'),	# row houses page
-	path('View_Detail', views.View_Detail, name='View_Detail'),	# house detial page
+	path('search', views.search, name='search'),	# search house page
+	path('display', views.display, name='display'),	# row houses page
+	path('view_detail', views.view_detail, name='view_detail'),	# house detial page
+
+	path('index', views.index, name='index'),
+	
 ]

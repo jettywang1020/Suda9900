@@ -1,10 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles%}
 {% block content %}
-
-<script src="https://unpkg.com/ionicons@4.3.0/dist/ionicons.js"></script>
-<link href="https://unpkg.com/ionicons@4.3.0/dist/css/ionicons.min.css" rel="stylesheet">
-
 <div >
  <form style="" class="form-group">
   <div style="padding-left: 2%" id="email_adress">
@@ -33,5 +28,7 @@
 <i class="ion-wifi"></i>
 <!--v4-->
 <ion-icon name="ios-heart"></ion-icon>
+
+{{ request.session.account.email }}
 
 {% endblock %}

@@ -2,6 +2,6 @@
 {% load staticfiles%}
 {% block content %}
 <div>
-	Hello, landlord, your name is {{ landlord.username }}
+	{{ request.session.account.email }}
 </div>
 {% endblock %}

@@ -5,9 +5,11 @@ class Tenant(models.Model):
 	gender_choices = (('M','Male'),('F','Female'),)
 	time_stamp = models.DateTimeField(auto_now_add=True)
 	username = models.CharField(max_length=64, null=False)
+	first_name = models.CharField(max_length=64, null=False)
+	last_name = models.CharField(max_length=64, null=False)
 	password = models.CharField(max_length=256, null=False)
-	phone = models.CharField(max_length=128, null=False)
 	email = models.EmailField(null=False)
+	phone = models.CharField(max_length=128, null=True)
 	#photo = models.ImageField(upload_to='tenant_photo', default='tenant_photo/default.jpg', blank=True)
 	gender = models.CharField(max_length=1, choices=gender_choices, default='M')
 	dob = models.DateField(null=True,auto_now=False, auto_now_add=False)
@@ -26,9 +28,11 @@ class Landlord(models.Model):
 	gender_choices = (('M', 'Male'), ('F', 'Female'),)
 	time_stamp = models.DateTimeField(auto_now_add=True)
 	username = models.CharField(max_length=64, null=False)
+	first_name = models.CharField(max_length=64, null=False)
+	last_name = models.CharField(max_length=64, null=False)
 	password = models.CharField(max_length=256, null=False)
-	phone = models.CharField(max_length=128, null=False)
 	email = models.EmailField(null=False)
+	phone = models.CharField(max_length=128, null=True)
 	#photo = models.ImageField(upload_to='landlord_photo', default='landlord_photo/default.jpg', blank=True)
 	gender = models.CharField(max_length=1, choices=gender_choices, default='M')
 	dob = models.DateField(null=True, auto_now=False, auto_now_add=False)
@@ -79,6 +83,9 @@ class House_Picture(models.Model):
 	house_id = models.IntegerField(null=False)
 	photo = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
 
+	def __str__(self):
+		return self.house_id
+
 	class Meta:
 		db_table = "house_picture"
 
@@ -88,12 +95,18 @@ class Lease_Period(models.Model):
 	period_start = models.DateField(null=False)
 	period_end = models.DateField(null=False)
 
+	def __str__(self):
+		return self.house_id
+
 	class Meta:
 		db_table = "lease_period"
 
 class Tag(models.Model):
 	time_stamp = models.DateTimeField(auto_now_add=True)
 	tag = models.CharField(max_length=64, null=False)
+
+	def __str__(self):
+		return self.tag
 
 	class Meta:
 		db_table = "tag"
@@ -103,6 +116,9 @@ class Tenant_Tag(models.Model):
 	tenant_id = models.IntegerField(null=False)
 	tag_id = models.IntegerField(null=False)
 
+	def __str__(self):
+		return self.tenant_id
+
 	class Meta:
 		db_table = "tenant_tag"
 
@@ -110,6 +126,9 @@ class House_Tag(models.Model):
 	time_stamp = models.DateTimeField(auto_now_add=True)
 	house_id = models.IntegerField(null=False)
 	tag_id = models.IntegerField(null=False)
+
+	def __str__(self):
+		return self.house_id
 
 	class Meta:
 		db_table = "house_tag"
@@ -120,12 +139,15 @@ class Tenant_Rate(models.Model):
 	landlord_id = models.IntegerField(null=False)
 	reputation = models.IntegerField(null=False)
 
+	def __str__(self):
+		return self.tenant_id
+
 	class Meta:
 		db_table = "tenant_rate"
 
 class House_Rate(models.Model):
 	time_stamp = models.DateTimeField(auto_now_add=True)
-	tenant_id = models.IntegerField(null=False)
+	house_id = models.IntegerField(null=False)
 	accuracy = models.IntegerField(null=False)
 	communication = models.IntegerField(null=False)
 	cleanliness = models.IntegerField(null=False)
@@ -133,14 +155,19 @@ class House_Rate(models.Model):
 	check_in = models.IntegerField(null=False)
 	value = models.IntegerField(null=False)
 
+	def __str__(self):
+		return self.house_id
+
 	class Meta:
 		db_table = "house_rate"
 
 class House_Comment(models.Model):
 	time_stamp = models.DateTimeField(auto_now_add=True)
-	tenant_id = models.IntegerField(null=False)
 	house_id = models.IntegerField(null=False)
 	comment = models.TextField(null=False, blank=False)
+
+	def __str__(self):
+		return self.house_id
 
 	class Meta:
 		db_table = "house_comment"
