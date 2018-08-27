@@ -77,7 +77,6 @@ def signup(request):
 		return render(request, 'public/signup.html', {'form': originalform})
 
 
-##### login page raw #####
 def index(request):
 	hello = 'hello, everyone'
 	return render(request, 'public/index.html', {'hello': hello})
@@ -85,17 +84,13 @@ def index(request):
 def search(request):
 	return render(request, 'public/search.html')
 
+def view_detail(request):
+	return render(request, 'public/view_detail.html')
 
-##### row houses page #####
 def display(request):
 	sql = """select * from house"""
 	houses = RunSQL(sql)
 	return render(request, 'public/display.html', locals())
 
-##### house detial page #####
-def view_detail(request):
-	return render(request, 'public/view_detail.html')
-
-##### personal page #####
 def profile(request):
 	return render(request, 'public/profile.html')
