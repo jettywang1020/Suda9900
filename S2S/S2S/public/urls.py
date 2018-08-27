@@ -7,8 +7,6 @@ from . import views
 app_name = 'public'
 
 urlpatterns = [
-
-
 	path('index', views.index, name='index'),
 	path('search', views.search, name='search'),
 
@@ -33,7 +31,5 @@ urlpatterns = [
 	path('view_detail', views.view_detail, name='view_detail'),	# house detial page
 
 	path('index', views.index, name='index'),	# personal navs page
-	path('profile', views.profile, name='profile'),	# personal profile page
-	
-
+	path('profile', views.profile, name='profile'),	# personal profile page	
 ]
