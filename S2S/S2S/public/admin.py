@@ -1,19 +1,12 @@
 from django.contrib import admin
 from .models import *
 
-class TenantAdmin(admin.ModelAdmin):
+class UserAdmin(admin.ModelAdmin):
 	list_display = ['id','username']
 	list_filter = ['username']
 	search_fields = ['username']
 	list_per_page = 10
-	fields = ['username','password','phone','email','gender','dob','profile','activate','status']
-
-class LandLordAdmin(admin.ModelAdmin):
-	list_display = ['id','username']
-	list_filter = ['username']
-	search_fields = ['username']
-	list_per_page = 10
-	fields = ['username', 'password', 'phone', 'email', 'gender', 'dob', 'profile', 'activate', 'status']
+	fields = ['username', 'first_name', 'last_name', 'password', 'phone', 'email', 'gender', 'dob', 'profile', 'activate', 'status', 'is_landlord']
 
 class HouseAdmin(admin.ModelAdmin):
 	list_display = ['id','name']
@@ -21,12 +14,19 @@ class HouseAdmin(admin.ModelAdmin):
 	search_fields = ['name']
 	list_per_page = 10
 	fieldsets = [
+<<<<<<< HEAD
 		('Basic Information', {'fields': ['landlord_id','name','address','postcode','price','profile']}),
 		('House detail', {'fields': ['max_guests','no_of_beds','no_of_bedrooms','no_of_baths','no_of_parking','tv','kitchen','washer','fridge','conditioner','wifi','study_room','pool']}),
 		('Extra Description', {'fields': ['house_rule','cancellation','extra','status']}),
+=======
+		('Basic Information', {'fields': ['user_id','name','address','postcode','price','profile']}),
+		('House detail', {'fields': ['max_guests', 'no_of_beds','no_of_bedrooms','no_of_baths','no_of_parking'
+									 ,'tv','kitchen','washer','fridge','conditioner','wifi','study_room',
+									 'pool']}),
+		('Extra Description', {'fields': ['house_rule','cancellation','extra','status']})
+>>>>>>> 14b13bb2bfa973718c4e64a8d2643c9209ad7ce9
 	]
 
 
-admin.site.register(Tenant,TenantAdmin)
-admin.site.register(Landlord,LandLordAdmin)
+admin.site.register(User,UserAdmin)
 admin.site.register(House,HouseAdmin)

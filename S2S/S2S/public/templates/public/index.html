@@ -1,24 +1,28 @@
 {% extends 'base.html' %}
 {% load staticfiles%}
 {% block content %}
-<div class="theme-buy">
-<a class="btn btn-primary btn-large theme-login" href="javascript:;">jquery点击弹出登陆窗口</a>
+
+<div style="width:80%;margin: 0 auto;">
+	<div class="row">
+		<div class="col-3">
+			<nav id="navbar" class="navbar navbar-light">
+				<nav class="nav nav-pills flex-column">
+					<a class="nav-link" href="http://localhost:8000/profile#">Edit Profile</a>
+					<a class="nav-link" href="#">Photo</a>
+					
+					
+					<a class="nav-link" href="http://localhost:8000/landlord/manage_house#">Manage Houses</a>
+					
+				</nav>
+			</nav>
+		</div>
+		<div class="col-9">
+			{% block index %}
+			{% endblock %}
+		</div>
+	</div>
 </div>
-<div class="theme-popover">
- <div class="theme-poptit">
- <a href="javascript:;" title="关闭" class="close">×</a>
- <h3>欢迎登陆</h3>
- </div>
- <div class="theme-popbod dform">
- <form class="theme-signin" name="loginform" action="" method="post">
- <ol>
- <li><h4>你必须先登录！</h4></li>
- <li><strong>用户名：</strong><input class="ipt" type="text" name="log" value="daimadog" size="20" /></li>
- <li><strong>密码：</strong><input class="ipt" type="password" name="pwd" value="123456" size="20" /></li>
- <li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " /></li>
- </ol>
- </form>
- </div>
-</div>
-<div class="theme-popover-mask"></div>
+
+<img src="{{ user.photo.url }}">
+
 {% endblock %}

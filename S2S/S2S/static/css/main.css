@@ -1,23 +1,172 @@
 html{
-	margin: 0;
+    margin: 0;
 }
 
 body {
-	/*color: #4D5656;*/
-	margin:0;
-	padding:0;
-	font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
-	display: flex;
-	flex-direction: column;
-	height: 100vh; /* Avoid the IE 10-11 `min-height` bug. */
+    color: #4D5656;
+    margin:0;
+    padding:0;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Avoid the IE 10-11 `min-height` bug. */
 }
 
 a, u {
-	color: #1BB3E9;
+    color: #1BB3E9;
     text-decoration: none !important;
     decoration: none; 
 }
 
+.my-navbar-nav{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    padding-left: 0;
+    margin:0.5rem;
+    list-style: none;
+}
+
+a:hover{
+    color: grey;
+    transition: 0.3s;
+}
+
+.my-btn-color{
+    color: #4D5656;
+}
+
+.my-btn-color:hover{
+    color: #1BB3E9;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.dislike{
+    color: #E74C3C;
+}
+
+.dislike:hover{
+    color: #1BB3E9;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.shadow{
+    box-shadow: 0 0.05rem 1rem rgba(0,0,0,.15);
+}
+
+/************* base.html *************/
+#header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar{
+    padding: 0rem 1rem;
+}
+
+.navi-btn {
+    display: inline-block;
+    margin-right: 1rem;
+    font-size: 1.65rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
+
+.custom-select{
+    width: auto;
+}
+
+#content {
+    margin-top: 4.5rem ;
+    flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+    padding: 2rem;
+}
+
+#footer {
+    flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+    padding: 2rem;
+    background-color: #515A5A;
+    color: white;
+    text-align: center;
+}
+
+#toTop {
+    display: none;
+    position: fixed;
+    top: 6rem;
+    right: 1rem;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #515A5A;
+    color: white;
+    cursor: pointer;
+    width: 3rem;
+    border-radius: 0.3rem;
+    font-size: 2rem;
+    color: #1BB3E9 !important;
+}
+
+#toTop:hover{
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.page-link {
+    width: 100%;
+}
+
+/************* login page *************/
+.loginblock{
+    margin-top: 4rem;
+}
+
+/************* paginator *************/
+.paginator{
+    margin: 0 auto;
+    width: 18rem;
+    text-align: center;
+    padding: .5rem 0;
+}
+
+.paginator .side{
+    width: 4rem;
+    display: inline-block;
+}
+
+.paginator .middle{
+    margin: 0;
+    width: 10rem;
+    display: inline-block;
+}
+
+.page-middle{
+    padding: .5rem .75rem;
+    line-height: 1.25;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #ddd;
+    border-style: solid;
+}
+
+
+/************* login page *************/
+.loginblock{
+    margin-top: 4rem;
+}
+
+
+
+
+
+/********************* home *******************/
 .dropbtn {
     background-color: #4CAF50;
     color: white;
@@ -62,3 +211,38 @@ a, u {
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
+/* add new for login*/
+
+
+/*    display   */
+.display-house-address{
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 800;
+    color: rgb(83, 18, 16); 
+    white-space: nowrap; 
+    text-overflow:ellipsis; 
+    overflow:hidden;
+}
+
+.display-house-name{
+    margin-top: 4px;
+    line-height: 22px;
+    font-weight: 800; 
+    white-space: nowrap; 
+    text-overflow:ellipsis; 
+    overflow:hidden;
+}
+
+.display-house-price{
+    font-size: 14px;
+    line-height: 18px;
+    display: inline;
+}
+
+.display-house-star-and-number{
+    margin-top: 2px;
+}
+
+

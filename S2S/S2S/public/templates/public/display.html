@@ -1,0 +1,47 @@
+<style>
+	div .HandCursor {
+		cursor: pointer /*change to hand style*/
+	}
+</style>
+
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+
+	<h4>
+		<div style="font-weight: 800;line-height: 30px;padding:2px 0px;">
+			Homes around the world
+		</div>
+	</h4>
+
+	<div class="col-sm-13 row">
+		{% for house in houses %}
+		<div class="col-sm-3">
+			<div class="HandCursor" onclick="window.location='http://localhost:8000/detail#';">
+				<div>
+					<img src="./static/image/HOUSE.jpg" alt="..." class="img-thumbnail">
+				</div>
+				<div>
+					<div class="display-house-address">
+						{{ house.address }}
+					</div>
+					<div class="display-house-name">
+						{{ house.name }}
+					</div>
+					<div class="display-house-price">
+						${{ house.price }} per night
+					</div>
+					<div class="display-house-star-and-number">
+						<span>stars</span>
+						<span>number</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+</div>
+
+{% endblock %}
