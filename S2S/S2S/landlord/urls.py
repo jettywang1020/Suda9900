@@ -7,7 +7,6 @@ from . import views
 app_name = 'landlord'
 
 urlpatterns = [
-	path('', views.index, name='index'),
-	
-	path('add_house', views.add_house, name='add_house'),	# Landlord add house
+	path('add_house', views.add_house, name='add_house'),	# Add House
+	path('manage_house', views.manage_house, name='manage_house'),	# Manage House
 ]
