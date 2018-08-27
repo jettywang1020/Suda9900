@@ -44,7 +44,7 @@ class Landlord(models.Model):
 
 class House(models.Model):
 	time_stamp = models.DateTimeField(auto_now_add=True)
-	landord_id = models.IntegerField(null=False)
+	landlord_id = models.IntegerField(null=False)
 	name = models.CharField(max_length=256, null=False)
 	address = models.CharField(max_length=256, null=False)
 	postcode = models.IntegerField(null=False)
