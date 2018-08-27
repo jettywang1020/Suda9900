@@ -6,7 +6,7 @@ class UserAdmin(admin.ModelAdmin):
 	list_filter = ['username']
 	search_fields = ['username']
 	list_per_page = 10
-	fields = ['username', 'password', 'phone', 'email', 'gender', 'dob', 'profile', 'activate', 'status', 'is_landlord']
+	fields = ['username', 'first_name', 'last_name', 'password', 'phone', 'email', 'gender', 'dob', 'profile', 'activate', 'status', 'is_landlord']
 
 class HouseAdmin(admin.ModelAdmin):
 	list_display = ['id','name']

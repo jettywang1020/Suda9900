@@ -9,30 +9,26 @@ from public.help import *
 ##### login page #####
 def login(request):
 	originalform = login_form()
-	# if request.method == 'POST':
-	# 	form = login_form(request.POST)
-	# 	if form.is_valid():
-	# 		email = form.cleaned_data.get("email")
-	# 		password = form.cleaned_data.get("password")
-	# 		is_landlord = form.cleaned_data.get("is_landlord")
-	# 		if is_landlord :
-	# 			user = Landlord.objects.filter(email=email)
-	# 		else:
-	# 			user = Tenant.objects.filter(email=email)
+	if request.method == 'POST':
+		form = login_form(request.POST)
+		if form.is_valid():
+			email = form.cleaned_data.get("email")
+			password = form.cleaned_data.get("password")
+			is_landlord = form.cleaned_data.get("is_landlord")
+			user = User.objects.filter(email = email, is_landlord = is_landlord)
 
-	# 		if len(user) == 1 :
-	# 			if check_password(password, user[0].password):
-	# 				request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'activate':user[0].activate}
-	# 				return render(request, 'public/index.html')
-	# 			else:
-	# 				error = "Incorrect password!"
-	# 				return render(request, 'public/login.html', {'form': originalform, 'error': error}) 
-
-	# 		else:
-	# 			error = "Account does not exist!"
-	# 			return render(request, 'public/login.html', {'form': originalform, 'error': error})
-	# else:
-	return render(request, 'public/login.html', {'form': originalform})
+			if len(user) == 1 :
+				if check_password(password, user[0].password):
+					request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'activate':user[0].activate, 'is_landlord':user[0].is_landlord}
+					return render(request, 'public/index.html')
+				else:
+					error = "Incorrect password!"
+					return render(request, 'public/login.html', {'form': originalform, 'error': error}) 
+			else:
+				error = "Account does not exist!"
+				return render(request, 'public/login.html', {'form': originalform, 'error': error})
+	else:
+		return render(request, 'public/login.html', {'form': originalform})
 
 ##### signup page #####
 def signup(request):
@@ -41,12 +37,13 @@ def signup(request):
 		form = signup_form(request.POST)
 		if form.is_valid():
 			username = form.cleaned_data.get("username")
-			first_name = form.cleaned_data.get("first_name")
-			last_name = form.cleaned_data.get("last_name")
 			email = form.cleaned_data.get("email")
 			password = form.cleaned_data.get("password")
 			confirm_password = form.cleaned_data.get("confirm_password")
+			gender = form.cleaned_data.get("gender")
 			is_landlord = form.cleaned_data.get("is_landlord")
+
+			print(gender)
 		
 			if password != confirm_password:
 				error = "Passwords don't match!"
@@ -58,8 +55,6 @@ def signup(request):
 				user_email = User.objects.filter(email = email, is_landlord = is_landlord)
 				user_username = User.objects.filter(username = username, is_landlord = is_landlord)
 		
-
-				
 				if len(user_email) > 0 and len(user_username) == 0:
 					error = "This email has been used!"
 					return render(request, 'public/signup.html', {'form': originalform, 'error': error})
@@ -71,10 +66,10 @@ def signup(request):
 					return render(request, 'public/signup.html', {'form': originalform, 'error': error})
 				else:
 					password = make_password(password, None, 'pbkdf2_sha256')
-					user = User(username = username, email = email, password = password, first_name = first_name, last_name = last_name, is_landlord = is_landlord)
+					user = User(username = username, email = email, password = password, gender = gender, is_landlord = is_landlord)
 
 					user.save()
-					request.session['account'] = {'id':user.id, 'username':username, 'email':email, 'activate':False}
+					request.session['account'] = {'id':user.id, 'username':username, 'email':email, 'activate':False, 'is_landlord':is_landlord}
 
 					return render(request, 'public/login.html')
 
