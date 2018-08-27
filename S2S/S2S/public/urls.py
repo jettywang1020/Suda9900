@@ -8,6 +8,7 @@ app_name = 'public'
 
 urlpatterns = [
 	path('login', views.login, name='login'),	# login page
+	path('logout', views.logout, name='logout'),	# logout page
 	path('signup', views.signup, name='signup'),	# signup page
 	
 	path('search', views.search, name='search'),	# search house page

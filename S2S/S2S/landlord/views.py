@@ -14,17 +14,3 @@ def add_house(request):
 
 def manage_house(request):
 	return render(request, 'landlord/manage_house.html')
-
-
-def RunSQL(sql):
-	with connection.cursor() as cursor:
-		cursor.execute(sql)
-		rows = cursor.fetchall()
-		fieldnames = [name[0] for name in cursor.description]
-		results = []
-		for row in rows:
-			result = {}
-			for i in range(len(row)):
-				result[fieldnames[i]] = row[i]
-			results.append(result)
-	return results

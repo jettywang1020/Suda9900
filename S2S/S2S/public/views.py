@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.hashers import make_password, check_password
 
@@ -29,6 +29,15 @@ def login(request):
 				return render(request, 'public/login.html', {'form': originalform, 'error': error})
 	else:
 		return render(request, 'public/login.html', {'form': originalform})
+
+##### logout #####
+def logout(request):
+	try:
+		del request.session['account']
+	except:
+		pass
+	return redirect('public:login')
+
 
 ##### signup page #####
 def signup(request):
@@ -86,9 +95,13 @@ def home(request):
 
 ##### row houses page #####
 def display(request):
+	sql = """select * from house"""
 
+	houses = RunSQL(sql)
 
-	return render(request, 'public/display.html')
+	print(houses)
+
+	return render(request, 'public/display.html', locals())
 
 ##### house detial page #####
 def view_detail(request):
