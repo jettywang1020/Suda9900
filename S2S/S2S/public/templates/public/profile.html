@@ -40,31 +40,27 @@
 		</div>
 		<div class="form-group row">
 			<label for="Dob" class="col-sm-2 col-form-label">Birth Date</label>
-			
-				<div style="padding-left:15px;">
-					<select id="Month" class="form-control">
-						<option selected>Feb</option>
-						<option>Mar</option>
-						<option>Apr</option>
-					</select>
-				</div>
-				<div style="padding-left:10px;">
-					<select id="Day" class="form-control">
-						<option selected>01</option>
-						<option>02</option>
-						<option>03</option>
-					</select>
-				</div>
-				<div style="padding-left:10px;">
-					<select id="Gender" class="form-control">
-						<option selected>2000</option>
-						<option>2001</option>
-						<option>2002</option>
-					</select>
-				</div>
-			<!-- <div class="col-sm-10">
-				<input type="text" class="form-control" id="Dob" placeholder="DD-MM-YYYY">
-			</div> -->
+			<div style="padding-left:15px;">
+				<select id="Month" class="form-control">
+					<option selected>Feb</option>
+					<option>Mar</option>
+					<option>Apr</option>
+				</select>
+			</div>
+			<div style="padding-left:10px;">
+				<select id="Day" class="form-control">
+					<option selected>01</option>
+					<option>02</option>
+					<option>03</option>
+				</select>
+			</div>
+			<div style="padding-left:10px;">
+				<select id="Gender" class="form-control">
+					<option selected>2000</option>
+					<option>2001</option>
+					<option>2002</option>
+				</select>
+			</div>
 		</div>
 		<div class="form-group row">
 			<label for="Phone" class="col-sm-2 col-form-label">Phone Number</label>
@@ -78,6 +74,13 @@
 				<textarea class="form-control" id="Profile" rows="5"></textarea>
 			</div>
 		</div>
+		<!-- <div class="form-group">
+			<div class="form-check">
+				<label class="form-check-label" style="font-weight: 800;font-size: 18px;">
+					{{ form.is_landlord }} I want to be a Landlord.
+				</label>
+			</div>
+		</div> -->
 		<button type="submit" class="btn btn-primary btn-lg" style="width: 50%;margin: 10px 25%;">Update</button>
 	</form>
 </div>

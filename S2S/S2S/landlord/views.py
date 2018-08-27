@@ -12,6 +12,9 @@ def index(request):
 def add_house(request):
 	return render(request, 'landlord/add_house.html')
 
+def manage_house(request):
+	return render(request, 'landlord/manage_house.html')
+
 
 def RunSQL(sql):
 	with connection.cursor() as cursor:
