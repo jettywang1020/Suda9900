@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Usesr(models.Model):
+class User(models.Model):
 	gender_choices = (('M','Male'),('F','Female'),)
 	time_stamp = models.DateTimeField(auto_now_add=True)
 	username = models.CharField(max_length=64, null=False)

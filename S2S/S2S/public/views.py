@@ -2,36 +2,37 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.hashers import make_password, check_password
 
-from public.models import Tenant, Landlord, House
-from public.forms import login_form, signup_form
+from public.models import *
+from public.forms import *
+from public.help import *
 
 ##### login page #####
 def login(request):
 	originalform = login_form()
-	if request.method == 'POST':
-		form = login_form(request.POST)
-		if form.is_valid():
-			email = form.cleaned_data.get("email")
-			password = form.cleaned_data.get("password")
-			is_landlord = form.cleaned_data.get("is_landlord")
-			if is_landlord :
-				user = Landlord.objects.filter(email=email)
-			else:
-				user = Tenant.objects.filter(email=email)
+	# if request.method == 'POST':
+	# 	form = login_form(request.POST)
+	# 	if form.is_valid():
+	# 		email = form.cleaned_data.get("email")
+	# 		password = form.cleaned_data.get("password")
+	# 		is_landlord = form.cleaned_data.get("is_landlord")
+	# 		if is_landlord :
+	# 			user = Landlord.objects.filter(email=email)
+	# 		else:
+	# 			user = Tenant.objects.filter(email=email)
 
-			if len(user) == 1 :
-				if check_password(password, user[0].password):
-					request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'activate':user[0].activate}
-					return render(request, 'public/index.html')
-				else:
-					error = "Incorrect password!"
-					return render(request, 'public/login.html', {'form': originalform, 'error': error}) 
+	# 		if len(user) == 1 :
+	# 			if check_password(password, user[0].password):
+	# 				request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'activate':user[0].activate}
+	# 				return render(request, 'public/index.html')
+	# 			else:
+	# 				error = "Incorrect password!"
+	# 				return render(request, 'public/login.html', {'form': originalform, 'error': error}) 
 
-			else:
-				error = "Account does not exist!"
-				return render(request, 'public/login.html', {'form': originalform, 'error': error})
-	else:
-		return render(request, 'public/login.html', {'form': originalform})
+	# 		else:
+	# 			error = "Account does not exist!"
+	# 			return render(request, 'public/login.html', {'form': originalform, 'error': error})
+	# else:
+	return render(request, 'public/login.html', {'form': originalform})
 
 ##### signup page #####
 def signup(request):
@@ -54,12 +55,9 @@ def signup(request):
 				error = "Please make sure the length of your password is not shorter than 6!"
 				return render(request, 'public/signup.html', {'form': originalform, 'error': error})
 			else:
-				if is_landlord :
-					user_email = Landlord.objects.filter(email = email)
-					user_username = Landlord.objects.filter(username = username)
-				else:
-					user_email = Tenant.objects.filter(email = email)
-					user_username = Tenant.objects.filter(username = username)			
+				user_email = User.objects.filter(email = email, is_landlord = is_landlord)
+				user_username = User.objects.filter(username = username, is_landlord = is_landlord)
+		
 
 				
 				if len(user_email) > 0 and len(user_username) == 0:
@@ -73,10 +71,7 @@ def signup(request):
 					return render(request, 'public/signup.html', {'form': originalform, 'error': error})
 				else:
 					password = make_password(password, None, 'pbkdf2_sha256')
-					if is_landlord :
-						user = Landlord(username = username, email = email, password = password, first_name = first_name, last_name = last_name)
-					else:
-						user = Tenant(username = username, email = email, password = password, first_name = first_name, last_name = last_name)
+					user = User(username = username, email = email, password = password, first_name = first_name, last_name = last_name, is_landlord = is_landlord)
 
 					user.save()
 					request.session['account'] = {'id':user.id, 'username':username, 'email':email, 'activate':False}
@@ -111,19 +106,3 @@ def display(request):
 ##### house detial page #####
 def view_detail(request):
 	return render(request, 'public/view_detail.html')
-
-
-
-
-def RunSQL(sql):
-	with connection.cursor() as cursor:
-		cursor.execute(sql)
-		rows = cursor.fetchall()
-		fieldnames = [name[0] for name in cursor.description]
-		results = []
-		for row in rows:
-			result = {}
-			for i in range(len(row)):
-				result[fieldnames[i]] = row[i]
-			results.append(result)
-	return results

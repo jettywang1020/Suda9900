@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from public.models import Tenant, Landlord, House
+from public.models import User, House
 
 # Create your views here.
 def index(request):

@@ -1,32 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from public.models import Tenant, Landlord, House
+from public.models import User, House
 
 # Create your views here.
 def index(request):
-	tenant = Tenant.objects.get(pk = 1)
+	# tenant = Tenant.objects.get(pk = 1)
 	return render(request, 'tenant/index.html', locals())
 
 def test(request):
 	test_id = request.GET.get("test_id")
 	data = {"test_id":test_id}
 	return JsonResponse(data)
-
-
-
-
-def login(request):
-	originalform = login_form()
-	if request.method == 'POST':
-		form = login_form(request.POST)
-		if form.is_valid():
-			username = form.cleaned_data['username']
-			password = form.cleaned_data['password']
-			print(username, password)
-		return render(request, 'landlord/login.html', {'form': originalform})
-	else:
-		return render(request, 'landlord/login.html', {'form': originalform})
-
 
 
 
