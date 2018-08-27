@@ -1,3 +1,8 @@
+
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.hashers import make_password, check_password
+
 from public.models import *
 from public.forms import *
 from public.help import *
@@ -78,16 +83,6 @@ def index(request):
 
 	hello = 'hello, everyone'
 	return render(request, 'public/index.html', {'hello': hello})
-
-def test(request):
-	return render(request, 'public/Home.html')
-
-
-def get_data(request):
-	tenantList = Tenant.objects.all()
-	tenants = {'list_tenant': tenantList}
-	return render(request,'public/get_data.html',tenants)
-
 
 
 

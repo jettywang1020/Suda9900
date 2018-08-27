@@ -7,10 +7,6 @@ from . import views
 app_name = 'public'
 
 urlpatterns = [
-	path('', views.index, name='index'),
-	path('Home', views.test, name='Home'),
-	path('get_data', views.get_data, name='get_data'),
-
 
 
 	path('index', views.index, name='index'),
@@ -21,10 +17,6 @@ urlpatterns = [
 	path('login', views.login, name='login'),
 	path('signup', views.signup, name='signup'),
 	
-
-
-
-
 
 	path('login', views.login, name='login'),	# login page
 	path('logout', views.logout, name='logout'),	# logout page
