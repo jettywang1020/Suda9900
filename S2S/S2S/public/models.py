@@ -5,12 +5,12 @@ class User(models.Model):
 	gender_choices = (('M','Male'),('F','Female'),)
 	time_stamp = models.DateTimeField(auto_now_add=True)
 	username = models.CharField(max_length=64, null=False)
-	first_name = models.CharField(max_length=64, null=False)
-	last_name = models.CharField(max_length=64, null=False)
+	first_name = models.CharField(max_length=64, null=True)
+	last_name = models.CharField(max_length=64, null=True)
 	password = models.CharField(max_length=256, null=False)
 	email = models.EmailField(null=False)
 	phone = models.CharField(max_length=128, null=True)
-	#photo = models.ImageField(upload_to='user', default='user/default.jpg', blank=True)
+	photo = models.ImageField(upload_to='user', default='user/default.png', blank=True)
 	gender = models.CharField(max_length=1, choices=gender_choices, default='M')
 	dob = models.DateField(null=True,auto_now=False, auto_now_add=False)
 	profile = models.TextField(null=True, blank=True)
@@ -60,7 +60,7 @@ class House(models.Model):
 class House_Picture(models.Model):
 	time_stamp = models.DateTimeField(auto_now_add=True)
 	house_id = models.IntegerField(null=False)
-	#photo = models.ImageField(upload_to='house', default='house/default.jpg', blank=True)
+	photo = models.ImageField(upload_to='house', null=False)
 
 	def __str__(self):
 		return self.house_id
