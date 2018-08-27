@@ -15,7 +15,7 @@
 			<label for="Username">Username</label>
 			{{ form.username }}
 		</div>
-		<div class="form-row">
+		<!-- <div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="FirstName">First Name</label>
 				{{ form.first_name }}
@@ -24,13 +24,13 @@
 				<label for="LastName">Last Name</label>
 				{{ form.last_name }}
 			</div>
-		</div>
+		</div> -->
 		<div class="form-group">
 			<label for="Email">Email</label>
 			{{ form.email }}
 		</div>
 		<div class="form-group">
-			<label for="Password">Password 
+			<label for="Password">Password
 				<small id="passwordHelp" class="text-muted">
 					(Must be longer than 6 characters)
 				</small>
@@ -41,14 +41,8 @@
 			<label for="Password">Confirm Password</label>
 			{{ form.confirm_password }}
 		</div>
-
-<!-- add three elements -->
-		<div class="form-group">
-			<label for="Phone">Phone</label>
-			<input type="text" class="form-control" id="Phone">
-		</div>
 		<div class="form-row">
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-3">
 				<label for="Gender">Gender</label>
 				<select id="Gender" class="form-control">
 					<option selected>Male</option>
@@ -56,16 +50,7 @@
 					<option>Other</option>
 				</select>
 			</div>
-			<div class="form-group col-md-6">
-				<label for="Dob">DOB </label>
-				<small id="dobHelp" class="text-muted">
-					(DD-MM-YYYY)
-				</small>
-				<input type="text" class="form-control" id="Dob">
-			</div>
 		</div>
-<!-- add end -->
-
 		<div class="form-group">
 			<div class="form-check">
 				<label class="form-check-label" style="font-weight: 800;font-size: 18px;">

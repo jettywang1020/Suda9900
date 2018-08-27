@@ -8,9 +8,6 @@ def index(request):
 	#landlord = Landlord.objects.get(pk = 1)
 	return render(request, 'landlord/index.html')
 
-def profile(request):
-	return render(request, 'landlord/profile.html')
-
 ##### Landlord add house #####
 def add_house(request):
 	return render(request, 'landlord/add_house.html')

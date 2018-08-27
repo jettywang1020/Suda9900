@@ -1,34 +1,22 @@
 {% extends 'base.html' %}
+{% load staticfiles%}
 {% block content %}
-<div >
- <form style="" class="form-group">
-  <div style="padding-left: 2%" id="email_adress">
-  <label style="width: 150px">Email Address</label>
-   <input type="text" placeholder="Email Address">
-  </div>
-  <div style="padding-left: 2%" id="password">
-    <label style="width: 150px;">Password   </label>
-   <input  type="password" placeholder="Password">
-  </div>
-  <br>
-  <br>
-  <div style="padding-left: 6%">
-   <button type="submit" id="login_in" style="width: 7%">Login in</button>
 
-  </div>
-
-
-
- </form>
+<div style="width:80%;margin: 0 auto;">
+	<div class="row">
+		<div class="col-3">
+			<nav id="navbar" class="navbar navbar-light">
+				<nav class="nav nav-pills flex-column">
+					<a class="nav-link" href="http://localhost:8000/profile#">Edit Profile</a>
+					<a class="nav-link" href="#">Photo</a>
+					<a class="nav-link" href="#">Manage Houses</a>
+				</nav>
+			</nav>
+		</div>
+		<div class="col-9">
+			{% block index %}
+			{% endblock %}
+		</div>
+	</div>
 </div>
-
-<!--v2-->
-<i class="ion-heart"></i>
-
-<i class="ion-wifi"></i>
-<!--v4-->
-<ion-icon name="ios-heart"></ion-icon>
-
-{{ request.session.account.email }}
-
 {% endblock %}

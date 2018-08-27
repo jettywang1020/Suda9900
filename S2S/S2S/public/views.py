@@ -84,8 +84,7 @@ def signup(request):
 
 ##### login page raw #####
 def index(request):
-	hello = 'hello, everyone'
-	return render(request, 'public/index.html', {'hello': hello})
+	return render(request, 'public/index.html')
 
 def search(request):
 	return render(request, 'public/search.html')
@@ -106,3 +105,7 @@ def display(request):
 ##### house detial page #####
 def view_detail(request):
 	return render(request, 'public/view_detail.html')
+
+##### personal page #####
+def profile(request):
+	return render(request, 'public/profile.html')
