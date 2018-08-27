@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-from django.shortcuts import render
-from .models import *
-=======
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse
-from django.contrib.auth.hashers import make_password, check_password
->>>>>>> 14b13bb2bfa973718c4e64a8d2643c9209ad7ce9
-
 from public.models import *
 from public.forms import *
 from public.help import *
@@ -88,7 +79,6 @@ def index(request):
 	hello = 'hello, everyone'
 	return render(request, 'public/index.html', {'hello': hello})
 
-<<<<<<< HEAD
 def test(request):
 	return render(request, 'public/Home.html')
 
@@ -99,8 +89,6 @@ def get_data(request):
 	return render(request,'public/get_data.html',tenants)
 
 
-
-=======
 
 
 def search(request):
@@ -151,4 +139,3 @@ def view_detail(request):
 ##### personal page #####
 def profile(request):
 	return render(request, 'public/profile.html')
->>>>>>> 14b13bb2bfa973718c4e64a8d2643c9209ad7ce9

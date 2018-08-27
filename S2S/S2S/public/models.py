@@ -27,12 +27,6 @@ class User(models.Model):
 
 class House(models.Model):
 	time_stamp = models.DateTimeField(auto_now_add=True)
-<<<<<<< HEAD
-	landlord_id = models.IntegerField(null=False)
-=======
-	user_id = models.IntegerField(null=False)
->>>>>>> 14b13bb2bfa973718c4e64a8d2643c9209ad7ce9
-	name = models.CharField(max_length=256, null=False)
 	address = models.CharField(max_length=256, null=False)
 	postcode = models.IntegerField(null=False)
 	price = models.IntegerField(null=False)

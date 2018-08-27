@@ -7,11 +7,9 @@ from . import views
 app_name = 'public'
 
 urlpatterns = [
-<<<<<<< HEAD
 	path('', views.index, name='index'),
 	path('Home', views.test, name='Home'),
 	path('get_data', views.get_data, name='get_data'),
-=======
 
 
 
@@ -46,5 +44,4 @@ urlpatterns = [
 	path('profile', views.profile, name='profile'),	# personal profile page
 	
 
->>>>>>> 14b13bb2bfa973718c4e64a8d2643c9209ad7ce9
 ]
