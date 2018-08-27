@@ -79,7 +79,7 @@ def signup(request):
 
 ##### login page raw #####
 def index(request):
-<<<<<<< HEAD
+
 	hello = 'hello, everyone'
 	return render(request, 'public/index.html', {'hello': hello})
 
@@ -92,35 +92,29 @@ def search(request):
 def signup(request):
 	return render(request, 'public/signup.html')
 
-=======
+
 	user = User.objects.get(pk=1)
 	return render(request, 'public/index.html',{'user':user})
 
 def search(request):
 	return render(request, 'public/search.html')
->>>>>>> 8a7ef0ddcfdcd993899de0cf0cefa488821120e6
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 8a7ef0ddcfdcd993899de0cf0cefa488821120e6
 def view_detail(request):
 	return render(request, 'public/ciew_detail.html')
 
 
-<<<<<<< HEAD
 
 
 ##### search house page #####
 def Home(request):
 	return render(request, 'public/Home.html')
 
-=======
+
 def home(request):
 	return render(request, 'public/home.html')
 
->>>>>>> 8a7ef0ddcfdcd993899de0cf0cefa488821120e6
+
 
 ##### row houses page #####
 def display(request):
