@@ -1,3 +1,5 @@
+from django.db import connection
+
 # help functions
 
 def RunSQL(sql):
