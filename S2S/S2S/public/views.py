@@ -79,7 +79,8 @@ def signup(request):
 
 ##### login page raw #####
 def index(request):
-	return render(request, 'public/index.html')
+	user = User.objects.get(pk=1)
+	return render(request, 'public/index.html',{'user':user})
 
 def search(request):
 	return render(request, 'public/search.html')
