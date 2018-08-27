@@ -16,170 +16,32 @@
 	</h4>
 
 	<div class="col-sm-13 row">
+		{% for house in houses %}
 		<div class="col-sm-3">
 			<div class="HandCursor" onclick="window.location='http://localhost:8000/detail#';">
 				<div>
 					<img src="./static/image/HOUSE.jpg" alt="..." class="img-thumbnail">
 				</div>
 				<div>
-					<div style="margin-top: 2px;font-size: 12px;line-height: 16px;font-weight: 800;color: rgb(83, 18, 16);">
-						PRIVATE ROOM · PYRMONT
+					<div class="display-house-address">
+						{{ house.address }}
 					</div>
-					<div style="margin-top: 4px;line-height: 22px;font-weight: 800;">
-						Sydney City & Harbour at the door
+					<div class="display-house-name">
+						{{ house.name }}
 					</div>
-					<div style="font-size: 14px;line-height: 18px;display: inline;">
-						From $79 AUD per night
+					<div class="display-house-price">
+						${{ house.price }} per night
 					</div>
-					<div style="margin-top: 2px;">
+					<div class="display-house-star-and-number">
 						<span>stars</span>
 						<span>number</span>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-3">
-			<div class="HandCursor">
-				<div>
-					<img src="./static/image/HOUSE.jpg" alt="..." class="img-thumbnail">
-				</div>
-				<div>
-					<div style="margin-top: 2px;font-size: 12px;line-height: 16px;font-weight: 800;color: rgb(83, 18, 16);">
-						PRIVATE ROOM · PYRMONT
-					</div>
-					<div style="margin-top: 4px;line-height: 22px;font-weight: 800;">
-						Sydney City & Harbour at the door
-					</div>
-					<div style="font-size: 14px;line-height: 18px;display: inline;">
-						From $79 AUD per night
-					</div>
-					<div style="margin-top: 2px;">
-						<span>stars</span>
-						<span>number</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-3">
-			<div class="HandCursor">
-				<div>
-					<img src="./static/image/HOUSE.jpg" alt="..." class="img-thumbnail">
-				</div>
-				<div>
-					<div style="margin-top: 2px;font-size: 12px;line-height: 16px;font-weight: 800;color: rgb(83, 18, 16);">
-						PRIVATE ROOM · PYRMONT
-					</div>
-					<div style="margin-top: 4px;line-height: 22px;font-weight: 800;">
-						Sydney City & Harbour at the door
-					</div>
-					<div style="font-size: 14px;line-height: 18px;display: inline;">
-						From $79 AUD per night
-					</div>
-					<div style="margin-top: 2px;">
-						<span>stars</span>
-						<span>number</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-3">
-			<div class="HandCursor">
-				<div>
-					<img src="./static/image/HOUSE.jpg" alt="..." class="img-thumbnail">
-				</div>
-				<div>
-					<div style="margin-top: 2px;font-size: 12px;line-height: 16px;font-weight: 800;color: rgb(83, 18, 16);">
-						PRIVATE ROOM · PYRMONT
-					</div>
-					<div style="margin-top: 4px;line-height: 22px;font-weight: 800;">
-						Sydney City & Harbour at the door
-					</div>
-					<div style="font-size: 14px;line-height: 18px;display: inline;">
-						From $79 AUD per night
-					</div>
-					<div style="margin-top: 2px;">
-						<span>stars</span>
-						<span>number</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-3">
-			<div class="HandCursor">
-				<div>
-					<img src="./static/image/HOUSE.jpg" alt="..." class="img-thumbnail">
-				</div>
-				<div>
-					<div style="margin-top: 2px;font-size: 12px;line-height: 16px;font-weight: 800;color: rgb(83, 18, 16);">
-						PRIVATE ROOM · PYRMONT
-					</div>
-					<div style="margin-top: 4px;line-height: 22px;font-weight: 800;">
-						Sydney City & Harbour at the door
-					</div>
-					<div style="font-size: 14px;line-height: 18px;display: inline;">
-						From $79 AUD per night
-					</div>
-					<div style="margin-top: 2px;">
-						<span>stars</span>
-						<span>number</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-3">
-			<div class="HandCursor">
-				<div>
-					<img src="./static/image/HOUSE.jpg" alt="..." class="img-thumbnail">
-				</div>
-				<div>
-					<div style="margin-top: 2px;font-size: 12px;line-height: 16px;font-weight: 800;color: rgb(83, 18, 16);">
-						PRIVATE ROOM · PYRMONT
-					</div>
-					<div style="margin-top: 4px;line-height: 22px;font-weight: 800;">
-						Sydney City & Harbour at the door
-					</div>
-					<div style="font-size: 14px;line-height: 18px;display: inline;">
-						From $79 AUD per night
-					</div>
-					<div style="margin-top: 2px;">
-						<span>stars</span>
-						<span>number</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-3">
-			<div class="HandCursor">
-				<div>
-					<img src="./static/image/HOUSE.jpg" alt="..." class="img-thumbnail">
-				</div>
-				<div>
-					<div style="margin-top: 2px;font-size: 12px;line-height: 16px;font-weight: 800;color: rgb(83, 18, 16);">
-						PRIVATE ROOM · PYRMONT
-					</div>
-					<div style="margin-top: 4px;line-height: 22px;font-weight: 800;">
-						Sydney City & Harbour at the door
-					</div>
-					<div style="font-size: 14px;line-height: 18px;display: inline;">
-						From $79 AUD per night
-					</div>
-					<div style="margin-top: 2px;">
-						<span>stars</span>
-						<span>number</span>
-					</div>
-				</div>
-			</div>
-		</div>
+		{% endfor %}
 	</div>
 
-</div>
-
-
-<div class="col-sm-12 bg-primary row">
-	<div class="col-sm-4">111</div>
-	<div class="col-sm-4">2</div>
-	<div class="col-sm-4">33</div>
-	<div class="col-sm-4">44</div>
 </div>
 
 {% endblock %}
