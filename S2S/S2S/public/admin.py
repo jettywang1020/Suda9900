@@ -18,7 +18,7 @@ class HouseAdmin(admin.ModelAdmin):
 		('House detail', {'fields': ['max_guests', 'no_of_beds','no_of_bedrooms','no_of_baths','no_of_parking'
 									 ,'tv','kitchen','washer','fridge','conditioner','wifi','study_room',
 									 'pool']}),
-		('Extra Description', {'fields': ['house_rule','cancellation','extra''status']})
+		('Extra Description', {'fields': ['house_rule','cancellation','extra','status']})
 	]
 
 

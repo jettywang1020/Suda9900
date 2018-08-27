@@ -42,8 +42,6 @@ def signup(request):
 			confirm_password = form.cleaned_data.get("confirm_password")
 			gender = form.cleaned_data.get("gender")
 			is_landlord = form.cleaned_data.get("is_landlord")
-
-			print(gender)
 		
 			if password != confirm_password:
 				error = "Passwords don't match!"
@@ -52,17 +50,10 @@ def signup(request):
 				error = "Please make sure the length of your password is not shorter than 6!"
 				return render(request, 'public/signup.html', {'form': originalform, 'error': error})
 			else:
-				user_email = User.objects.filter(email = email, is_landlord = is_landlord)
-				user_username = User.objects.filter(username = username, is_landlord = is_landlord)
+				user = User.objects.filter(email = email)
 		
-				if len(user_email) > 0 and len(user_username) == 0:
+				if len(user) > 0:
 					error = "This email has been used!"
-					return render(request, 'public/signup.html', {'form': originalform, 'error': error})
-				elif len(user_email) == 0 and len(user_username) > 0:
-					error = "This username has been used!"
-					return render(request, 'public/signup.html', {'form': originalform, 'error': error})
-				elif len(user_email) > 0 and len(user_username) > 0:
-					error = "The username and email have been used!"
 					return render(request, 'public/signup.html', {'form': originalform, 'error': error})
 				else:
 					password = make_password(password, None, 'pbkdf2_sha256')
@@ -95,6 +86,8 @@ def home(request):
 
 ##### row houses page #####
 def display(request):
+
+
 	return render(request, 'public/display.html')
 
 ##### house detial page #####
