@@ -157,6 +157,12 @@ a:hover{
 }
 
 
+/************* login page *************/
+.loginblock{
+    margin-top: 4rem;
+}
+
+
 
 
 
@@ -206,5 +212,37 @@ a:hover{
     background-color: #3e8e41;
 }
 /* add new for login*/
+
+
+/*    display   */
+.display-house-address{
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 800;
+    color: rgb(83, 18, 16); 
+    white-space: nowrap; 
+    text-overflow:ellipsis; 
+    overflow:hidden;
+}
+
+.display-house-name{
+    margin-top: 4px;
+    line-height: 22px;
+    font-weight: 800; 
+    white-space: nowrap; 
+    text-overflow:ellipsis; 
+    overflow:hidden;
+}
+
+.display-house-price{
+    font-size: 14px;
+    line-height: 18px;
+    display: inline;
+}
+
+.display-house-star-and-number{
+    margin-top: 2px;
+}
 
 

@@ -7,6 +7,7 @@ from . import views
 app_name = 'public'
 
 urlpatterns = [
+<<<<<<< HEAD
 
 
 	path('index', views.index, name='index'),
@@ -21,14 +22,24 @@ urlpatterns = [
 	path('Display', views.Display, name='Display'),
 
 
+=======
+>>>>>>> 8a7ef0ddcfdcd993899de0cf0cefa488821120e6
 	path('login', views.login, name='login'),	# login page
-	path('index', views.index, name='index'),	# login page raw
-
+	path('logout', views.logout, name='logout'),	# logout page
 	path('signup', views.signup, name='signup'),	# signup page
-	path('Register', views.Register, name='Register'),	# signup page raw
 	
+<<<<<<< HEAD
 	path('Home', views.Home, name='Home'),	# search house page
 	path('Display', views.Display, name='Display'),	# row houses page
 	path('View_Detail',views.View_Detail, name= 'View_Detail'),	# house detial page
 
+=======
+	path('search', views.search, name='search'),	# search house page
+	path('display', views.display, name='display'),	# row houses page
+	path('view_detail', views.view_detail, name='view_detail'),	# house detial page
+
+	path('index', views.index, name='index'),	# personal navs page
+	path('profile', views.profile, name='profile'),	# personal profile page
+	
+>>>>>>> 8a7ef0ddcfdcd993899de0cf0cefa488821120e6
 ]
