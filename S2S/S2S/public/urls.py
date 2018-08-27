@@ -14,6 +14,7 @@ urlpatterns = [
 	path('display', views.display, name='display'),	# row houses page
 	path('view_detail', views.view_detail, name='view_detail'),	# house detial page
 
-	path('index', views.index, name='index'),	# can be dele
+	path('index', views.index, name='index'),	# personal navs page
+	path('profile', views.profile, name='profile'),	# personal profile page
 	
 ]
