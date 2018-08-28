@@ -87,7 +87,7 @@ def search(request):
 
 
 def view_detail(request):
-	return render(request, 'public/ciew_detail.html')
+	return render(request, 'public/view_detail.html')
 
 
 
