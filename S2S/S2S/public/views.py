@@ -90,6 +90,11 @@ def view_detail(request):
 def display(request):
 	sql = """select * from house"""
 	houses = RunSQL(sql)
+
+	for house in houses:
+		picture = House_Picture.objects.get(house_id = house["id"])
+		house["picture"] = picture
+
 	return render(request, 'public/display.html', locals())
 
 def profile(request):
