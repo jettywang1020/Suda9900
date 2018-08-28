@@ -7,16 +7,12 @@ from . import views
 app_name = 'public'
 
 urlpatterns = [
-	
-	path('login', views.login, name='login'),	# login page
-	path('logout', views.logout, name='logout'),	# logout page
-	path('signup', views.signup, name='signup'),	# signup page
-
-
-	path('search', views.search, name='search'),	# search house page
-	path('display', views.display, name='display'),	# row houses page
-	path('view_detail', views.view_detail, name='view_detail'),	# house detial page
-
-	path('index', views.index, name='index'),	# personal navs page
-	path('profile', views.profile, name='profile'),	# personal profile page	
+	path('index', views.index, name='index'),
+	path('login', views.login, name='login'),
+	path('logout', views.logout, name='logout'),
+	path('signup', views.signup, name='signup'),
+	path('search', views.search, name='search'),
+	path('display', views.display, name='display'),
+	path('view_detail', views.view_detail, name='view_detail'),
+	path('profile', views.profile, name='profile'),
 ]

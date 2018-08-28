@@ -78,25 +78,23 @@ def signup(request):
 
 
 def index(request):
-
 	hello = 'hello, everyone'
 	return render(request, 'public/index.html', {'hello': hello})
 
 def search(request):
 	return render(request, 'public/search.html')
 
-
 def view_detail(request):
 	return render(request, 'public/view_detail.html')
 
 
-
 def display(request):
 	sql = """select * from house"""
-
 	houses = RunSQL(sql)
 
-	print(houses)
+	for house in houses:
+		picture = House_Picture.objects.get(house_id = house["id"])
+		house["picture"] = picture
 
 	return render(request, 'public/display.html', locals())
 

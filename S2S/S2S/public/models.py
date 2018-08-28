@@ -61,6 +61,7 @@ class House_Picture(models.Model):
 	time_stamp = models.DateTimeField(auto_now_add=True)
 	house_id = models.IntegerField(null=False)
 	photo = models.ImageField(upload_to='house', null=False)
+	#is_cover = models.BooleanField(default=False)
 
 	def __str__(self):
 		return self.house_id
