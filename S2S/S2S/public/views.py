@@ -15,12 +15,12 @@ def login(request):
 			email = form.cleaned_data.get("email")
 			password = form.cleaned_data.get("password")
 			is_landlord = form.cleaned_data.get("is_landlord")
-			user = User.objects.filter(email = email, is_landlord = is_landlord)
+			user = User.objects.filter(email = email)
 
 			if len(user) == 1 :
 				if check_password(password, user[0].password):
 					request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'activate':user[0].activate, 'is_landlord':user[0].is_landlord}
-					return render(request, 'public/index.html')
+					return render(request, 'public/display.html')
 				else:
 					error = "Incorrect password!"
 					return render(request, 'public/login.html', {'form': originalform, 'error': error}) 
