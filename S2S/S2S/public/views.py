@@ -27,7 +27,7 @@ def login(request):
 				error = "Account does not exist!"
 				return render(request, 'public/login.html', {'form': originalform, 'error': error})
 	else:
-		return render(request, 'public/login.html', {'form': originalform})
+		return render(request, 'public/search.html', {'form': originalform})
 
 ##### logout #####
 def logout(request):
