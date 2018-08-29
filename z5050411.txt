@@ -19,3 +19,6 @@ The second idea is from the recommendation part. We would like to use AI technol
 
 Week4:
 This week we are doing the construction of admin system and database system. We are using django to build our framework. We are doing our framework based on the idea of MVT. Models connected to the link to database. View to the link of webpage. Also, the database we have design by google doc firstly in text form. Then I translate to code written in the models. Finally I test the database. It can be successfully used.
+
+Week5:
+In this week, our back have completed the database and built up the administration. Now our admin can operate database in admin system. We also do the function for sql query. Helping front can search for data. We are going to build up our logout from back part function. and some functions will be constructed later.

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% block content %}
+
+<ul>
+{% for tenant in list_tenant %}
+
+<li>{{ tenant.username }}</li>
+{% endfor %}
+</ul>
+
+
+{% endblock %}

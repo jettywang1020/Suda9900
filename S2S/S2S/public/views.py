@@ -14,13 +14,12 @@ def login(request):
 		if form.is_valid():
 			email = form.cleaned_data.get("email")
 			password = form.cleaned_data.get("password")
-			is_landlord = form.cleaned_data.get("is_landlord")
 			user = User.objects.filter(email = email)
 
 			if len(user) == 1 :
 				if check_password(password, user[0].password):
-					request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'activate':user[0].activate, 'is_landlord':user[0].is_landlord}
-					return render(request, 'public/display.html')
+					request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'activate':user[0].activate}
+					return render(request, 'public/index.html')
 				else:
 					error = "Incorrect password!"
 					return render(request, 'public/login.html', {'form': originalform, 'error': error}) 
@@ -50,7 +49,6 @@ def signup(request):
 			password = form.cleaned_data.get("password")
 			confirm_password = form.cleaned_data.get("confirm_password")
 			gender = form.cleaned_data.get("gender")
-			is_landlord = form.cleaned_data.get("is_landlord")
 		
 			if password != confirm_password:
 				error = "Passwords don't match!"
@@ -66,10 +64,10 @@ def signup(request):
 					return render(request, 'public/signup.html', {'form': originalform, 'error': error})
 				else:
 					password = make_password(password, None, 'pbkdf2_sha256')
-					user = User(username = username, email = email, password = password, gender = gender, is_landlord = is_landlord)
+					user = User(username = username, email = email, password = password, gender = gender)
 
 					user.save()
-					request.session['account'] = {'id':user.id, 'username':username, 'email':email, 'activate':False, 'is_landlord':is_landlord}
+					request.session['account'] = {'id':user.id, 'username':username, 'email':email, 'activate':False, 'is_landlord':False}
 
 					return render(request, 'public/login.html')
 
@@ -77,36 +75,25 @@ def signup(request):
 		return render(request, 'public/signup.html', {'form': originalform})
 
 
-##### login page raw #####
 def index(request):
-	return render(request, 'public/index.html')
+	hello = 'hello, everyone'
+	return render(request, 'public/index.html', {'hello': hello})
 
 def search(request):
 	return render(request, 'public/search.html')
 
-
-def view_detail(request):
-	return render(request, 'public/ciew_detail.html')
-
-
-def home(request):
-	return render(request, 'public/home.html')
-
-
-##### row houses page #####
-def display(request):
-	sql = """select * from house"""
-
-	houses = RunSQL(sql)
-
-	print(houses)
-
-	return render(request, 'public/display.html', locals())
-
-##### house detial page #####
 def view_detail(request):
 	return render(request, 'public/view_detail.html')
 
-##### personal page #####
+def display(request):
+	sql = """select * from house"""
+	houses = RunSQL(sql)
+
+	for house in houses:
+		picture = House_Picture.objects.get(house_id = house["id"])
+		house["picture"] = picture
+
+	return render(request, 'public/display.html', locals())
+
 def profile(request):
 	return render(request, 'public/profile.html')
