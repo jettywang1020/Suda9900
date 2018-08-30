@@ -18,7 +18,7 @@
 	<div class="col-sm-13 row">
 		{% for house in houses %}
 		<div class="col-sm-3">
-			<div class="HandCursor" onclick="window.location='http://localhost:8000/detail#';">
+			<a href="{% url 'public:view_detail' %}">
 				<div>
 					<img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail">
 				</div>
@@ -37,7 +37,7 @@
 						<span>number</span>
 					</div>
 				</div>
-			</div>
+			</a>
 		</div>
 		{% endfor %}
 	</div>
