@@ -7,13 +7,13 @@
     <div id="article_detail" style="padding-left: 2%;padding-right: 40%;font-size: small">
         <label style="font-size: small ; font-weight: bold">ENTIRE APARTMENT</label>
         <br>
-        <label style="font-size: large; font-weight: bold">Amazing City View Apt @ Olympic Park (English&中文)</label>
+        <label style="font-size: large; font-weight: bold">{{house_name}}</label>
         <br>
-        <label href="#" style="font-size: small">Sydney Olympic Park</label><br>
-         <ion-icon name="contacts"></ion-icon><label > 4 guests</label>
-        <ion-icon name="home"></ion-icon><label>	1 bedroom </label>
-        <ion-icon name="bed"></ion-icon><label >1 bed</label>
-        <ion-icon name="water"></ion-icon><label >1 bath</label>
+        <label href="#" style="font-size: small">{{house_address}}</label><br>
+         <ion-icon name="contacts"></ion-icon><label > {{guests_num}} guests</label>
+        <ion-icon name="home"></ion-icon><label>{{bedrooms_num}} bedroom </label>
+        <ion-icon name="bed"></ion-icon><label >{{beds_num}} bed</label>
+        <ion-icon name="water"></ion-icon><label >{{haths_num}} bath</label>
     </div>
     <form style=" padding-left: 2%;padding-right: 40%;">
         <div style="padding-left: 4%; border-style: solid;border-color: grey; font-size: small" >
@@ -39,11 +39,7 @@
         </div>
     </form>
     <div style="padding-left: 2%; padding-right: 40%">
-         <label style="font-size: small">This spectacular east facing one-bedroom
-                apartment at the iconic Australia Tower in the heart of Sydney Olympic Park,
-                is featured with modern design, luxurious fittings and beautiful city view and park view.
-                The apt located in the geographic centre of the Sydney metropolitan area, Sydney Olympic Park,
-                Sydney's premier sports venue, concert, exhibition and trade show hub.
+         <label style="font-size: small">{{house_profile}}
             </label>
 
         <span href="#" style="color:deepskyblue;"> Read More</span><br><br>

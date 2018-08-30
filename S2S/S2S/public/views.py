@@ -85,7 +85,14 @@ def search(request):
 	return render(request, 'public/search.html')
 
 def view_detail(request):
-	return render(request, 'public/view_detail.html')
+	id  =  7
+	house = House.objects.get(pk=id)
+	
+	context = {'house_name':house.name,'house_postcode':house.postcode,'house_address':house.address,'guests_num':house.max_guests
+				,'bedrooms_num':house.no_of_bedrooms,'beds_num':house.no_of_beds,'baths_num':house.no_of_baths
+				,'house_profile':house.profile,'house_price':house.price,'house_rule':house.house_rule,'house_cancellation':house.cancellation
+				,'house_extra':house.extra,'house_tv':house.tv,'house_kitchen':house.kitchen}
+	return render(request, 'public/view_detail.html', context)
 
 
 def display(request):
