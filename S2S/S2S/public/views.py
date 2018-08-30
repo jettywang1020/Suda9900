@@ -84,12 +84,48 @@ def search(request):
 
 def view_detail(request,id):
 	id  =  id
+	house_feature_r = [0 for _ in range(12)]
+	reviews = 0
+	house_feature = {'accuracy':0,'location':0,'communication':0,'check_in':0,'cleanliness':0,'value':0}
 	house = House.objects.get(pk=id)
+	house_rate = House_Rate.objects.all()
+	if house_rate:
+		for house_r in house_rate:
+			if house_r.house_id == id:
+				house_feature_r[0] += house.accuracy
+				house_feature_r[1] += 1
+				house_feature_r[2] += house.location
+				house_feature_r[3] += 1
+				house_feature_r[4] += house.communication
+				house_feature_r[5] += 1
+				house_feature_r[6] += house.check_in
+				house_feature_r[7] += 1
+				house_feature_r[8] += house.cleanliness
+				house_feature_r[9] += 1
+				house_feature_r[10] += house.value
+				house_feature_r[11] += 1
+		if house_feature_r[1]:
+			house_feature['accuracy'] = round(house_feature_r[0]/house_feature_r[1])
+		if house_feature_r[3]:
+			house_feature['location'] = round(house_feature_r[2]/house_feature_r[3])
+		if house_feature_r[5]:
+			house_feature['communication'] = round(house_feature_r[4]/house_feature_r[5])
+		if house_feature_r[7]:
+			house_feature['check_in'] = round(house_feature_r[6]/house_feature_r[7])
+		if house_feature_r[9]:
+			house_feature['cleanliness'] = round(house_feature_r[8]/house_feature_r[9])
+		if house_feature_r[11]:
+			house_feature['value'] = round(house_feature_r[10]/house_feature_r[11])
+		reviews = round(sum(house_feature/6))
 	
 	context = {'house_name':house.name,'house_postcode':house.postcode,'house_address':house.address,'guests_num':house.max_guests
-				,'bedrooms_num':house.no_of_bedrooms,'beds_num':house.no_of_beds,'baths_num':house.no_of_baths
+				,'bedrooms_num':house.no_of_bedrooms,'beds_num':house.no_of_beds,'baths_num':house.no_of_baths,'house_parking':house.no_of_parking
 				,'house_profile':house.profile,'house_price':house.price,'house_rule':house.house_rule,'house_cancellation':house.cancellation
-				,'house_extra':house.extra,'house_tv':house.tv,'house_kitchen':house.kitchen}
+				,'house_extra':house.extra,'house_tv':house.tv,'house_kitchen':house.kitchen,'house_washer':house.washer
+				,'house_fridge':house.fridge,'house_conditioner':house.conditioner,'house_wifi':house.wifi,'house_studyroom':house.study_room
+				,'house_pool':house.pool,'house_accuracy':house_feature['accuracy'],'house_location':house_feature['location']
+				,'house_communication':house_feature['communication'],'house_checkin':house_feature['check_in'],'house_cleanliness':house_feature['cleanliness']
+				,'house_value':house_feature['value'],'house_reviews':reviews}
 	return render(request, 'public/view_detail.html', context)
 
 
