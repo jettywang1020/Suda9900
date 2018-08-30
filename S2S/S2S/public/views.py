@@ -82,8 +82,8 @@ def index(request):
 def search(request):
 	return render(request, 'public/search.html')
 
-def view_detail(request):
-	id  =  7
+def view_detail(request,id):
+	id  =  id
 	house = House.objects.get(pk=id)
 	
 	context = {'house_name':house.name,'house_postcode':house.postcode,'house_address':house.address,'guests_num':house.max_guests
