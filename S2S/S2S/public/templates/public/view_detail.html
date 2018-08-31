@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <div id="Detail_Page">
     <div id="phote" style="background:rebeccapurple">
         <image href="#"></image>
@@ -38,15 +39,20 @@
 
         </div>
     </form>
-    <div style="padding-left: 2%; padding-right: 40%">
-         <label style="font-size: small">{{house_profile}}
-            </label>
+    <div id="myarticle" style="padding-left: 2%; padding-right: 40%">
+         <label style="font-size: small" id="CC">{{house_profile}}</label><br>
 
-        <span href="#" style="color:deepskyblue;"> Read More</span><br><br>
-        <span href="#" style="color: deepskyblue;"> Contact Host</span><hr>
+        <button  id="btn" class="btn btn-outline-info"> READ MORE </button><br><br>
+    </div >
+
+
+
+
+    <div style="padding-left: 2%; padding-right: 40%">
+        <button href="#" class="btn btn-outline-info"> CONTACT HOST</button><hr>
     </div>
     <div style="padding-left: 2%; padding-right: 40%;">
-        <div style="font-size: small">
+        <div style="font-size: small" id="con2">
             <label style="font-weight: bold; font-size: small"> Amenities </label><br>
 
                         {% if house_parking >= 1 %}
@@ -85,7 +91,8 @@
                         <ion-icon name="laptop"></ion-icon><label style=" width: 47%">Laptop friendly workspace</label><br>
                         {% endif %}
 
-            <span href="#" style="color:deepskyblue;">Show All</span>
+
+            <button id ="btn1" class="btn btn-outline-info"> Show All </button><br><br>
         </div>
 
 
@@ -115,6 +122,27 @@
             </tr>
         </table>
         <hr>
+    </div>
+    <div style="padding-left: 2%; padding-right: 40%">
+
+        <span style="font-weight: bold;font-size: large">Policies<br></span>
+        <span style="font-weight: bold">House Rules<br></span>
+        <span id = "con3">Not suitable for children and infants<br>
+        No smoking<br>
+        No pets<br>
+        No parties or events<br>
+        Check-in is anytime after 2PM<br>
+        Check out by 11AM</span><br><BR>
+        <button id ="btn2" class="btn btn-outline-info"> READ ALL RULES </button><br><br><hr>
+
+    </div>
+     <div style="padding-left: 2%; padding-right: 40%">
+
+        <span style="font-weight: bold;font-size: large">Cancellations<br></span>
+        <span style="font-weight: bold">Moderate - Free cancellation for 48 hours<br></span>
+        <span id = "con4">Moderate - Free cancellation for 48 hours</span><br><BR>
+        <button id ="btn3" class="btn btn-outline-info"> READ MORE ABOUT POLICIES </button><br><br><hr>
+
     </div>
     <div style="padding-left: 2%; padding-right: 40%">
         <label style="font-weight: bold; font-size:30px">51 Reviews</label>
@@ -262,5 +290,60 @@
     </div>
 
 </div>
+
+<script>
+    var btn=document.getElementById('btn');
+    var content=document.getElementById('CC');
+    var str=content.innerHTML;
+    var btn1=document.getElementById('btn2');
+    var content1=document.getElementById('con3');
+    var str1=content1.innerHTML;
+    var btn2=document.getElementById('btn3');
+    var content2=document.getElementById('con4');
+    var str2=content2.innerHTML;
+    var onOff = false;// true表示展开
+    content.innerHTML = str.substr(0,100)+"......";
+    content1.innerHTML = str1.substr(0,100)+"......";
+    content2.innerHTML = str2.substr(0,100)+"......";
+    btn.onclick=function(){
+        if(onOff) {
+            content.innerHTML = str.substr(0,100)+"......";
+            btn.innerHTML='READ MORE'
+        } else {
+               //说明当前状态是收缩的，需要展开
+            content.innerHTML = str
+            btn.innerHTML = 'HIDE';
+           }
+        onOff=!onOff; //每点击一次，改变一次展开、收缩状态
+        return false;  //阻止a标签的默认事件
+       }
+    btn1.onclick=function(){
+        if(onOff) {
+            content1.innerHTML = str1.substr(0,100)+"......";
+            btn1.innerHTML='READ ALL RULES'
+        } else {
+               //说明当前状态是收缩的，需要展开
+            content1.innerHTML = str1
+            btn1.innerHTML = 'HIDE RULES';
+           }
+        onOff=!onOff; //每点击一次，改变一次展开、收缩状态
+        return false;  //阻止a标签的默认事件
+       }
+    btn2.onclick=function(){
+        if(onOff) {
+            content2.innerHTML = str2.substr(0,100)+"......";
+            btn2.innerHTML='READ MORE ABOUT POLICES'
+        } else {
+               //说明当前状态是收缩的，需要展开
+            content2.innerHTML = str2
+            btn2.innerHTML = 'HIDE POLICIES';
+           }
+        onOff=!onOff; //每点击一次，改变一次展开、收缩状态
+        return false;  //阻止a标签的默认事件
+       }
+
+
+
+</script>
 
 {% endblock %}
