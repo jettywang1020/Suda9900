@@ -310,36 +310,36 @@
             content.innerHTML = str.substr(0,100)+"......";
             btn.innerHTML='READ MORE'
         } else {
-               //说明当前状态是收缩的，需要展开
+           
             content.innerHTML = str
             btn.innerHTML = 'HIDE';
            }
-        onOff=!onOff; //每点击一次，改变一次展开、收缩状态
-        return false;  //阻止a标签的默认事件
+        onOff=!onOff;
+        return false;
        }
     btn1.onclick=function(){
         if(onOff) {
             content1.innerHTML = str1.substr(0,100)+"......";
             btn1.innerHTML='READ ALL RULES'
         } else {
-               //说明当前状态是收缩的，需要展开
+
             content1.innerHTML = str1
             btn1.innerHTML = 'HIDE RULES';
            }
-        onOff=!onOff; //每点击一次，改变一次展开、收缩状态
-        return false;  //阻止a标签的默认事件
+        onOff=!onOff;
+        return false;
        }
     btn2.onclick=function(){
         if(onOff) {
             content2.innerHTML = str2.substr(0,100)+"......";
             btn2.innerHTML='READ MORE ABOUT POLICES'
         } else {
-               //说明当前状态是收缩的，需要展开
+
             content2.innerHTML = str2
             btn2.innerHTML = 'HIDE POLICIES';
            }
-        onOff=!onOff; //每点击一次，改变一次展开、收缩状态
-        return false;  //阻止a标签的默认事件
+        onOff=!onOff;
+        return false;
        }
 
 
