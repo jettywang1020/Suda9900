@@ -46,3 +46,10 @@ Then I started to write the house display page which content the detail informat
 A house and the comments of this house and etc.
 
 Then we try to combine different pages together to see and to modify and keep going.
+
+Week 6
+this week we do the group demo, everything seems processed successfully in the past.
+And we will keep going after I finished the page I have mentioned , I started to do the 
+Booking page and try to get the information for the helping center from other websites.
+e.g. Airbnb, to see this website and how this website deal with this type of function.
+
