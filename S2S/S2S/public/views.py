@@ -138,11 +138,13 @@ def view_detail(request,id):
 def display(request):
 	sql = """select * from house"""
 	houses = RunSQL(sql)
-
+	
 	for house in houses:
-		picture = House_Picture.objects.get(house_id = house["id"])
-		house["picture"] = picture
-
+		try:
+			picture = House_Picture.objects.get(house_id = house["id"])
+			house["picture"] = picture
+		except:
+			continue
 	return render(request, 'public/display.html', locals())
 
 def profile(request):

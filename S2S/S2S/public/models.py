@@ -63,8 +63,8 @@ class House_Picture(models.Model):
 	photo = models.ImageField(upload_to='house', null=False)
 	#is_cover = models.BooleanField(default=False)
 
-	# def __str__(self):
-	# 	return self.house_id
+	def __str__(self):
+	 	return self.house_id
 
 	class Meta:
 		db_table = "house_picture"
