@@ -20,7 +20,19 @@ class HouseAdmin(admin.ModelAdmin):
 									 'pool']}),
 		('Extra Description', {'fields': ['house_rule','cancellation','extra','status']})
 	]
+class HousePicAdmin(admin.ModelAdmin):
+	list_display = ['id','house_id']
+	list_filter = ['house_id']
+	search_fields = ['house_id']
+	list_per_page = 10
 
+class HouseRateAdmin(admin.ModelAdmin):
+	list_display = ['id','house_id']
+	list_filter = ['house_id']
+	search_fields = ['house_id']
+	list_per_page = 10
 
 admin.site.register(User,UserAdmin)
 admin.site.register(House,HouseAdmin)
+admin.site.register(House_Picture,HousePicAdmin)
+admin.site.register(House_Rate,HouseRateAdmin)
