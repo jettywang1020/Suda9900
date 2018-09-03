@@ -104,7 +104,6 @@ def view_detail(request,id):
 				house_feature_r[9] += 1
 				house_feature_r[10] += house_r.value
 				house_feature_r[11] += 1
-		print(house_feature_r[0],house_feature_r)
 		if house_feature_r[1]:
 			house_feature['accuracy'] = round(house_feature_r[0]/house_feature_r[1])
 			reviews += house_feature['accuracy']
