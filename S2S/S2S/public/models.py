@@ -64,7 +64,7 @@ class House_Picture(models.Model):
 	#is_cover = models.BooleanField(default=False)
 
 	def __str__(self):
-		return self.house_id
+	 	return self.house_id
 
 	class Meta:
 		db_table = "house_picture"
@@ -137,8 +137,8 @@ class House_Rate(models.Model):
 	check_in = models.IntegerField(null=False)
 	value = models.IntegerField(null=False)
 
-	def __str__(self):
-		return self.house_id
+	# def __str__(self):
+	# 	return self.house_id
 
 	class Meta:
 		db_table = "house_rate"

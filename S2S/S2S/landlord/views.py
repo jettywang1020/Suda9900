@@ -14,3 +14,6 @@ def add_house(request):
 
 def manage_house(request):
 	return render(request, 'landlord/manage_house.html')
+
+def add_house_pic(request):
+	return render(request, 'landlord/add_house_pic.html')
