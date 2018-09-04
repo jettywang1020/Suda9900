@@ -5,291 +5,311 @@
     <div id="phote" style="background:rebeccapurple">
         <image href="#"></image>
     </div>
-    <div id="article_detail" style="padding-left: 2%;padding-right: 40%;font-size: small">
-        <label style="font-size: small ; font-weight: bold">ENTIRE APARTMENT</label>
-        <br>
-        <label style="font-size: large; font-weight: bold">{{house_name}}</label>
-        <br>
-        <label href="#" style="font-size: small">{{house_address}}</label><br>
-         <ion-icon name="contacts"></ion-icon><label > {{guests_num}} guests</label>
-        <ion-icon name="home"></ion-icon><label>{{bedrooms_num}} bedroom </label>
-        <ion-icon name="bed"></ion-icon><label >{{beds_num}} bed</label>
-        <ion-icon name="water"></ion-icon><label >{{baths_num}} bath</label>
-    </div>
-    <form style=" padding-left: 2%;padding-right: 40%;">
-        <div style="padding-left: 4%; border-style: solid;border-color: grey; font-size: small" >
-            <br>
-
-            <label style="color: dimgrey;">HOME HIGHLIGHTS</label><br>
-            <label style="font-weight: bold">Quick responses</label><br>
-            <label style=" color:slategrey; ">· 9 recent guests said this host responded quickly.</label><br>
-            <label style="color: grey;" href="#"> Helpful</label><ion-icon name="thumbs-up"></ion-icon>
-            <label style=" color: grey" href="#">· Not helpful</label><br>
-            <label style=" font-weight: bold">Great communication</label><br>
-             <label style=" color:slategrey;">· 100% of recent guests gave this host a 5-star rating for communication.</label><br>
-            <label style="color: grey;" href="#"> Helpful</label><ion-icon name="thumbs-up"></ion-icon>
-            <label style=" color: grey" href="#">· Not helpful</label> <br>
-             <label style=" font-weight: bold">Great location</label><br>
-             <label style=" color:slategrey;"> · 100% of recent guests gave this home’s location a 5-star rating.</label><br>
-            <label style="color: grey;" href="#"> Helpful</label><ion-icon name="thumbs-up"></ion-icon>
-            <label style=" color: grey" href="#">· Not helpful</label> <br><br>
-
-
-
-
+    <div style="padding-left: 2%;padding-right: 40%;">
+        <div id="article_detail" style="font-size: small">
+            <div>
+                <label style="font-size: small; font-weight: bold">ENTIRE APARTMENT</label>
+            </div>
+            <div>
+                <label style="font-size: large; font-weight: bold">{{ house_name }}</label>
+            </div>
+            <div>
+                <label href="#" style="font-size: small">{{house_address}}</label>
+            </div>
+            <div>
+                <ion-icon name="contacts"></ion-icon><label>{{guests_num}} guests</label>
+                <ion-icon name="home"></ion-icon><label>{{bedrooms_num}} bedroom </label>
+                <ion-icon name="bed"></ion-icon><label>{{beds_num}} bed</label>
+                <ion-icon name="water"></ion-icon><label>{{baths_num}} bath</label>
+            </div>
         </div>
-    </form>
+        <form>
+            <div style="padding-left: 4%; border-style: solid;border-color: grey; font-size: small" >
+                <br>
 
-    <div id="myarticle" style="padding-left: 2%; padding-right: 40%">
-         <label style="font-size: small" id="CC">{{house_profile}}</label><br>
+                <label style="color: dimgrey;">HOME HIGHLIGHTS</label><br>
+                <label style="font-weight: bold">Quick responses</label><br>
+                <label style=" color:slategrey; ">· 9 recent guests said this host responded quickly.</label><br>
+                <label style="color: grey;" href="#"> Helpful</label><ion-icon name="thumbs-up"></ion-icon>
+                <label style=" color: grey" href="#">· Not helpful</label><br>
+                <label style=" font-weight: bold">Great communication</label><br>
+                 <label style=" color:slategrey;">· 100% of recent guests gave this host a 5-star rating for communication.</label><br>
+                <label style="color: grey;" href="#"> Helpful</label><ion-icon name="thumbs-up"></ion-icon>
+                <label style=" color: grey" href="#">· Not helpful</label> <br>
+                 <label style=" font-weight: bold">Great location</label><br>
+                 <label style=" color:slategrey;"> · 100% of recent guests gave this home’s location a 5-star rating.</label><br>
+                <label style="color: grey;" href="#"> Helpful</label><ion-icon name="thumbs-up"></ion-icon>
+                <label style=" color: grey" href="#">· Not helpful</label> <br><br>
 
-        <button  id="btn" class="btn btn-outline-info"> READ MORE </button><br><br>
-    </div >
+            </div>
+        </form>
 
-
-
-
-    <div style="padding-left: 2%; padding-right: 40%">
-        <button href="#" class="btn btn-outline-info"> CONTACT HOST</button><hr>
-    </div>
-    <div style="padding-left: 2%; padding-right: 40%;">
-        <div style="font-size: small" id="con2">
-            <label style="font-weight: bold; font-size: small"> Amenities </label><br>
-
-                        {% if house_parking >= 1 %}
-                        <ion-icon name="car"></ion-icon>
-                        <label style=" width: 47%">Free parking on premises</label>
-                        {% endif %}
-
-                        {% if house_washer %}
-                        <i class="ion-knife"></i>
-                        <label style=" width: 47%">washer</label>
-                        {% endif %}
-
-                        {% if house_fridge %}
-                        <i class="ion-knife"></i>
-                        <label style=" width: 47.5%">fridge</label>
-                        {% endif %}
-
-                        {% if house_kitchen %}
-                        <i class="ion-knife"></i>
-                        <label style=" width: 47%">Kitchen</label>
-                        {% endif %}
-
-                        {% if house_tv %}
-                        <i class="ion-android-arrow-up"></i><label style="width: 48%;">TV</label>
-                        {% endif %}
-
-                        {% if house_conditioner %}
-                        <i class="ion-ios-snowy"></i><label style=" width: 48%">Air conditioning</label>
-                        {% endif %}
-
-                        {% if house_wifi %}
-                        <i class="ion-wifi"></i><label style="width: 47%;">Wireless Internet</label>
-                        {% endif %}
-
-                        {% if house_studyromm %}
-                        <ion-icon name="laptop"></ion-icon><label style=" width: 47%">Laptop friendly workspace</label><br>
-                        {% endif %}
+        <div id="myarticle">
+            <label style="font-size: small" id="CC">{{house_profile}}</label><br>
+            <button  id="btn" class="btn btn-outline-info"> READ MORE </button><br><br>
+        </div >
 
 
+        <div>
+            <button href="#" class="btn btn-outline-info"> CONTACT HOST</button><hr>
+        </div>
+
+
+        <div class="container" id="con2" style="font-size: small">
+            <div>
+                <label style="font-weight: bold">Amenities</label>
+            </div>
+
+            <div class="col-sm-13 row">
+                {% if house_parking >= 1 %}
+                <div class="col-sm-6">
+                    <ion-icon name="car"></ion-icon>
+                    <label>Free parking on premises</label>
+                </div>
+                {% endif %}
+
+                {% if house_washer %}
+                <div class="col-sm-6">
+                    <i class="ion-knife"></i>
+                    <label>washer</label>
+                </div>
+                {% endif %}
+
+                {% if house_fridge %}
+                <div class="col-sm-6">
+                    <i class="ion-knife"></i>
+                    <label>fridge</label>
+                </div>
+                {% endif %}
+
+                {% if house_kitchen %}
+                <div class="col-sm-6">
+                    <i class="ion-knife"></i>
+                    <label>Kitchen</label>
+                </div>
+                {% endif %}
+
+                {% if house_tv %}
+                <div class="col-sm-6">
+                    <i class="ion-android-arrow-up"></i>
+                    <label>TV</label>
+                </div>
+                {% endif %}
+
+                {% if house_conditioner %}
+                <div class="col-sm-6">
+                    <i class="ion-ios-snowy"></i>
+                    <label>Air conditioning</label>
+                </div>
+                {% endif %}
+
+                {% if house_wifi %}
+                <div class="col-sm-6">
+                    <i class="ion-wifi"></i>
+                    <label>Wireless Internet</label>
+                </div>
+                {% endif %}
+
+                {% if house_studyromm %}
+                <div class="col-sm-6">
+                    <ion-icon name="laptop"></ion-icon>
+                    <label>Laptop friendly workspace</label>
+                </div>
+                {% endif %}
+
+            </div>
+                            
             <button id ="btn1" class="btn btn-outline-info"> Show All </button><br><br>
+
+            <br><br><hr>
+        </div >
+        <div>
+            <label style="font-weight: bold; font-size: small">Sleeping arrangements</label>
+            <table class="table" width="70%">
+                <tr>
+                    <td width="35%">
+            <div  style=" border-style: solid;border-color: lightgrey;">
+                <ion-icon name="bed"></ion-icon><br><br><br>
+                <label>Bedroom 1</label><br>
+                <label>1 queen bed</label>
+            </div>
+                    </td>
+                    <td width="35% ">
+            <div style=" border-style: solid;border-color: lightgrey;">
+                <i class="ion-social-octocat"></i><br><br><br>
+                <label>Common spaces</label><br>
+                <label>1 sofa bed</label>
+
+            </div>
+                    </td>
+
+                </tr>
+            </table>
+            <hr>
         </div>
+        <div>
 
-
-        <br><br><hr>
-
-    </div >
-    <div style="padding-left: 2%; padding-right: 40%">
-        <label style="font-weight: bold; font-size: small">Sleeping arrangements</label>
-        <table class="table" width="70%">
-            <tr>
-                <td width="35%">
-        <div  style=" border-style: solid;border-color: lightgrey;">
-            <ion-icon name="bed"></ion-icon><br><br><br>
-            <label>Bedroom 1</label><br>
-            <label>1 queen bed</label>
+            <span style="font-weight: bold;font-size: large">Policies<br></span>
+            <span style="font-weight: bold">House Rules<br></span>
+            <span id = "con3">{{house_rule}} Not suitable for children and infants<br>
+            No smoking<br>
+            No pets<br>
+            No parties or events<br>
+            Check-in is anytime after 2PM<br>
+            Check out by 11AM</span><br><BR>
+            <button id ="btn2" class="btn btn-outline-info"> READ ALL RULES </button><br><br><hr>
         </div>
-                </td>
-                <td width="35% ">
-        <div style=" border-style: solid;border-color: lightgrey;">
-            <i class="ion-social-octocat"></i><br><br><br>
-            <label>Common spaces</label><br>
-            <label>1 sofa bed</label>
+         <div style="padding-left: 2%; padding-right: 40%">
 
+            <span style="font-weight: bold;font-size: large">Cancellations<br></span>
+            <span style="font-weight: bold">{{house_cancellation}}Moderate - Free cancellation for 48 hours<br></span>
+            <span id = "con4">Moderate - Free cancellation for 48 hours</span><br><BR>
+            <button id ="btn3" class="btn btn-outline-info"> READ MORE ABOUT POLICIES </button><br><br><hr>
         </div>
-                </td>
-
-            </tr>
-        </table>
-        <hr>
+        <div>
+            <label style="font-weight: bold; font-size:30px">51 Reviews</label>
+            {% if house_reviews == 0 %}
+            <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_reviews == 1 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_reviews == 2 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_reviews == 3 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_reviews == 4 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_reviews == 5 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+            {% endif %}
+            <br>
+            <label style="font-weight: bold; font-size: 30px;" >Search</label>
+            <input class="form-control"  id="search" placeholder="Search something"><br><hr>
+        </div>
+        <div>
+            <label style=" font-size:15px ; width: 20%;">Accuracy</label>&nbsp;&nbsp;&nbsp;
+            {% if house_accuracy == 0 %}
+            <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_accuracy == 1 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_accuracy == 2 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_accuracy == 3 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_accuracy == 4 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_accuracy == 5 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+            {% endif %}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label style=" font-size:15px ; width: 20%;">Location</label>&nbsp;&nbsp;&nbsp;
+            {% if house_location == 0 %}
+            <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_location == 1 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_location == 2 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_location == 3 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_location == 4 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_location == 5 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><br>
+            {% endif %}
+            <label style=" font-size:15px ; width: 20%;">Communication</label>&nbsp;&nbsp;&nbsp;
+            {% if house_communication == 0 %}
+            <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_communication == 1 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_communication == 2 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_communication == 3 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_communication == 4 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_communication == 5 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+            {% endif %}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label style=" font-size:15px ; width: 20%;">Check-in</label>&nbsp;&nbsp;&nbsp;
+            {% if house_checkin == 0 %}
+            <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_checkin == 1 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_checkin == 2 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_checkin == 3 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_checkin == 4 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_checkin == 5 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><br>
+            {% endif %}
+             <label style=" font-size:15px ; width: 20%;">Cleanliness</label>&nbsp;&nbsp;&nbsp;
+            {% if house_cleanliness == 0 %}
+            <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_cleanliness == 1 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_cleanliness == 2 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_cleanliness == 3 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_cleanliness == 4 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if house_cleanliness == 5 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+            {% endif %}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label style=" font-size:15px ; width: 20%;">Value</label>&nbsp;&nbsp;&nbsp;
+            {% if house_value == 0 %}
+            <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_value == 1 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_value == 2 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_value == 3 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_value == 4 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+            {% endif %}
+            {% if house_value == 5 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><br>
+            {% endif %}
+        </div>
     </div>
-    <div style="padding-left: 2%; padding-right: 40%">
-
-        <span style="font-weight: bold;font-size: large">Policies<br></span>
-        <span style="font-weight: bold">House Rules<br></span>
-        <span id = "con3">{{house_rule}} Not suitable for children and infants<br>
-        No smoking<br>
-        No pets<br>
-        No parties or events<br>
-        Check-in is anytime after 2PM<br>
-        Check out by 11AM</span><br><BR>
-        <button id ="btn2" class="btn btn-outline-info"> READ ALL RULES </button><br><br><hr>
-
-    </div>
-     <div style="padding-left: 2%; padding-right: 40%">
-
-        <span style="font-weight: bold;font-size: large">Cancellations<br></span>
-        <span style="font-weight: bold">{{house_cancellation}}Moderate - Free cancellation for 48 hours<br></span>
-        <span id = "con4">Moderate - Free cancellation for 48 hours</span><br><BR>
-        <button id ="btn3" class="btn btn-outline-info"> READ MORE ABOUT POLICIES </button><br><br><hr>
-
-    </div>
-    <div style="padding-left: 2%; padding-right: 40%">
-        <label style="font-weight: bold; font-size:30px">51 Reviews</label>
-        {% if house_reviews == 0 %}
-        <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_reviews == 1 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_reviews == 2 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_reviews == 3 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_reviews == 4 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_reviews == 5 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-        {% endif %}
-        <br>
-        <label style="font-weight: bold; font-size: 30px;" >Search</label>
-        <input class="form-control"  id="search" placeholder="Search something"><br><hr>
-    </div>
-    <div style="padding-left: 2%; padding-right: 40%">
-        <label style=" font-size:15px ; width: 20%;">Accuracy</label>&nbsp;&nbsp;&nbsp;
-        {% if house_accuracy == 0 %}
-        <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_accuracy == 1 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_accuracy == 2 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_accuracy == 3 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_accuracy == 4 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_accuracy == 5 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-        {% endif %}
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <label style=" font-size:15px ; width: 20%;">Location</label>&nbsp;&nbsp;&nbsp;
-        {% if house_location == 0 %}
-        <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_location == 1 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_location == 2 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_location == 3 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_location == 4 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_location == 5 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><br>
-        {% endif %}
-        <label style=" font-size:15px ; width: 20%;">Communication</label>&nbsp;&nbsp;&nbsp;
-        {% if house_communication == 0 %}
-        <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_communication == 1 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_communication == 2 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_communication == 3 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_communication == 4 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_communication == 5 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-        {% endif %}
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <label style=" font-size:15px ; width: 20%;">Check-in</label>&nbsp;&nbsp;&nbsp;
-        {% if house_checkin == 0 %}
-        <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_checkin == 1 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_checkin == 2 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_checkin == 3 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_checkin == 4 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_checkin == 5 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><br>
-        {% endif %}
-         <label style=" font-size:15px ; width: 20%;">Cleanliness</label>&nbsp;&nbsp;&nbsp;
-        {% if house_cleanliness == 0 %}
-        <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_cleanliness == 1 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_cleanliness == 2 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_cleanliness == 3 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_cleanliness == 4 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-        {% endif %}
-        {% if house_cleanliness == 5 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-        {% endif %}
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <label style=" font-size:15px ; width: 20%;">Value</label>&nbsp;&nbsp;&nbsp;
-        {% if house_value == 0 %}
-        <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_value == 1 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_value == 2 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_value == 3 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_value == 4 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-        {% endif %}
-        {% if house_value == 5 %}
-        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><br>
-        {% endif %}
-
-    </div>
-
 </div>
 
 <script>
@@ -302,7 +322,7 @@
     var btn2=document.getElementById('btn3');
     var content2=document.getElementById('con4');
     var str2=content2.innerHTML;
-    var onOff = false;// true表示展开
+    var onOff = false;// true mean 'zhankai'
     content.innerHTML = str.substr(0,100)+"......";
     content1.innerHTML = str1.substr(0,100)+"......";
     content2.innerHTML = str2.substr(0,100)+"......";
