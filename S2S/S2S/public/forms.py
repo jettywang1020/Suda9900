@@ -35,3 +35,15 @@ class addhouse_form(forms.Form):
 	rule = forms.CharField(max_length = 5000, widget = forms.Textarea(attrs={'class':'form-control','rows':5}),required = False)
 	cancellation = forms.CharField(max_length = 5000, widget = forms.Textarea(attrs={'class':'form-control','rows':5}),required = False)
 	extra = forms.CharField(max_length = 5000, widget = forms.Textarea(attrs={'class':'form-control','rows':5}),required = False)
+
+class addimage_form(forms.Form):
+	image = forms.ImageField(widget = forms.ClearableFileInput(attrs={'class':'form-control'}),required = True)
+
+class profile_form(forms.Form):
+	username = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control'}),required = True)
+	firstname = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control'}),required = False)
+	lastname = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control'}),required = False)
+	email = forms.EmailField(widget = forms.EmailInput(attrs = {'class':'form-control'}), required = True)
+	gender = forms.ChoiceField(widget = forms.Select(attrs = {'class':'form-control'}),choices = ([('1',' '), ('M','Male'), ('F','Female'), ]), initial='1', required = False)
+	phone = forms.CharField(max_length = 9, widget = forms.TextInput(attrs={'class':'form-control','placeholder':'00-00000000'}),required = False)
+	profile = forms.CharField(max_length = 5000, widget = forms.Textarea(attrs={'class':'form-control','rows':5}),required = False)

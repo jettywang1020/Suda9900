@@ -43,15 +43,17 @@ def add_house(request):
 						  , conditioner = conditioner, wifi = wifi, study_room = studyroom, pool = pool, house_rule = rule
 						  , cancellation = cancellation, extra = extra)
 			house.save()
-			request.session['house_account'] = {'id':house.id, 'user_id':id, 'name':name,'address':address, 'postcode':postcode, 'price':price
-												, 'profile':profile, 'max_guests':maxguest, 'no_of_beds':bed, 'no_of_bedrooms':bedroom
-												, 'no_of_baths':bathroom, 'no_of_parking':park, 'tv':tv, 'kitchen':kitchen, 'washer':washer
-												, 'fridge':fridge, 'conditioner':conditioner, 'wifi':wifi, 'study_room':studyroom, 'pool':pool
-												, 'house_rule':rule, 'cancellation':cancellation, 'extra':extra}
+			return render(request, 'public/index.html')
 	return render(request, 'landlord/add_house.html',{'form': originalform})
 
 def manage_house(request):
 	return render(request, 'landlord/manage_house.html')
 
 def add_house_pic(request):
-	return render(request, 'landlord/add_house_pic.html')
+	originalform = addimage_form()
+	if request.method == 'POST':
+		form = addhouse_form(request.POST)
+		if form.is_valid():
+			image = form.cleaned_data.get("image")
+
+	return render(request, 'landlord/add_house_pic.html', {'form': originalform})
