@@ -246,7 +246,6 @@ a:hover{
 }
 /* SHOW ALL       */
  h3{text-align:center;}
-/*#content{text-indent:2em;}*/
 
 /* ALIGN FOR BOOKING*/
 
@@ -272,6 +271,14 @@ a:hover{
         text-align: justify;
         border: 1px dotted black;
         width: 50%;
+}
+/* sticky for booking*/
+div.sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    background-color: green;
+    border: 2px solid #4CAF50;
 }
 
 

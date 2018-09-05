@@ -1,11 +1,10 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'tenant/booking.html' %}
+{% block booking %}
 
-<div id="Detail_Page">
-    <div id="phote" style="background:rebeccapurple">
-        <image href="#"></image>
-    </div>
-    <div style="padding-left: 2%;padding-right: 40%;">
+
+<div id="Detail_Page" >
+
+    <div style="padding-left: 2%;padding-right: 10%;">
         <div id="article_detail" style="font-size: small">
             <div>
                 <label style="font-size: small; font-weight: bold">ENTIRE APARTMENT</label>
@@ -93,7 +92,7 @@
 
                 {% if house_tv %}
                 <div class="col-sm-6">
-                    <i class="ion-android-arrow-up"></i>
+                    <ion-icon name="tv"></ion-icon>
                     <label>TV</label>
                 </div>
                 {% endif %}
@@ -313,6 +312,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
     var btn=document.getElementById('btn');
