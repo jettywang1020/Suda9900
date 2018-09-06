@@ -2,12 +2,17 @@
 {% load staticfiles%}
 {% block index %}
 <div>
-	<div>
-		<a> picture </a>
-	</div>
-	<div>
-
-	</div>
+	<form method="post">
+	{% csrf_token %}
+		<div class="card text-white bg-primary mb-3" style="max-width: 100%;">
+			<div class="card-header">Picture</div>
+		</div>
+		<div>
+			{{ form.image }}
+		</div>
+	</form>
 </div>
+
+
 
 {% endblock %}

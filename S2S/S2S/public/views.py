@@ -148,4 +148,23 @@ def display(request):
 	return render(request, 'public/display.html', locals())
 
 def profile(request):
-	return render(request, 'public/profile.html')
+	id = 1
+	user = User.objects.get(pk=id)
+	originalform = profile_form()
+	if request.method == 'POST':
+		form = profile_form(request.POST)
+		if form.is_valid():
+			username = form.cleaned_data.get("username")
+			firstname = form.cleaned_data.get("firstname")
+			lastname = form.cleaned_data.get("lastname")
+			email = form.cleaned_data.get("email")
+			gender = form.cleaned_data.get("gender")
+			phone = form.cleaned_data.get("phone")
+			profile = form.cleaned_data.get("profile")
+			user = User(username = username, first_name = firstname, last_name = lastname, email = email, gender = gender
+						, phone = phone, profile = profile)
+			user.save()
+			request.session['account'] = {'id':user.id, 'username':username, 'firstname':firstname, 'lastname':lastname, 'email':email, 'gender':gender, 'phone':phone
+										   , 'profile':profile}
+			return render(request, 'public/index.html')							   
+	return render(request, 'public/profile.html', {'form': originalform})
