@@ -12,5 +12,5 @@ def test(request):
 	data = {"test_id":test_id}
 	return JsonResponse(data)
 
-def booking(request):
-	return render(request, 'tenant/booking.html')
+def help(request):
+	return render(request, 'tenant/help.html')
