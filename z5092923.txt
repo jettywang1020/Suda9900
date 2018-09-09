@@ -10,3 +10,9 @@ Constructed the web application by Django.
 
 Week4
 Designed and constructed Database system.
+
+Week5
+Implemented login and logout backend function. Implemented signup backend function. Implemented home page display backend function.
+
+Week6
+I
