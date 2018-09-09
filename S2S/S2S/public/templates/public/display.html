@@ -18,7 +18,7 @@
 	<div class="col-sm-13 row">
 		{% for house in houses %}
 		<div class="col-sm-3">
-			<a href="{% url 'public:view_detail' %}">
+			<a href="http://localhost:8000/view_detail/{{house.id}}">
 				<div>
 					<img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail">
 				</div>

@@ -11,3 +11,6 @@ def test(request):
 	test_id = request.GET.get("test_id")
 	data = {"test_id":test_id}
 	return JsonResponse(data)
+
+def help(request):
+	return render(request, 'tenant/help.html')

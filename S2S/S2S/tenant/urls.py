@@ -9,4 +9,5 @@ app_name = 'tenant'
 urlpatterns = [
 	path('', views.index, name='index'),
 	path('test/', views.test, name='test'),
+	path('help/', views.help, name='help'),
 ]

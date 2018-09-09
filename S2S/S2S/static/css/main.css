@@ -244,5 +244,41 @@ a:hover{
 .display-house-star-and-number{
     margin-top: 2px;
 }
+/* SHOW ALL       */
+ h3{text-align:center;}
+
+/* ALIGN FOR BOOKING*/
+
+.left {
+        text-align: left;
+        border: 1px dotted black;
+        width: 50%;
+}
+
+.right {
+        text-align: right;
+        border: 1px dotted black;
+        width: 50%;
+}
+
+.center {
+        text-align: center;
+        border: 1px dotted black;
+        width: 50%;
+}
+
+.justify {
+        text-align: justify;
+        border: 1px dotted black;
+        width: 50%;
+}
+/* sticky for booking*/
+div.sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    background-color: green;
+    border: 2px solid #4CAF50;
+}
 
 

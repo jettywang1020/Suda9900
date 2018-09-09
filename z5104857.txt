@@ -1,6 +1,6 @@
 Week 2
 
-31 Jul  Tue 2-4 
+31 Jul	Tue 2-4 
 
 Group formed.
 Added the Trello & Github accounts into the team Suda.
@@ -17,7 +17,7 @@ We don't have more time to talk about topic 2 and we all not familiar with Block
 
 -------
 
-1 Aug  Wed 2-4
+1 Aug	Wed 2-4
 
 Since we cannot found a really good theme for all of us, we decide to adopt topic 1.
 
@@ -27,5 +27,44 @@ For the topic 3, we can add a prediction of the price for the user about the ren
 
 Week 3
 
-7 Aug  Tue 2-4
+7 Aug	Tue 2-4
+
+Discussing about the proposal and writing done it.
+
+-------
+
+9 Aug	Thu 2-4
+
+Creating the environment with Django and building frame.
+
+-------
+
+Week 4
+
+14 Aug	Tue 2-4
+
+Discussing about the database structure.
+
+-------
+
+Week 5
+
+21 Aug	Tue 2-4
+
+Done in this week:
+	Sign Up Page
+	Log In Page
+	Home Page to display the houses
+	Personal Profile Page
+	Landlord Add House Page
+
+Undone but in progress:
+	Landlord Manage Houses
+
+-------
+
+Week 6
+
+28 Aug	Tue 2-4	demo
+
 

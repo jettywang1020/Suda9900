@@ -10,10 +10,8 @@
 	<script src="https://unpkg.com/ionicons@4.3.0/dist/ionicons.js"></script>
 	<link href="https://unpkg.com/ionicons@4.3.0/dist/css/ionicons.min.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- 	<link rel="stylesheet" href="/resources/demos/style.css">
-  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 </head>
 <body>
 	<button onclick="topFunction()" id="toTop"><i class="ion-android-arrow-up icon-style"></i></button>
@@ -39,7 +37,7 @@
 							<a class="navi-btn my-btn-color" href="#"><i class="ion-ios-bell"></i></a>
 						</li>
 						<li class="nav-item">
-							<a class="navi-btn my-btn-color" href="#"><i class="ion-ios-compose"></i></a>
+							<a class="navi-btn my-btn-color" href="{% url 'public:profile' %}"><i class="ion-ios-compose"></i></a>
 						</li>
 						<li class="nav-item">
 							<a class="navi-btn" href="{% url 'public:logout' %}"><i class="ion-log-out text-danger"></i></a>
@@ -47,10 +45,10 @@
 					{% else %}
 					<ul class="my-navbar-nav text-right">
 						<li class="nav-item">
-							<a class="btn btn-outline-success mr-2" href="http://localhost:8000/login">Log in</a>
+							<a class="btn btn-outline-success mr-2" href="{% url 'public:login' %}">Log in</a>
 						</li>
 						<li class="nav-item">
-							<a class="btn btn-outline-success" href="http://localhost:8000/signup">Sign up</a>
+							<a class="btn btn-outline-success" href="{% url 'public:signup' %}">Sign up</a>
 						</li>
 					</ul>
 					{% endif %}
