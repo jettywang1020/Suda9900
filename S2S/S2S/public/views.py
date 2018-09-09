@@ -148,8 +148,6 @@ def display(request):
 	return render(request, 'public/display.html', locals())
 
 def profile(request):
-	id = 1
-	user = User.objects.get(pk=id)
 	originalform = profile_form()
 	if request.method == 'POST':
 		form = profile_form(request.POST)
