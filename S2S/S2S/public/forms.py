@@ -45,5 +45,21 @@ class profile_form(forms.Form):
 	lastname = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control'}),required = False)
 	email = forms.EmailField(widget = forms.EmailInput(attrs = {'class':'form-control'}), required = True)
 	gender = forms.ChoiceField(widget = forms.Select(attrs = {'class':'form-control'}),choices = ([('1',' '), ('M','Male'), ('F','Female'), ]), initial='1', required = False)
-	phone = forms.CharField(max_length = 9, widget = forms.TextInput(attrs={'class':'form-control','placeholder':'00-00000000'}),required = False)
+	phone = forms.CharField(max_length = 9, widget = forms.TextInput(attrs={'class':'form-control','placeholder':'61-00000000'}),required = False)
 	profile = forms.CharField(max_length = 5000, widget = forms.Textarea(attrs={'class':'form-control','rows':5}),required = False)
+
+class adv_search_form(forms.Form):
+	keyword = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control'}),required = True)
+	check_in = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control', 'data-provide':'datepicker', 'placeholder':'dd/mm/yyyy'}),required = True)
+	check_out = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control', 'data-provide':'datepicker', 'placeholder':'dd/mm/yyyy'}),required = True)
+	adult = forms.IntegerField(min_value = 0, widget = forms.NumberInput(attrs={'class':'form-control','value':'1'}),required = True)
+	children = forms.IntegerField(min_value = 0, widget = forms.NumberInput(attrs={'class':'form-control','value':'0'}),required = True)
+
+
+
+
+
+
+
+
+
