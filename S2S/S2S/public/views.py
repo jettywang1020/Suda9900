@@ -20,7 +20,7 @@ def login(request):
 
 			if len(user) == 1 :
 				if check_password(password, user[0].password):
-					request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'activate':user[0].activate}
+					request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'photo':user[0].photo, 'activate':user[0].activate, 'is_landlord':user[0].is_landlord}
 					return render(request, 'public/index.html')
 				else:
 					error = "Incorrect password!"
@@ -220,17 +220,26 @@ def profile(request):
 			dob = form.cleaned_data.get("dob")
 			phone = form.cleaned_data.get("phone")
 			profile = form.cleaned_data.get("profile")
-			user = User(username = username, first_name = firstname, last_name = lastname, email = email, gender = gender, dob = dob
-						, phone = phone, profile = profile)
+			user = User(pk=id, username = username, first_name = firstname, last_name = lastname, email = email, gender = gender, phone = phone, profile = profile)
 			user.save()
-			request.session['account'] = {'id':user.id, 'username':username, 'firstname':first_name, 'lastname':last_name, 'email':email, 'dob':dob, 'gender':gender, 'phone':phone, 'profile':profile}
-			return render(request, 'public/index.html')	
+			request.session['account'] = {'id':user.id, 'username':username, 'email':email}
+			return redirect('public:profile')
 	else:
 		originalform = profile_form(initial = {'username': user.username, 'firstname': user.first_name, 'lastname': user.last_name, 'gender':user.gender, 'dob':user.dob, 'phone':user.phone, 'email':user.email, 'profile':user.profile})						   
 		return render(request, 'public/profile.html', {'form': originalform})
 
 def upload_photo(request):
-	return render(request, 'public/profile.html')
+	id = request.session['account']['id'] if 'account' in request.session else 0
+	user = User.objects.get(pk=id)
+	originalform = upload_photo_form()
+	if request.method == 'POST':
+		form = upload_photo_form(request.POST, request.FILES)
+		if form.is_valid():
+			photo = request.FILES.getlist("photo")[0]
+			user = User(pk=id, photo=photo)
+			user.save()
+			return redirect('public:upload_photo')
+	return render(request, 'public/upload_photo.html', {'form':originalform, 'photo':user.photo})
 
 
 

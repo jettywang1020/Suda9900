@@ -47,9 +47,12 @@ class profile_form(forms.Form):
 	gender = forms.ChoiceField(widget = forms.Select(attrs = {'class':'form-control'}),choices = ([('M','Male'), ('F','Female'), ]), initial='1', required = False)
 	phone = forms.CharField(max_length = 9, widget = forms.TextInput(attrs={'class':'form-control','placeholder':'61-00000000'}),required = False)
 	profile = forms.CharField(max_length = 5000, widget = forms.Textarea(attrs={'class':'form-control','rows':5}),required = False)
-	dob = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control', 'data-provide':'datepicker', 'data-date-format':'dd/mm/yyyy', 'placeholder':'dd/mm/yyyy'}),required = True)
+	dob = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control', 'data-provide':'datepicker', 'data-date-format':'dd/mm/yyyy', 'placeholder':'dd/mm/yyyy'}),required = False)
 	phone = forms.CharField(max_length = 9, widget = forms.TextInput(attrs={'class':'form-control','placeholder':'00-00000000'}),required = False)
 	profile = forms.CharField(max_length = 5000, widget = forms.Textarea(attrs={'class':'form-control','rows':5}),required = False)
+
+class upload_photo_form(forms.Form):
+	photo = forms.ImageField(widget = forms.ClearableFileInput(attrs={'class':'form-control','multiple': False}),required = True)
 
 class adv_search_form(forms.Form):
 	keyword = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control'}),required = True)

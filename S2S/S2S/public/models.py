@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class User(models.Model):
 	gender_choices = (('M','Male'),('F','Female'),)
-	time_stamp = models.DateTimeField(auto_now_add=True)
+	time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True)
 	username = models.CharField(max_length=64, null=False)
 	first_name = models.CharField(max_length=64, null=True)
 	last_name = models.CharField(max_length=64, null=True)
@@ -12,7 +12,7 @@ class User(models.Model):
 	phone = models.CharField(max_length=128, null=True)
 	photo = models.ImageField(upload_to='user', default='user/default.png', blank=True)
 	gender = models.CharField(max_length=1, choices=gender_choices, default='M')
-	dob = models.DateField(null=True,auto_now=False, auto_now_add=False)
+	dob = models.DateField(null=True, auto_now=False, auto_now_add=False)
 	profile = models.TextField(null=True, blank=True)
 	activate = models.BooleanField(default=False)
 	status = models.BooleanField(default=True)
@@ -26,7 +26,7 @@ class User(models.Model):
 
 
 class House(models.Model):
-	time_stamp = models.DateTimeField(auto_now_add=True)
+	time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True)
 	user_id = models.IntegerField(null=False)
 	name = models.CharField(max_length=256, null=False)
 	address = models.CharField(max_length=256, null=False)

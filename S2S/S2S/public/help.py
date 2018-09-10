@@ -1,4 +1,5 @@
 from django.db import connection
+from public.models import *
 
 # help functions
 
