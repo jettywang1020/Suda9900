@@ -2,13 +2,14 @@
 {% load staticfiles%}
 {% block content %}
 <div id="image_area">
+
 </div>
 
 <div id="Detail_Page" class="form-group row" >
-    <div class="col-7" id="bro">
+    <div class="col-8" id="bro">
 
         <div style="padding-left:10%;padding-right: 10%;">
-            <div id="article_detail" class="form-group" style="font-size: 30px">
+            <div id="article_detail" class="form-group" style="font-size: 25px">
                 <div>
                     <label style="font-weight: bold;font-size: small;color:red">ENTIRE APARTMENT</label>
                 </div>
@@ -45,7 +46,7 @@
             </form>-->
 
             <div id="myarticle" class="form-group">
-                <label style="font-size: 18px" id="CC">{{house_profile}}</label><br><br>
+                <label style="font-size: 15px" id="CC">{{house_profile}}</label><br><br>
                 <a  href="#" id="btn" > READ MORE </a><br>
             </div >
 
@@ -58,10 +59,10 @@
 
             <div class="form-group" id="con2" >
                 <div>
-                    <label style="font-weight: bold;font-size: 30px">Amenities</label>
+                    <label style="font-weight: bold;font-size: 25px">Amenities</label>
                 </div>
 
-                <div class="col-sm-13 row" style="font-size: 18px">
+                <div class="col-sm-13 row" style="font-size: 15px">
                     {% if house_parking >= 1 %}
                     <div class="col-sm-6">
                         <ion-icon name="car"></ion-icon>
@@ -127,8 +128,8 @@
 
             <div class="form-group">
 
-                <span style="font-weight: bold;font-size: 30px">Policies<br></span>
-                <span style="font-weight: bold;font-size: 18px">House Rules<br></span>
+                <span style="font-weight: bold;font-size: 25px">Policies<br></span>
+                <span style="font-weight: bold;font-size: 15px">House Rules<br></span>
                 <span id = "con3" style="font-size: 18px">{{house_rule}} Not suitable for children and infants<br>
                 No smoking<br>
                 No pets<br>
@@ -139,13 +140,13 @@
             </div>
              <div class="form-group">
 
-                <span style="font-weight: bold;font-size: 30px">Cancellations<br></span>
-                <span style="font-weight: bold;font-size: 18px;">{{house_cancellation}}Moderate - Free cancellation for 48 hours<br></span>
-                <span id = "con4" style="font-size: 18px">Moderate - Free cancellation for 48 hours</span><br><BR>
+                <span style="font-weight: bold;font-size: 25px">Cancellations<br></span>
+                <span style="font-weight: bold;font-size: 15px;">{{house_cancellation}}Moderate - Free cancellation for 48 hours<br></span>
+                <span id = "con4" style="font-size: 15px">Moderate - Free cancellation for 48 hours</span><br><BR>
                 <a id ="btn3" href="#"> READ MORE ABOUT POLICIES </a><br><br><hr>
             </div>
             <div>
-                <label style="font-weight: bold; font-size:30px">51 Reviews</label>
+                <label style="font-weight: bold; font-size:25px">51 Reviews</label>
                 {% if house_reviews == 0 %}
                 <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
                 {% endif %}
@@ -165,7 +166,7 @@
                 <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
                 {% endif %}
                 <br>
-                <label style="font-weight: bold; font-size: 30px;" >Search</label>
+                <label style="font-weight: bold; font-size: 25px;" >Search</label>
                 <input class="form-control"  id="search" placeholder="Search something"><br><hr>
             </div>
             <div>
@@ -292,11 +293,10 @@
 
          </div>
     </div>
-    <div class="col-6" id="child" style="position: fixed; margin-left: 50%;height:100%;overflow:scroll;" >
+    <div class="col-4" id="child" style="position: fixed; margin-left: 65%;" >
 
-        <div  class="col-sm-3" >
-            <div  style="margin:1% auto;width:30%;max-width: 500px;min-width: 400px;
-           ">
+        <div  class="col-sm-2" >
+            <div  style="margin:1% auto;max-width: 300px;min-width: 300px;min-height: 200px;max-height: 300px">
                 <form >
                     <div class="form-group ">
 
