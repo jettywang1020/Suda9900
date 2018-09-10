@@ -148,6 +148,7 @@ def display(request):
 	return render(request, 'public/display.html', locals())
 
 def profile(request):
+	# id = request.session['account'].id
 	originalform = profile_form()
 	if request.method == 'POST':
 		form = profile_form(request.POST)
@@ -160,10 +161,10 @@ def profile(request):
 			dob = form.cleaned_data.get("dob")
 			phone = form.cleaned_data.get("phone")
 			profile = form.cleaned_data.get("profile")
-			user = User(username = username, first_name = firstname, last_name = lastname, email = email, gender = gender
+			user = User(username = username, first_name = firstname, last_name = lastname, email = email, gender = gender, dob = dob
 						, phone = phone, profile = profile)
 			user.save()
-			request.session['account'] = {'id':user.id, 'username':username, 'firstname':firstname, 'lastname':lastname, 'email':email, 'gender':gender, 'phone':phone
+			request.session['account'] = {'id':user.id, 'username':username, 'firstname':firstname, 'lastname':lastname, 'email':email, 'dob':dob, 'gender':gender, 'phone':phone
 										   , 'profile':profile}
 			return render(request, 'public/index.html')							   
 	return render(request, 'public/profile.html', {'form': originalform})
