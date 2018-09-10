@@ -220,11 +220,10 @@ def profile(request):
 			dob = form.cleaned_data.get("dob")
 			phone = form.cleaned_data.get("phone")
 			profile = form.cleaned_data.get("profile")
-			user = User(username = username, first_name = firstname, last_name = lastname, email = email, gender = gender
+			user = User(username = username, first_name = firstname, last_name = lastname, email = email, gender = gender, dob = dob
 						, phone = phone, profile = profile)
 			user.save()
-			request.session['account'] = {'id':user.id, 'username':username, 'firstname':first_name, 'lastname':last_name, 'email':email, 'gender':gender, 'phone':phone
-										   , 'profile':profile}
+			request.session['account'] = {'id':user.id, 'username':username, 'firstname':first_name, 'lastname':last_name, 'email':email, 'dob':dob, 'gender':gender, 'phone':phone, 'profile':profile}
 			return render(request, 'public/index.html')	
 	else:
 		originalform = profile_form(initial = {'username': user.username, 'firstname': user.first_name, 'lastname': user.last_name, 'gender':user.gender, 'dob':user.dob, 'phone':user.phone, 'email':user.email, 'profile':user.profile})						   

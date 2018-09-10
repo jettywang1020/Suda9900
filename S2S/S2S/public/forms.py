@@ -37,7 +37,7 @@ class addhouse_form(forms.Form):
 	extra = forms.CharField(max_length = 5000, widget = forms.Textarea(attrs={'class':'form-control','rows':5}),required = False)
 
 class addimage_form(forms.Form):
-	image = forms.ImageField(widget = forms.ClearableFileInput(attrs={'class':'form-control'}),required = True)
+	image = forms.ImageField(widget = forms.ClearableFileInput(attrs={'class':'form-control','multiple': True}),required = True)
 
 class profile_form(forms.Form):
 	username = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control'}),required = True)
