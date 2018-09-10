@@ -157,6 +157,7 @@ def profile(request):
 			lastname = form.cleaned_data.get("lastname")
 			email = form.cleaned_data.get("email")
 			gender = form.cleaned_data.get("gender")
+			dob = form.cleaned_data.get("dob")
 			phone = form.cleaned_data.get("phone")
 			profile = form.cleaned_data.get("profile")
 			user = User(username = username, first_name = firstname, last_name = lastname, email = email, gender = gender
