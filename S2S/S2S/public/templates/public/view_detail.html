@@ -1,22 +1,25 @@
 {% extends 'base.html' %}
 {% load staticfiles%}
 {% block content %}
+<div id="image_area">
+
+</div>
 
 <div id="Detail_Page" class="form-group row" >
-    <div class="col-6" id="bro">
+    <div class="col-8" id="bro">
 
-        <div style="padding-left: 2%;padding-right: 10%;">
-            <div id="article_detail" style="font-size: small">
+        <div style="padding-left:10%;padding-right: 10%;">
+            <div id="article_detail" class="form-group" style="font-size: 25px">
                 <div>
-                    <label style="font-size: small; font-weight: bold">ENTIRE APARTMENT</label>
+                    <label style="font-weight: bold;font-size: small;color:red">ENTIRE APARTMENT</label>
                 </div>
                 <div>
-                    <label style="font-size: large; font-weight: bold">{{ house_name }}</label>
+                    <label style=" font-weight: bold">{{ house_name }}</label>
                 </div>
                 <div>
                     <label href="#" style="font-size: small">{{house_address}}</label>
                 </div>
-                <div>
+                <div style="font-size: small">
                     <ion-icon name="contacts"></ion-icon><label>{{guests_num}} guests</label>
                     <ion-icon name="home"></ion-icon><label>{{bedrooms_num}} bedroom </label>
                     <ion-icon name="bed"></ion-icon><label>{{beds_num}} bed</label>
@@ -24,45 +27,42 @@
                 </div>
             </div>
 
-            <form>
+           <!-- <form>
                 <div style="padding-left: 4%; border-style: solid;border-color: grey; font-size: small" >
                     <br>
 
                     <label style="color: dimgrey;">HOME HIGHLIGHTS</label><br>
                     <label style="font-weight: bold">Quick responses</label><br>
                     <label style=" color:slategrey; ">· 9 recent guests said this host responded quickly.</label><br>
-                    <label style="color: grey;" href="#"> Helpful</label><ion-icon name="thumbs-up"></ion-icon>
-                    <label style=" color: grey" href="#">· Not helpful</label><br>
+
                     <label style=" font-weight: bold">Great communication</label><br>
                      <label style=" color:slategrey;">· 100% of recent guests gave this host a 5-star rating for communication.</label><br>
-                    <label style="color: grey;" href="#"> Helpful</label><ion-icon name="thumbs-up"></ion-icon>
-                    <label style=" color: grey" href="#">· Not helpful</label> <br>
+
                      <label style=" font-weight: bold">Great location</label><br>
                      <label style=" color:slategrey;"> · 100% of recent guests gave this home’s location a 5-star rating.</label><br>
-                    <label style="color: grey;" href="#"> Helpful</label><ion-icon name="thumbs-up"></ion-icon>
-                    <label style=" color: grey" href="#">· Not helpful</label> <br><br>
+
 
                 </div>
-            </form>
+            </form>-->
 
-            <div id="myarticle">
-                <label style="font-size: small" id="CC">{{house_profile}}</label><br>
-                <button  id="btn" class="btn btn-outline-info"> READ MORE </button><br><br>
+            <div id="myarticle" class="form-group">
+                <label style="font-size: 15px" id="CC">{{house_profile}}</label><br><br>
+                <a  href="#" id="btn" > READ MORE </a><br>
             </div >
 
 
             <div>
-                <button href="#" class="btn btn-outline-info"> CONTACT HOST</button><hr>
+                <a href="#" > CONTACT HOST</a><hr>
 
             </div>
 
 
-            <div class="container" id="con2" style="font-size: small">
+            <div class="form-group" id="con2" >
                 <div>
-                    <label style="font-weight: bold">Amenities</label>
+                    <label style="font-weight: bold;font-size: 25px">Amenities</label>
                 </div>
 
-                <div class="col-sm-13 row">
+                <div class="col-sm-13 row" style="font-size: 15px">
                     {% if house_parking >= 1 %}
                     <div class="col-sm-6">
                         <ion-icon name="car"></ion-icon>
@@ -119,57 +119,34 @@
                     </div>
                     {% endif %}
 
-                </div>
+                </div><br>
 
-                <button id ="btn1" class="btn btn-outline-info"> Show All </button><br><br>
+                <a id ="btn1" href="#"> Show All </a>
 
-                <br><br><hr>
+                <br><hr>
             </div >
-            <div>
-                <label style="font-weight: bold; font-size: small">Sleeping arrangements</label>
-                <table class="table" width="70%">
-                    <tr>
-                        <td width="35%">
-                <div  style=" border-style: solid;border-color: lightgrey;">
-                    <ion-icon name="bed"></ion-icon><br><br><br>
-                    <label>Bedroom 1</label><br>
-                    <label>1 queen bed</label>
-                </div>
-                        </td>
-                        <td width="35% ">
-                <div style=" border-style: solid;border-color: lightgrey;">
-                    <i class="ion-social-octocat"></i><br><br><br>
-                    <label>Common spaces</label><br>
-                    <label>1 sofa bed</label>
 
-                </div>
-                        </td>
+            <div class="form-group">
 
-                    </tr>
-                </table>
-                <hr>
-            </div>
-            <div>
-
-                <span style="font-weight: bold;font-size: large">Policies<br></span>
-                <span style="font-weight: bold">House Rules<br></span>
-                <span id = "con3">{{house_rule}} Not suitable for children and infants<br>
+                <span style="font-weight: bold;font-size: 25px">Policies<br></span>
+                <span style="font-weight: bold;font-size: 15px">House Rules<br></span>
+                <span id = "con3" style="font-size: 18px">{{house_rule}} Not suitable for children and infants<br>
                 No smoking<br>
                 No pets<br>
                 No parties or events<br>
                 Check-in is anytime after 2PM<br>
                 Check out by 11AM</span><br><BR>
-                <button id ="btn2" class="btn btn-outline-info"> READ ALL RULES </button><br><br><hr>
+                <a id ="btn2" href="#"> READ ALL RULES </a><br><br><hr>
             </div>
-             <div style="padding-left: 2%; padding-right: 40%">
+             <div class="form-group">
 
-                <span style="font-weight: bold;font-size: large">Cancellations<br></span>
-                <span style="font-weight: bold">{{house_cancellation}}Moderate - Free cancellation for 48 hours<br></span>
-                <span id = "con4">Moderate - Free cancellation for 48 hours</span><br><BR>
-                <button id ="btn3" class="btn btn-outline-info"> READ MORE ABOUT POLICIES </button><br><br><hr>
+                <span style="font-weight: bold;font-size: 25px">Cancellations<br></span>
+                <span style="font-weight: bold;font-size: 15px;">{{house_cancellation}}Moderate - Free cancellation for 48 hours<br></span>
+                <span id = "con4" style="font-size: 15px">Moderate - Free cancellation for 48 hours</span><br><BR>
+                <a id ="btn3" href="#"> READ MORE ABOUT POLICIES </a><br><br><hr>
             </div>
             <div>
-                <label style="font-weight: bold; font-size:30px">51 Reviews</label>
+                <label style="font-weight: bold; font-size:25px">51 Reviews</label>
                 {% if house_reviews == 0 %}
                 <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
                 {% endif %}
@@ -189,7 +166,7 @@
                 <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
                 {% endif %}
                 <br>
-                <label style="font-weight: bold; font-size: 30px;" >Search</label>
+                <label style="font-weight: bold; font-size: 25px;" >Search</label>
                 <input class="form-control"  id="search" placeholder="Search something"><br><hr>
             </div>
             <div>
@@ -312,13 +289,15 @@
                 {% endif %}
             </div>
         </div>
+         <div class="form-group">
+
+         </div>
     </div>
 
-    <div class="col-6" id="child" style="position: fixed; margin-left: 50%;height:100%;overflow:scroll;" >
-
-        <div  class="col-sm-3" >
-            <div  style="margin:1% auto;width:30%;max-width: 500px;min-width: 400px;
-           ">
+    <!-- <div class="col-6" id="child" style="position: fixed; margin-left: 50%;height:100%;overflow:scroll;" > -->
+    <div class="col-4" id="child" style="position: fixed; margin-left: 65%;" >
+        <div  class="col-sm-2" >
+            <div  style="margin:1% auto;max-width: 300px;min-width: 300px;min-height: 200px;max-height: 300px">
                 <form >
                     <div class="form-group ">
 
@@ -371,7 +350,12 @@
             </div>
         </div>
     </div>
+
 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7096e64d9b958b1cc8ce7899296802f94fe05927
 
 <script type="text/JavaScript">
 
