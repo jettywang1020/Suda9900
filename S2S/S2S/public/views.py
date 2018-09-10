@@ -80,10 +80,35 @@ def index(request):
 	return render(request, 'public/index.html', {'hello': hello})
 
 def search(request):
-	return render(request, 'public/search.html')
+	if request.method == 'POST':
+		keyword = request.POST.get("keyword", "keyword")
+		sql = """select * from house WHERE lower(name) like lower('%""" + keyword + """%') or lower(address) like lower('%""" + keyword + """%') or lower(profile) like lower('%""" + keyword + """%')"""
+		houses = RunSQL(sql)
+		for house in houses:
+			try:
+				picture = House_Picture.objects.get(house_id = house["id"])
+				house["picture"] = picture
+			except:
+				continue
+		return render(request, 'public/display.html', locals())
 
-def view_detail(request,id):
-	id  =  id
+def adv_search(request):
+	originalform = adv_search_form()
+	if request.method == 'POST':
+		form = adv_search_form(request.POST)
+		if form.is_valid():
+			keyword = form.cleaned_data.get("keyword")
+			check_in = form.cleaned_data.get("check_in")
+			check_out = form.cleaned_data.get("check_out")
+			adult = form.cleaned_data.get("adult")
+			children = form.cleaned_data.get("children")
+			
+
+		return render(request, 'public/adv_search.html',{"form":originalform})
+	else:
+		return render(request, 'public/adv_search.html',{"form":originalform})
+
+def view_detail(request, id):
 	house_feature_r = [0 for _ in range(12)]
 	reviews = 0
 	house_feature = {'accuracy':0,'location':0,'communication':0,'check_in':0,'cleanliness':0,'value':0}
@@ -148,7 +173,8 @@ def display(request):
 	return render(request, 'public/display.html', locals())
 
 def profile(request):
-	# id = request.session['account'].id
+	id = request.session['account']['id'] if 'account' in request.session else 0
+	user = User.objects.get(pk=id)
 	originalform = profile_form()
 	if request.method == 'POST':
 		form = profile_form(request.POST)

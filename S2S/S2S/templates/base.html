@@ -3,14 +3,12 @@
 <html>
 <head>
 	<title>S2S</title>
+	<link href="https://unpkg.com/ionicons@4.3.0/dist/css/ionicons.min.css" rel="stylesheet">
+	
 	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/ionicons.css' %}">
-
-	<script src="https://unpkg.com/ionicons@4.3.0/dist/ionicons.js"></script>
-	<link href="https://unpkg.com/ionicons@4.3.0/dist/css/ionicons.min.css" rel="stylesheet">
-
-
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-datepicker3.standalone.min.css' %}">
 
 </head>
 <body>
@@ -22,7 +20,7 @@
 			<!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
 			<div class="col-md-11">
 				<div class="row" id="navbarSupportedContent">
-					<form class="form-inline my-2 my-lg-0 mr-auto navi-search text-left" action="#" method="post">
+					<form class="form-inline my-2 my-lg-0 mr-auto navi-search text-left" action="{% url 'public:search' %}" method="post">
 						{% csrf_token %}
 						<input type="hidden" name="page" value=1>
 						<input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search for ..." aria-label="Search" required>
@@ -86,9 +84,12 @@
     </div>
 </div>
 
+<script src="https://unpkg.com/ionicons@4.3.0/dist/ionicons.js"></script>
+
 <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap-datepicker.en-AU.min.js' %}"></script>
 </body>
 </html>
