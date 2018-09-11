@@ -280,5 +280,13 @@ div.sticky {
     background-color: green;
     border: 2px solid #4CAF50;
 }
+/* lunbo zishi ying*/
+.banner{
+
+         background-size:contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+}
 
 
