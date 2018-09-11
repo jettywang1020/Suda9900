@@ -29,14 +29,14 @@
 					{% if request.session.account %}
 					<ul class="my-navbar-nav text-right">
 						<li class="nav-item">
-							<a class="navbar-brand text-success" href="#">Hi, {{ request.session.account.username }}</a>
+							<a class="navbar-brand text-success" href="{% url 'public:profile' %}">Hi, {{ request.session.account.username }}</a>
 						</li>
 						<li class="nav-item">
 							<a class="navi-btn my-btn-color" href="#"><i class="ion-ios-bell"></i></a>
 						</li>
-						<li class="nav-item">
+<!-- 						<li class="nav-item">
 							<a class="navi-btn my-btn-color" href="{% url 'public:profile' %}"><i class="ion-ios-compose"></i></a>
-						</li>
+						</li> -->
 						<li class="nav-item">
 							<a class="navi-btn" href="{% url 'public:logout' %}"><i class="ion-log-out text-danger"></i></a>
 						</li>
@@ -91,5 +91,6 @@
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bootstrap-datepicker.en-AU.min.js' %}"></script>
+
 </body>
 </html>

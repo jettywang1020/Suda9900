@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.hashers import make_password, check_password
 
+import datetime
+
 from public.models import *
 from public.forms import *
 from public.help import *
@@ -18,7 +20,7 @@ def login(request):
 
 			if len(user) == 1 :
 				if check_password(password, user[0].password):
-					request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'activate':user[0].activate}
+					request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'activate':user[0].activate, 'is_landlord':user[0].is_landlord}
 					return render(request, 'public/index.html')
 				else:
 					error = "Incorrect password!"
@@ -82,7 +84,10 @@ def index(request):
 def search(request):
 	if request.method == 'POST':
 		keyword = request.POST.get("keyword", "keyword")
-		sql = """select * from house WHERE lower(name) like lower('%""" + keyword + """%') or lower(address) like lower('%""" + keyword + """%') or lower(profile) like lower('%""" + keyword + """%')"""
+		sql = """select * from house
+		 WHERE lower(name) like lower('%""" + keyword + """%') 
+		 or lower(address) like lower('%""" + keyword + """%') 
+		 or lower(profile) like lower('%""" + keyword + """%')"""
 		houses = RunSQL(sql)
 		for house in houses:
 			try:
@@ -103,7 +108,35 @@ def adv_search(request):
 			adult = form.cleaned_data.get("adult")
 			children = form.cleaned_data.get("children")
 			
+			check_in = check_in.split("/")
+			check_out = check_out.split("/")
+			check_in = int(check_in[2])*10000 + int(check_in[1])*100 + int(check_in[0])*1
+			check_out = int(check_out[2])*10000 + int(check_out[1])*100 + int(check_out[0])*1
+			current_date = datetime.datetime.now().year*10000 +  datetime.datetime.now().month*100 +  datetime.datetime.now().day
 
+			if check_in < current_date:
+				print(current_date)
+				error = "Invalid Date Period!"
+				return render(request, 'public/adv_search.html',{"form":originalform, "error":error})
+			elif check_out <= check_in:
+				error = "Invalid Date Period!"
+				return render(request, 'public/adv_search.html',{"form":originalform, "error":error})
+			else:
+				total_guests = int(adult) + int(children)
+				sql = """select * from house
+				 WHERE (lower(name) like lower('%""" + keyword + """%') 
+				 or lower(address) like lower('%""" + keyword + """%') 
+				 or lower(profile) like lower('%""" + keyword + """%'))
+				 and max_guests >= """ + str(total_guests) + """;"""
+				houses = RunSQL(sql)
+				# 日期校验在这里
+				for house in houses:
+					try:
+						picture = House_Picture.objects.get(house_id = house["id"])
+						house["picture"] = picture
+					except:
+						continue
+				return render(request, 'public/display.html', locals())
 		return render(request, 'public/adv_search.html',{"form":originalform})
 	else:
 		return render(request, 'public/adv_search.html',{"form":originalform})
@@ -187,10 +220,30 @@ def profile(request):
 			dob = form.cleaned_data.get("dob")
 			phone = form.cleaned_data.get("phone")
 			profile = form.cleaned_data.get("profile")
-			user = User(username = username, first_name = firstname, last_name = lastname, email = email, gender = gender, dob = dob
-						, phone = phone, profile = profile)
+			user = User(pk=id, username = username, first_name = firstname, last_name = lastname, email = email, gender = gender, phone = phone, profile = profile)
 			user.save()
-			request.session['account'] = {'id':user.id, 'username':username, 'firstname':firstname, 'lastname':lastname, 'email':email, 'dob':dob, 'gender':gender, 'phone':phone
-										   , 'profile':profile}
-			return render(request, 'public/index.html')							   
-	return render(request, 'public/profile.html', {'form': originalform})
+			request.session['account'] = {'id':user.id, 'username':username, 'email':email}
+			return redirect('public:profile')
+	else:
+		originalform = profile_form(initial = {'username': user.username, 'firstname': user.first_name, 'lastname': user.last_name, 'gender':user.gender, 'dob':user.dob, 'phone':user.phone, 'email':user.email, 'profile':user.profile})						   
+		return render(request, 'public/profile.html', {'form': originalform})
+
+def upload_photo(request):
+	id = request.session['account']['id'] if 'account' in request.session else 0
+	user = User.objects.get(pk=id)
+	originalform = upload_photo_form()
+	if request.method == 'POST':
+		form = upload_photo_form(request.POST, request.FILES)
+		if form.is_valid():
+			photo = request.FILES.getlist("photo")[0]
+			user = User(pk=id, photo=photo)
+			user.save()
+			return redirect('public:upload_photo')
+	return render(request, 'public/upload_photo.html', {'form':originalform, 'photo':user.photo})
+
+
+
+
+
+
+
