@@ -7,12 +7,15 @@
 		<div class="col-3">
 			<nav id="navbar" class="navbar navbar-light">
 				<nav class="nav nav-pills flex-column">
-					<a class="nav-link" href="{% url 'public:profile' %}">Edit Profile</a>
-					<a class="nav-link" href="#">Photo</a>
+					<a class="nav-link" href="{% url 'public:profile' %}">Profile</a>
+					<a class="nav-link" href="{% url 'public:upload_photo' %}">Photo</a>
+					<a class="nav-link" href="#">History</a>
 					
-					
-					<a class="nav-link" href="{% url 'landlord:manage_house' %}">Manage Houses</a>
-					
+
+					{% if request.session.account.is_landlord %}
+					<a class="nav-link" href="http://localhost:8000/landlord/add_house_pic#">Pictures</a>
+					<a class="nav-link" href="http://localhost:8000/landlord/manage_house#">Manage Houses</a>
+					{% endif %}
 				</nav>
 			</nav>
 		</div>

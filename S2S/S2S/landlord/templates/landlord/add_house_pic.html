@@ -2,12 +2,18 @@
 {% load staticfiles%}
 {% block index %}
 <div>
-	<div>
-		<a> picture </a>
-	</div>
-	<div>
-
-	</div>
+	<form enctype="multipart/form-data" method="post">
+		{% csrf_token %}
+		<div class="card text-white bg-primary mb-3" style="max-width: 100%;">
+			<div class="card-header">Picture</div>
+		</div>
+		<div>
+			{{ form.image }}
+		</div>
+		<button type="submit" class="btn btn-primary btn-lg" style="width: 50%;margin: 10px 25%;">Upload</button>
+	</form>
 </div>
+
+
 
 {% endblock %}

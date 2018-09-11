@@ -1,0 +1,11 @@
+{% extends 'public/index.html' %}
+{% load staticfiles%}
+{% block index %}
+  <img src="{{ photo.url }}">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.photo }}
+    <button type="submit">Upload</button>
+  </form>
+
+{% endblock %}

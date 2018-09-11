@@ -2,8 +2,8 @@
 {% load staticfiles%}
 {% block index %}
 <div>
-	<form>
-
+	<form method="post">
+		{% csrf_token %}
 		<div class="card text-white bg-primary mb-3" style="max-width: 100%;">
 			<div class="card-header">Basic Infomation</div>
 		</div>
@@ -11,32 +11,34 @@
 		<div class="form-group row">
 			<label for="Name" class="col-sm-2 col-form-label">Name</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="Name" placeholder="Name">
+				{{ form.name }}
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="Address" class="col-sm-2 col-form-label">Address</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="Address" placeholder="Address">
+				{{ form.address }}
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="Postcode" class="col-sm-2 col-form-label">Postcode</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="Postcode" placeholder="Postcode">
+				{{ form.postcode }}
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="Price" class="col-sm-2 col-form-label">Price (per night)</label>
 			<div class="col-sm-3">
-				<input type="number" min="1" class="form-control" id="Price" placeholder="eg. 200">
+				{{ form.price }}
+				<!-- <input type="number" min="1" class="form-control" id="Price" placeholder="eg. 200"> -->
 			</div>
 		</label>
 		</div>
 		<div class="form-group row">
 			<label for="Profile" class="col-sm-2 col-form-label">Profile</label>
 			<div class="col-sm-10">
-				<textarea class="form-control" id="Profile" rows="5"></textarea>
+				{{ form.profile }}
+				<!-- <textarea class="form-control" id="Profile" rows="5"></textarea> -->
 			</div>
 		</div>
 
@@ -47,55 +49,64 @@
 		<div class="form-group row">
 			<label for="MaxGuest" class="col-sm-2 col-form-label">Max Guests</label>
 			<div class="col-sm-10">
-				<input type="number" min="1" class="form-control" id="MaxGuest" placeholder="eg. 1">
+				{{ form.maxguest }}
+				<!-- <input type="number" min="1" class="form-control" id="MaxGuest" placeholder="eg. 1"> -->
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="Bed" class="col-sm-2 col-form-label">No of Beds</label>
 			<div class="col-sm-10">
-				<input type="number" min="0" class="form-control" id="Bed" placeholder="eg. 1">
+				{{ form.bed }}
+				<!-- <input type="number" min="0" class="form-control" id="Bed" placeholder="eg. 1"> -->
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="Bedroom" class="col-sm-2 col-form-label">No of Bedrooms</label>
 			<div class="col-sm-10">
-				<input type="number" min="0" class="form-control" id="Bedroom" placeholder="eg. 1">
+				{{ form.bedroom }}
+				<!-- <input type="number" min="0" class="form-control" id="Bedroom" placeholder="eg. 1"> -->
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="Bathroom" class="col-sm-2 col-form-label">No of Baths</label>
 			<div class="col-sm-10">
-				<input type="number" min="0" class="form-control" id="Bathroom" placeholder="eg. 1">
+				{{ form.bathroom }}
+				<!-- <input type="number" min="0" class="form-control" id="Bathroom" placeholder="eg. 1"> -->
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="Park" class="col-sm-2 col-form-label">No of Parking</label>
 			<div class="col-sm-10">
-				<input type="number" min="0" class="form-control" id="Park" placeholder="eg. 1">
+				{{ form.park }}
+				<!-- <input type="number" min="0" class="form-control" id="Park" placeholder="eg. 1"> -->
 			</div>
 		</div>
 		<div class="form-group col-sm-13 row">
 			<div class="col-sm-3">
 				<div class="form-check">
-					<input type="checkbox" class="form-check-input" id="TV">
+					{{ form.tv }}
+					<!-- <input type="checkbox" class="form-check-input" id="TV"> -->
 					<label class="form-check-label" for="TV">TV</label>
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="form-check">
-					<input type="checkbox" class="form-check-input" id="Kitchen">
+					{{ form.kitchen }}
+					<!-- <input type="checkbox" class="form-check-input" id="Kitchen"> -->
 					<label class="form-check-label" for="Kitchen">Kitchen</label>
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="form-check">
-					<input type="checkbox" class="form-check-input" id="Washer">
+					{{ form.washer }}
+					<!-- <input type="checkbox" class="form-check-input" id="Washer"> -->
 					<label class="form-check-label" for="Washer">Washer</label>
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="form-check">
-					<input type="checkbox" class="form-check-input" id="Fridge">
+					{{ form.fridge }}
+					<!-- <input type="checkbox" class="form-check-input" id="Fridge"> -->
 					<label class="form-check-label" for="Fridge">Fridge</label>
 				</div>
 			</div>
@@ -103,25 +114,29 @@
 		<div class="form-group col-sm-13 row">
 			<div class="col-sm-3">
 				<div class="form-check">
-					<input type="checkbox" class="form-check-input" id="Conditioner">
+					{{ form.conditioner }}
+					<!-- <input type="checkbox" class="form-check-input" id="Conditioner"> -->
 					<label class="form-check-label" for="Conditioner">Conditioner</label>
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="form-check">
-					<input type="checkbox" class="form-check-input" id="Wifi">
+					{{ form.wifi }}
+					<!-- <input type="checkbox" class="form-check-input" id="Wifi"> -->
 					<label class="form-check-label" for="Wifi">Wifi</label>
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="form-check">
-					<input type="checkbox" class="form-check-input" id="StudyRoom">
+					{{ form.studyroom }}
+					<!-- <input type="checkbox" class="form-check-input" id="StudyRoom"> -->
 					<label class="form-check-label" for="StudyRoom">Study Room</label>
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="form-check">
-					<input type="checkbox" class="form-check-input" id="Pool">
+					{{ form.pool }}
+					<!-- <input type="checkbox" class="form-check-input" id="Pool"> -->
 					<label class="form-check-label" for="Pool">Pool</label>
 				</div>
 			</div>
@@ -134,19 +149,22 @@
 		<div class="form-group row">
 			<label for="Rule" class="col-sm-2 col-form-label">House Rule</label>
 			<div class="col-sm-10">
-				<textarea class="form-control" id="Rule" rows="5"></textarea>
+				{{ form.rule }}
+				<!-- <textarea class="form-control" id="Rule" rows="5"></textarea> -->
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="Cancellation" class="col-sm-2 col-form-label">Cancellation</label>
 			<div class="col-sm-10">
-				<textarea class="form-control" id="Cancellation" rows="5"></textarea>
+				{{ form.cancellation }}
+				<!-- <textarea class="form-control" id="Cancellation" rows="5"></textarea> -->
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="Extra" class="col-sm-2 col-form-label">Extra</label>
 			<div class="col-sm-10">
-				<textarea class="form-control" id="Extra" rows="5"></textarea>
+				{{ form.extra }}
+				<!-- <textarea class="form-control" id="Extra" rows="5"></textarea> -->
 			</div>
 		</div>
 		<button type="submit" class="btn btn-primary btn-lg" style="width: 50%;margin: 10px 25%;">Comform</button>
