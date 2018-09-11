@@ -1,9 +1,7 @@
 Week2 
-8.5
 Decedied to choose topic3 after discussion.
 
 Week3
-8.7
 Discussed topic3.
 Named the web application as S2S (somethere to sleep).
 Constructed the web application by Django.
@@ -15,4 +13,7 @@ Week5
 Implemented login and logout backend function. Implemented signup backend function. Implemented home page display backend function.
 
 Week6
-I
+Demo this week. Got 8/10. Quiet good. Finish user photo upload.
+
+Week7
+Finished bootstrap datepicker. Done basic search and advanced search.

@@ -298,35 +298,40 @@
             </div>
 
     </div>
+
+
+    <!-- <div class="col-6" id="child" style="position: fixed; margin-left: 50%;height:100%;overflow:scroll;" > -->
     <div class="col-4" id="child" style="position: fixed; margin-left: 65%;" >
+        <div  class="col-sm-2" >
+            <div  style="margin:1% auto;max-width: 300px;min-width: 300px;min-height: 200px;max-height: 300px">
+                <form >
+                    <div class="form-group ">
 
-            <div  class="col-sm-2" >
-                <div  style="margin:1% auto;max-width: 300px;min-width: 300px;min-height: 200px;max-height: 300px">
-                    <form >
-                        <div class="form-group ">
+                        <div class="form-row">
+                            <div class="form-group col-sm-6">
+                                <label for="check_in">CHECK IN</label>
+                                <input type="text" class="form-control" id="check_in" data-provide="datepicker" placeholder="dd/mm/yyyy">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="check_out">CHECK OUT</label>
+                                <input type="text" class="form-control" id="check_out" data-provide="datepicker" placeholder="dd/mm/yyyy">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group row">
 
-                            <div class="form-row">
-                                <div class="form-group col-sm-6">
-                                    <label for="check_in">CHECK IN</label>
-                                    <input type="text" class="form-control" id="check_in" placeholder="dd-mm-yyyy">
+                                <label for="Adult" class="col-sm col-form-label">Adult</label>
+                                <div class="col-sm">
+
+                                    <input type="number" min="1" max="6" class="form-control" id="Adult" value="1">
                                 </div>
-                                <div class="form-group col-sm-6">
-                                    <label for="check_out">CHECK OUT</label>
-                                    <input type="text" class="form-control" id="check_out" placeholder="dd-mm-yyyy">
+
+                                <label for="Children" class="col-sm col-form-label">Children</label>
+                                <div class="col-sm">
+                                    <input type="number" min="0" max="6" class="form-control" id="Children" value="0">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="form-group row">
-                                    <label for="Adult" class="col-sm col-form-label">Adult</label>
-                                    <div class="col-sm">
-                                        <input type="number" min="1" max="6" class="form-control" id="Adult" value="1">
-                                    </div>
-                                    <label for="Children" class="col-sm col-form-label">Children</label>
-                                    <div class="col-sm">
-                                        <input type="number" min="0" max="6" class="form-control" id="Children" value="0">
-                                    </div>
-                                </div>
-                            </div><hr>
+                        </div><hr>
                     <div class="form-group">
                         <label>Changing Fee</label><a href=""><ion-icon name="help"></ion-icon></a>
                         <p class="text-right" >$70.00</p><hr>
@@ -356,12 +361,7 @@
         </div>
 
 </div>
-
-
-
 <script type="text/JavaScript">
-
-
     var btn=document.getElementById('btn');
     var content=document.getElementById('CC');
     var str=content.innerHTML;
@@ -414,10 +414,6 @@
     btn4.onclick=function() {
 
     }
-
-
-
-
 
 
 </script>
