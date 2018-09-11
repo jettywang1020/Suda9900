@@ -170,7 +170,8 @@ min-height: 200px;max-width: 850px;min-width: 840px" name="img-area">
                     <span id = "con4" style="font-size: 15px">Moderate - Free cancellation for 48 hours</span><br><BR>
                     <a id ="btn3" href="#"> READ MORE ABOUT POLICIES </a><br><br><hr>
                 </div>
-                <div>
+                <div class="form-group row">
+                    <div class="col-6">
                     <label style="font-weight: bold; font-size:25px">51 Reviews</label>
                     {% if house_reviews == 0 %}
                     <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
@@ -191,8 +192,11 @@ min-height: 200px;max-width: 850px;min-width: 840px" name="img-area">
                     <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
                     {% endif %}
                     <br>
-                    <label style="font-weight: bold; font-size: 25px;" >Search</label>
-                    <input class="form-control"  id="search" placeholder="Search something"><br><hr>
+                    </div>
+                    <div class="col-6">
+
+                        <input class="form-control"  id="search" placeholder="Search something"><br>
+                    </div><hr>
                 </div>
                 <div>
                     <label style=" font-size:15px ; width: 20%;">Accuracy</label>&nbsp;&nbsp;&nbsp;
@@ -313,10 +317,38 @@ min-height: 200px;max-width: 850px;min-width: 840px" name="img-area">
                     <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><br>
                     {% endif %}
                 </div>
+            </div><br>
+        <div style="padding-left:10%;padding-right: 10%;" id="comment_area">
+            <div id=" header comment" class="form-group row">
+                <div id="icon">
+                    <img src="../../../static/image/h1u.jpg" height="49" width="65" class="img-rounded"/>
+                </div>
+                <div>
+                    <label>Koey</label><br>
+                    <label>September 2018</label>
+                </div>
             </div>
-        <div id="comment_area">
-            
+
+            <p>Paul & Raymond's place is an adorable hidden gem in Sydney!
+                Being close to the station made traveling in and out of the CBD very convenient.
+                The space was comfy and stylish. Amenities were readily available and high quality.
+                It felt like home to me. We really enjoy our stay there. Thank you Paul and Raymond.</p><hr>
+            <div i class="form-group row">
+                <div>
+                    <img src="../../../static/image/h2.jpg" height="49" width="55" class="img-rounded"/>
+                </div>
+                <div>
+                    <label>Geon Woo</label><br>
+                    <label>Auguest 2018</label>
+                </div>
+            </div>
+            <p>
+                The house was awesome with nice location. Paul kindly replied for everything that i asked him.
+                we enjoyed staying there and definitely will visit there again if I have chance.
+            </p><hr>
+
         </div>
+
 
     </div>
 
