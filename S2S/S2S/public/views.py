@@ -20,7 +20,7 @@ def login(request):
 
 			if len(user) == 1 :
 				if check_password(password, user[0].password):
-					request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'photo':user[0].photo, 'activate':user[0].activate, 'is_landlord':user[0].is_landlord}
+					request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'activate':user[0].activate, 'is_landlord':user[0].is_landlord}
 					return render(request, 'public/index.html')
 				else:
 					error = "Incorrect password!"
