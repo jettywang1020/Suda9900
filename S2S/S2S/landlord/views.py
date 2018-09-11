@@ -63,3 +63,7 @@ def add_house_pic(request):
 			return render(request, 'public/index.html')
 
 	return render(request, 'landlord/add_house_pic.html', {'form': originalform})
+
+
+def edit_house(request):
+	return render(request, 'landlord/edit_house.html')
