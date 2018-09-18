@@ -18,4 +18,5 @@ urlpatterns = [
 	path('view_detail/<int:id>', views.view_detail, name='view_detail'),
 	path('profile', views.profile, name='profile'),
 	path('upload_photo', views.upload_photo, name='upload_photo'),
+	path('other_profile', views.other_profile, name='other_profile'),
 ]
