@@ -22,3 +22,9 @@ This week we are doing the construction of admin system and database system. We 
 
 Week5:
 In this week, our back have completed the database and built up the administration. Now our admin can operate database in admin system. We also do the function for sql query. Helping front can search for data. We are going to build up our logout from back part function. and some functions will be constructed later.
+
+Week6:
+In this week, I have done the encryption and public detail view page back operation. Let it can successfully grep data from database to the front page filling up the blank. Also review rates now can change by updating the page.
+
+Week7:
+In this week, I have done the landlord add house, edit profile and landlord add picture house back operation, which allows the information from page save to the database. Picture  download a little bit different, stage one it only can achieve the function of upload multiple pics to database. In the following, I will set that achieve preview pics.
