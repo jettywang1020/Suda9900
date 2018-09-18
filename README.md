@@ -9,3 +9,6 @@ cd S2S
 python manage.py runserver
 ```
 
+
+
+初始登陆删除cookies

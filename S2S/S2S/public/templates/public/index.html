@@ -9,7 +9,7 @@
 				<nav class="nav nav-pills flex-column">
 					<a class="nav-link" href="{% url 'public:profile' %}">Profile</a>
 					<a class="nav-link" href="{% url 'public:upload_photo' %}">Photo</a>
-					<a class="nav-link" href="#">History</a>
+					<a class="nav-link" href="{% url 'tenant:history' %}">History</a>
 					
 
 					{% if request.session.account.is_landlord %}
