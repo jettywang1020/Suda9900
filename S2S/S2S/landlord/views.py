@@ -67,3 +67,6 @@ def add_house_pic(request):
 
 def edit_house(request):
 	return render(request, 'landlord/edit_house.html')
+
+def add_comm(request):
+	return render(request, 'landlord/add_comm.html')
