@@ -81,6 +81,9 @@ def index(request):
 	hello = 'hello, everyone'
 	return render(request, 'public/index.html', {'hello': hello})
 
+def other_profile(request):
+	return render(request,'public/other_profile.html')
+
 def search(request):
 	if request.method == 'POST':
 		keyword = request.POST.get("keyword", "keyword")

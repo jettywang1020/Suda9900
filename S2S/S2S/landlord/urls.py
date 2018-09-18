@@ -11,4 +11,5 @@ urlpatterns = [
 	path('manage_house', views.manage_house, name='manage_house'),	# Manage House
 	path('add_house_pic', views.add_house_pic, name='add_house_pic'),
 	path('edit_house', views.edit_house, name='edit_house'),
+	path('add_comm',views.add_comm,name='add_comm'),
 ]
