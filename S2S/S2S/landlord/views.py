@@ -70,3 +70,6 @@ def edit_house(request):
 
 def history(request):
 	return render(request, 'landlord/history.html')
+
+def add_comm(request):
+	return render(request, 'landlord/add_comm.html')
