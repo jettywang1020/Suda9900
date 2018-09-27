@@ -11,6 +11,15 @@
 			{{ form.image }}
 		</div>
 		<button type="submit" class="btn btn-primary btn-lg" style="width: 50%;margin: 10px 25%;">Upload</button>
+		<div class="col-sm-13 row">
+			{% for pic in pic_list %}
+			<div class="col-sm-3">
+				<div style="padding-bottom: 100%;position: relative;">
+				<img src="{{ pic.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;">
+				</div>
+			</div>
+		{% endfor %}
+		</div>
 	</form>
 </div>
 

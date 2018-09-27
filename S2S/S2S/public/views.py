@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.hashers import make_password, check_password
 
 import datetime
+import re
 
 from public.models import *
 from public.forms import *
@@ -221,9 +222,12 @@ def profile(request):
 			user.email = form.cleaned_data.get("email")
 			user.gender = form.cleaned_data.get("gender")
 			user.dob = form.cleaned_data.get("dob")
+			dob = re.search(r'^(\d{2}/)?(\d{2}/)?(\d{4})$',user.dob)
+			new_dob = dob.group(3) + '-' + dob.group(2)[:-1] + '-' + dob.group(1)[:-1]
+			user.dob = new_dob
 			user.phone = form.cleaned_data.get("phone")
 			user.profile = form.cleaned_data.get("profile")
-			user.save(update_fields = ["username","first_name","last_name","email","gender","phone","profile"])
+			user.save(update_fields = ["username","first_name","last_name","email","gender","dob","phone","profile"])
 			request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email}
 			return redirect('public:profile')
 	else:
