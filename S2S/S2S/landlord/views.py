@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from public.models import User, House, House_Picture
 from public.forms import *
+from public.help import *
 
 # Create your views here.
 def index(request):
@@ -52,6 +53,12 @@ def manage_house(request):
 def add_house_pic(request):
 	id = 1
 	originalform = addimage_form()
+	house_pic = House_Picture.objects.all()
+	pic_list = []
+	for house_p in house_pic:
+		if house_p.house_id == id:
+			pic_list.append(house_p)
+
 	if request.method == 'POST':
 		form = addimage_form(request.POST,request.FILES)
 		if form.is_valid():
@@ -60,6 +67,16 @@ def add_house_pic(request):
 				house_pic = House_Picture(house_id = id, photo = image)
 				house_pic.save()
 
-			return render(request, 'public/index.html')
+			return render(request, 'landlord/add_house_pic.html', {'form': originalform, 'pic_list': pic_list})
 
-	return render(request, 'landlord/add_house_pic.html', {'form': originalform})
+	return render(request, 'landlord/add_house_pic.html', {'form': originalform, 'pic_list': pic_list})
+
+
+def edit_house(request):
+	return render(request, 'landlord/edit_house.html')
+
+def history(request):
+	return render(request, 'landlord/history.html')
+
+def add_comm(request):
+	return render(request, 'landlord/add_comm.html')

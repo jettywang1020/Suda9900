@@ -14,3 +14,9 @@ def test(request):
 
 def help(request):
 	return render(request, 'tenant/help.html')
+
+def history(request):
+	return render(request,'tenant/history.html')
+
+def add_comm(request):
+	return render(request,'tenant/add_comm.html')

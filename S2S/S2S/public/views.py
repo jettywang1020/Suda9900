@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.hashers import make_password, check_password
 
 import datetime
+import re
 
 from public.models import *
 from public.forms import *
@@ -80,6 +81,9 @@ def signup(request):
 def index(request):
 	hello = 'hello, everyone'
 	return render(request, 'public/index.html', {'hello': hello})
+
+def other_profile(request):
+	return render(request,'public/other_profile.html')
 
 def search(request):
 	if request.method == 'POST':
@@ -212,17 +216,19 @@ def profile(request):
 	if request.method == 'POST':
 		form = profile_form(request.POST)
 		if form.is_valid():
-			username = form.cleaned_data.get("username")
-			firstname = form.cleaned_data.get("firstname")
-			lastname = form.cleaned_data.get("lastname")
-			email = form.cleaned_data.get("email")
-			gender = form.cleaned_data.get("gender")
-			dob = form.cleaned_data.get("dob")
-			phone = form.cleaned_data.get("phone")
-			profile = form.cleaned_data.get("profile")
-			user = User(pk=id, username = username, first_name = firstname, last_name = lastname, email = email, gender = gender, phone = phone, profile = profile)
-			user.save()
-			request.session['account'] = {'id':user.id, 'username':username, 'email':email}
+			user.username = form.cleaned_data.get("username")
+			user.first_name = form.cleaned_data.get("firstname")
+			user.last_name = form.cleaned_data.get("lastname")
+			user.email = form.cleaned_data.get("email")
+			user.gender = form.cleaned_data.get("gender")
+			user.dob = form.cleaned_data.get("dob")
+			dob = re.search(r'^(\d{2}/)?(\d{2}/)?(\d{4})$',user.dob)
+			new_dob = dob.group(3) + '-' + dob.group(2)[:-1] + '-' + dob.group(1)[:-1]
+			user.dob = new_dob
+			user.phone = form.cleaned_data.get("phone")
+			user.profile = form.cleaned_data.get("profile")
+			user.save(update_fields = ["username","first_name","last_name","email","gender","dob","phone","profile"])
+			request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email}
 			return redirect('public:profile')
 	else:
 		originalform = profile_form(initial = {'username': user.username, 'firstname': user.first_name, 'lastname': user.last_name, 'gender':user.gender, 'dob':user.dob, 'phone':user.phone, 'email':user.email, 'profile':user.profile})						   
