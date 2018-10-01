@@ -270,6 +270,7 @@ def book(request):
 			children =  int(children)
 
 
+			# date check
 			if check_in < current_date:
 				print(current_date)
 				message = "Invalid Date Period!"
@@ -278,7 +279,19 @@ def book(request):
 				message = "Invalid Date Period!"
 				return render(request, 'public/blank.html', {'message':message})
 
-			print(house_id, check_in, check_out, adult, children)
+			# guest amount check
+			sql = """ select * from house where id = """ + str(house_id) + """;""";
+			house = RunSQL(sql)[0]
+			if house['max_guests'] < adult + children:
+				message = "Too many guests!"
+				return render(request, 'public/blank.html', {'message':message})
+
+			# date check again
+			sql = """ select * from lease_period where house_id = """ + str(house_id) + """;""";
+			records = RunSQL(sql)
+			for record in records:
+				start = record['period_start'].split("-")
+			
 
 			message = "Blank!"
 			return render(request, 'public/blank.html', {'message':message})
