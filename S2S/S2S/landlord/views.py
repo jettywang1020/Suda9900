@@ -93,9 +93,9 @@ def edit_house(request, id):
 			house.name = form.cleaned_data.get("name")
 			house.address = form.cleaned_data.get("address")
 			house.postcode = form.cleaned_data.get("postcode")
-			house.hoprice = form.cleaned_data.get("price")
+			house.price = form.cleaned_data.get("price")
 			house.profile = form.cleaned_data.get("profile")
-			house.max_guest = form.cleaned_data.get("maxguest")
+			house.max_guests = form.cleaned_data.get("maxguest")
 			house.no_of_beds = form.cleaned_data.get("bed")
 			house.no_of_bedrooms = form.cleaned_data.get("bedroom")
 			house.no_of_baths = form.cleaned_data.get("bathroom")
@@ -117,7 +117,15 @@ def edit_house(request, id):
 						  , "conditioner", "wifi", "study_room", "pool", "house_rule"
 						  , "cancellation", "extra"])
 			return render(request, 'landlord/edit_house.html')
-	return render(request, 'landlord/edit_house.html',{'form': originalform})
+	else:
+		originalform = addhouse_form(initial = {'name': house.name, 'address':house.address, 'postcode':house.postcode
+											  	, 'price':house.price, 'profile':house.profile, 'maxguest':house.max_guests
+											  	, 'bed':house.no_of_beds, 'bedroom':house.no_of_bedrooms, 'bathroom':house.no_of_baths
+											  	, 'park':house.no_of_parking, 'tv':house.tv, 'kitchen':house.kitchen, 'washer':house.washer
+											  	, 'fridge':house.fridge, 'conditioner':house.conditioner, 'wifi':house.wifi
+											  	, 'studyroom':house.study_room, 'pool':house.pool, 'rule':house.house_rule, 'cancellation':house.cancellation
+											  	, 'extra':house.extra})						   
+		return render(request, 'landlord/edit_house.html',{'form': originalform})
 
 def history(request):
 	return render(request, 'landlord/history.html')
