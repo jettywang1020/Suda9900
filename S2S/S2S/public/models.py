@@ -71,6 +71,7 @@ class House_Picture(models.Model):
 
 class Lease_Period(models.Model):
 	time_stamp = models.DateTimeField(auto_now_add=True)
+	user_id = models.IntegerField(null=False)
 	house_id = models.IntegerField(null=False)
 	period_start = models.DateField(null=False)
 	period_end = models.DateField(null=False)
