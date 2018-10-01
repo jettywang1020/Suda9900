@@ -54,6 +54,18 @@ class profile_form(forms.Form):
 class upload_photo_form(forms.Form):
 	photo = forms.ImageField(widget = forms.ClearableFileInput(attrs={'class':'form-control','multiple': False}),required = True)
 
+class tcomment_form(forms.Form):
+	reputation = forms.IntegerField(min_value = 0, max_value = 5, widget = forms.NumberInput(attrs={'class':"col-sm-3",'placeholder':'eg. 1'}),required = False)
+
+class hcomment_form(forms.Form):
+	accuracy = forms.IntegerField(min_value = 0, max_value = 5, widget = forms.NumberInput(attrs={'class':"col-sm-3",'placeholder':'eg. 1'}),required = False)
+	communication = forms.IntegerField(min_value = 0, max_value = 5, widget = forms.NumberInput(attrs={'class':"col-sm-3",'placeholder':'eg. 1'}),required = False)
+	cleanliness = forms.IntegerField(min_value = 0, max_value = 5, widget = forms.NumberInput(attrs={'class':"col-sm-3",'placeholder':'eg. 1'}),required = False)
+	location = forms.IntegerField(min_value = 0, max_value = 5, widget = forms.NumberInput(attrs={'class':"col-sm-3",'placeholder':'eg. 1'}),required = False)
+	checkin = forms.IntegerField(min_value = 0, max_value = 5, widget = forms.NumberInput(attrs={'class':"col-sm-3",'placeholder':'eg. 1'}),required = False)
+	value = forms.IntegerField(min_value = 0, max_value = 5, widget = forms.NumberInput(attrs={'class':"col-sm-3",'placeholder':'eg. 1'}),required = False)
+	comment = forms.CharField(max_length = 5000, widget = forms.Textarea(attrs={'class':'form-control','rows':5}),required = False)
+
 class adv_search_form(forms.Form):
 	keyword = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control'}),required = True)
 	check_in = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control', 'data-provide':'datepicker', 'data-date-format':'dd/mm/yyyy', 'placeholder':'dd/mm/yyyy'}),required = True)

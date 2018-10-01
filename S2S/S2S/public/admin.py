@@ -38,8 +38,15 @@ class LeasePeriodAdmin(admin.ModelAdmin):
 	search_fields = ['user_id']
 	list_per_page = 10
 
+class HouseCommentAdmin(admin.ModelAdmin):
+	list_display = ['id','user_id','house_id']
+	list_filter = ['user_id']
+	search_fields = ['user_id']
+	list_per_page = 10
+
 admin.site.register(User,UserAdmin)
 admin.site.register(House,HouseAdmin)
 admin.site.register(House_Picture,HousePicAdmin)
 admin.site.register(House_Rate,HouseRateAdmin)
 admin.site.register(Lease_Period,LeasePeriodAdmin)
+admin.site.register(House_Comment,HouseCommentAdmin)

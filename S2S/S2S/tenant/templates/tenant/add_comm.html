@@ -3,34 +3,42 @@
 {% block content %}
 <div class="form-group" style="margin-left: 20%; margin-right: 20%">
     <form method="post">
+        {% csrf_token %}
         <div class="form-group">
             <label style="font-size: 28px ;color:green">Give Star to the House</label><br><br>
             <div class="form-group row">
                 <label class=" col-sm-3 col-form-label">Accuracy</label>
-                <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Accuracy" value="0">
+                {{ form.accuracy }}
+                <!-- <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Accuracy" value="0"> -->
                 <label class=" col-sm-3 col-form-label">Location</label>
-                <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Location" value="0">
+                {{ form.location }}
+                <!-- <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Location" value="0"> -->
 
             </div>
              <div class="form-group row">
                 <label class=" col-sm-3 col-form-label">Communication</label>
-                <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Communication" value="0">
+                {{ form.communication }}
+                <!-- <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Communication" value="0"> -->
                 <label class=" col-sm-3 col-form-label">Check-in</label>
-                <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Check-in" value="0">
+                {{ form.checkin }}
+                <!-- <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Check-in" value="0"> -->
 
             </div>
              <div class="form-group row">
                 <label class=" col-sm-3 col-form-label">Cleanliness</label>
-                <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Cleanliness" value="0">
+                {{ form.cleanliness }}
+                <!-- <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Cleanliness" value="0"> -->
                 <label class=" col-sm-3 col-form-label">Value</label>
-                <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Value" value="0">
+                {{ form.value }}
+                <!-- <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Value" value="0"> -->
 
             </div>
 
         </div><br><hr>
         <div>
             <label style="font-size: 28px;color: green;">Add Comment</label><br><br>
-            <textarea class="form-control" id="Profile" rows="5"></textarea><br>
+            {{ form.comment }}
+            <!-- <textarea class="form-control" id="Profile" rows="5"></textarea> --><br>
             <button type="submit" class="btn btn-danger btn-lg" style="width: 50%;margin: 10px 25%;">Submit</button>
         </div>
     </form>
