@@ -35,7 +35,7 @@ def login(request):
 ##### logout #####
 def logout(request):
 	try:
-		del request.session['account']
+		request.session['account'] = None
 	except:
 		pass
 	return redirect('public:login')
@@ -186,7 +186,7 @@ def view_detail(request, id):
 			reviews += house_feature['value']
 		reviews = round(reviews/6)
 	
-	context = {'house_name':house.name,'house_postcode':house.postcode,'house_address':house.address,'guests_num':house.max_guests
+	context = {'house_id':house.id,'house_name':house.name,'house_postcode':house.postcode,'house_address':house.address,'guests_num':house.max_guests
 				,'bedrooms_num':house.no_of_bedrooms,'beds_num':house.no_of_beds,'baths_num':house.no_of_baths,'house_parking':house.no_of_parking
 				,'house_profile':house.profile,'house_price':house.price,'house_rule':house.house_rule,'house_cancellation':house.cancellation
 				,'house_extra':house.extra,'house_tv':house.tv,'house_kitchen':house.kitchen,'house_washer':house.washer
@@ -228,7 +228,7 @@ def profile(request):
 			user.phone = form.cleaned_data.get("phone")
 			user.profile = form.cleaned_data.get("profile")
 			user.save(update_fields = ["username","first_name","last_name","email","gender","dob","phone","profile"])
-			request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email}
+			request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email, 'activate':user.activate, 'is_landlord':user.is_landlord}
 			return redirect('public:profile')
 	else:
 		originalform = profile_form(initial = {'username': user.username, 'firstname': user.first_name, 'lastname': user.last_name, 'gender':user.gender, 'dob':user.dob, 'phone':user.phone, 'email':user.email, 'profile':user.profile})						   
@@ -248,8 +248,46 @@ def upload_photo(request):
 	return render(request, 'public/upload_photo.html', {'form':originalform, 'photo':user.photo})
 
 
+def book(request):
+	if request.method == 'POST':
+		house_id = request.POST.get("house_id",None)
+		check_in = request.POST.get("check_in",None)
+		check_out = request.POST.get("check_out",None)
+		adult = request.POST.get("adult",None)
+		children = request.POST.get("children",None)
+
+		if house_id and check_in and check_out and adult and children:
+			print(house_id, check_in, check_out, adult, children)
+			house_id = int(house_id)
+			check_in = check_in.split("/")
+			check_out = check_out.split("/")
+			new_check_in = check_in[0] + "-" + check_in[1] + "-" + check_in[2]
+			new_check_out = check_out[0] + "-" + check_out[1] + "-" + check_out[2]
+			check_in = int(check_in[2])*10000 + int(check_in[1])*100 + int(check_in[0])*1
+			check_out = int(check_out[2])*10000 + int(check_out[1])*100 + int(check_out[0])*1
+			current_date = datetime.datetime.now().year*10000 +  datetime.datetime.now().month*100 +  datetime.datetime.now().day
+			adult =  int(adult)
+			children =  int(children)
 
 
+			if check_in < current_date:
+				print(current_date)
+				message = "Invalid Date Period!"
+				return render(request, 'public/blank.html', {'message':message})
+			elif check_out <= check_in:
+				message = "Invalid Date Period!"
+				return render(request, 'public/blank.html', {'message':message})
 
+			print(house_id, check_in, check_out, adult, children)
+
+			message = "Blank!"
+			return render(request, 'public/blank.html', {'message':message})
+
+		else:
+			message = "Bad Request!"
+			return render(request, 'public/blank.html', {'message':message})
+	else:
+		message = "Bad Request!"
+		return render(request, 'public/blank.html', {'message':message})
 
 
