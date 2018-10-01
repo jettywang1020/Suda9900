@@ -53,26 +53,21 @@ def add_house(request):
 def manage_house(request):
 	id = request.session['account']['id'] if 'account' in request.session else 0
 	sql = """select * from house"""
-	houses_ = RunSQL(sql)
-	houses = []
-	for h in houses_:
-		if h["user_id"] == id:
-			try:
-				picture = House_Picture.objects.get(house_id = h["id"])
-				h["picture"] = picture
-			except:
-				continue
-			houses.append(h)
-
-	return render(request, 'landlord/manage_house.html', {'houses': houses})
+	houses = RunSQL(sql)
+	house_r = []
+	for house in houses:
+		if house["user_id"] == id:
+			picture = House_Picture.objects.all()
+			for pic in picture:
+				if pic.house_id == house['id']:
+					house["picture"] = pic
+					break
+			house_r.append(house)
+	return render(request, 'landlord/manage_house.html', {'houses': house_r})
 
 def add_house_pic(request, id):
 	originalform = addimage_form()
-	house_pic = House_Picture.objects.all()
 	pic_list = []
-	for house_p in house_pic:
-		if house_p.house_id == id:
-			pic_list.append(house_p)
 
 	if request.method == 'POST':
 		form = addimage_form(request.POST,request.FILES)
@@ -82,7 +77,10 @@ def add_house_pic(request, id):
 				house_pic = House_Picture(house_id = id, photo = image)
 				house_pic.save()
 
-			return render(request, 'landlord/add_house_pic.html', {'form': originalform, 'pic_list': pic_list})
+	house_pic = House_Picture.objects.all()			
+	for house_p in house_pic:
+		if house_p.house_id == id:
+			pic_list.append(house_p)
 
 	return render(request, 'landlord/add_house_pic.html', {'form': originalform, 'pic_list': pic_list})
 
