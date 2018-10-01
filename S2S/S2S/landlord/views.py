@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from public.models import User, House, House_Picture
+from public.models import User, House, House_Picture, Lease_Period
 from public.forms import *
 from public.help import *
+
+import datetime
+import re
 
 # Create your views here.
 def index(request):
@@ -128,6 +131,11 @@ def edit_house(request, id):
 		return render(request, 'landlord/edit_house.html',{'form': originalform})
 
 def history(request):
+	sql = """select * from lease_period"""
+	lease_period = RunSQL(sql)
+	# end_time = end_time.split('/')
+	# print(end_time)
+	current_date = datetime.datetime.now().year*10000 +  datetime.datetime.now().month*100 +  datetime.datetime.now().day
 	return render(request, 'landlord/history.html')
 
 def add_comm(request):
