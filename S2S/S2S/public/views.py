@@ -263,6 +263,7 @@ def upload_photo(request):
 
 
 def book(request):
+	user_id = request.session['account']['id'] if 'account' in request.session else 0
 	if request.method == 'POST':
 		house_id = request.POST.get("house_id",None)
 		check_in = request.POST.get("check_in",None)
@@ -275,8 +276,8 @@ def book(request):
 			house_id = int(house_id)
 			check_in = check_in.split("/")
 			check_out = check_out.split("/")
-			new_check_in = check_in[0] + "-" + check_in[1] + "-" + check_in[2]
-			new_check_out = check_out[0] + "-" + check_out[1] + "-" + check_out[2]
+			new_check_in = check_in[2] + "-" + check_in[1] + "-" + check_in[0]
+			new_check_out = check_out[2] + "-" + check_out[1] + "-" + check_out[0]
 			check_in = int(check_in[2])*10000 + int(check_in[1])*100 + int(check_in[0])*1
 			check_out = int(check_out[2])*10000 + int(check_out[1])*100 + int(check_out[0])*1
 			current_date = datetime.datetime.now().year*10000 +  datetime.datetime.now().month*100 +  datetime.datetime.now().day
@@ -301,15 +302,28 @@ def book(request):
 				return render(request, 'public/blank.html', {'message':message})
 
 			# date check again
-			sql = """ select * from lease_period where house_id = """ + str(house_id) + """;""";
+			sql = """ select * from lease_period where house_id = """ + str(house_id) + """ and period_end > CURDATE();""";
 			records = RunSQL(sql)
+			available = 1;
 			for record in records:
 				start = record['period_start'].split("-")
+				new_start = int(start[2])*10000 + int(start[1])*100 + int(start[0])*1
+				end = record['period_end'].split("-")
+				new_end = int(end[2])*10000 + int(end[1])*100 + int(end[0])*1
+
+				if start > check_out or end < check_in:
+					continue
+				else:
+					available = 0
+			if(available == 0):
+				message = "House is not available during this period!"
+				return render(request, 'public/blank.html', {'message':message})
+			else:
+				book = Lease_Period(house_id = house_id, user_id = user_id, period_start = new_check_in, period_end = new_check_out)
+				book.save()
+				message = "Success!"
+				return render(request, 'public/blank.html', {'message':message})
 			
-
-			message = "Blank!"
-			return render(request, 'public/blank.html', {'message':message})
-
 		else:
 			message = "Bad Request!"
 			return render(request, 'public/blank.html', {'message':message})
@@ -317,4 +331,10 @@ def book(request):
 		message = "Bad Request!"
 		return render(request, 'public/blank.html', {'message':message})
 
+
+
+
+def other_profile(request, id):
+	user = User.objects.get(pk=id)
+	return render(request, 'public/other_profile.html', {'user':user})
 
