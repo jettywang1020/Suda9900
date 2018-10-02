@@ -11,5 +11,5 @@ urlpatterns = [
 	path('test/', views.test, name='test'),
 	path('help/', views.help, name='help'),
 	path('history/', views.history, name='history'),
-	path('add_comm/', views.add_comm,name='add_comm'),
+	path('add_comm/<int:id>', views.add_comm,name='add_comm'),
 ]

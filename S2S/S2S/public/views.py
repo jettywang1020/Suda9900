@@ -94,11 +94,11 @@ def search(request):
 		 or lower(profile) like lower('%""" + keyword + """%')"""
 		houses = RunSQL(sql)
 		for house in houses:
-			try:
-				picture = House_Picture.objects.get(house_id = house["id"])
-				house["picture"] = picture
-			except:
-				continue
+			picture = House_Picture.objects.all()
+			for pic in picture:
+				if pic.house_id == house["id"]:
+					house["picture"] = pic
+					break
 		return render(request, 'public/display.html', locals())
 
 def adv_search(request):
@@ -135,11 +135,11 @@ def adv_search(request):
 				houses = RunSQL(sql)
 				# 日期校验在这里
 				for house in houses:
-					try:
-						picture = House_Picture.objects.get(house_id = house["id"])
-						house["picture"] = picture
-					except:
-						continue
+					picture = House_Picture.objects.all()
+					for pic in picture:
+						if pic.house_id == house["id"]:
+							house["picture"] = pic
+							break
 				return render(request, 'public/display.html', locals())
 		return render(request, 'public/adv_search.html',{"form":originalform})
 	else:
@@ -202,11 +202,12 @@ def display(request):
 	houses = RunSQL(sql)
 	
 	for house in houses:
-		try:
-			picture = House_Picture.objects.get(house_id = house["id"])
-			house["picture"] = picture
-		except:
-			continue
+		picture = House_Picture.objects.all()
+		for pic in picture:
+			if pic.house_id == house["id"]:
+				house["picture"] = pic
+				break
+
 	return render(request, 'public/display.html', locals())
 
 def profile(request):

@@ -3,30 +3,32 @@
 {% block index %}
 
 <div class="container">
+	{% for house in lp_list %}
 	<div class="row">
 		<div class="col-sm">
 			<!-- <div style="padding-bottom: 100%;position: relative;"> -->
-				<img src="" alt="..." class="img-thumbnail">
+				<img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;">
 				<!-- <img src="" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
 				<!-- <img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
 		</div>
 		<div class="col-sm">
 			<div class="display-house-address">
-				address
+				{{house.address}}
 			</div>
 			<div class="display-house-name">
-				name
+				{{house.name}}
 			</div>
 		</div>
 		<div class="col-sm">
 			<div class="display-housr-date">
-				mm/dd/yyyy - mm/dd/yyyyy
+				{{house.period_start}} - {{house.period_end}}
 			</div>
 		</div>
 		<div class="col-sm">
-			<a href="{% url 'tenant:add_comm' %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Add Comment</a>
+			<a href="{% url 'tenant:add_comm' house.id %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Add Comment</a>
 		</div>
 	</div>
+	{% endfor %}
 </div>
 
 {% endblock %}

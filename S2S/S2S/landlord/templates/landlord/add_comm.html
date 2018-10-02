@@ -3,11 +3,13 @@
 {% block content %}
 <div class="form-group" style="margin-left: 20%; margin-right: 20%">
     <form method="post">
+        {% csrf_token %}
         <div class="form-group">
             <label style="font-size: 28px ;color:green">Give Star to the Tenant</label><br><br>
             <div class="form-group row">
                 <label class=" col-sm-3 col-form-label">Reputation</label>
-                <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Reputation" value="0">
+                {{ form.reputation }}
+                <!-- <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Reputation" value="0"> -->
                 <label class=" col-sm-3 col-form-label">Tidy</label>
                 <input class="col-sm-3" type="number" min="0" max="5" class="form-control" id="Location" value="0">
 

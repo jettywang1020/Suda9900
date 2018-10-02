@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from public.models import User, House, House_Picture
+from public.models import User, House, House_Picture, Lease_Period, User_Rate
 from public.forms import *
 from public.help import *
+
+import datetime
+import re
 
 # Create your views here.
 def index(request):
@@ -12,7 +15,7 @@ def index(request):
 
 ##### Landlord add house #####
 def add_house(request):
-	id = 1
+	id = request.session['account']['id'] if 'account' in request.session else 0
 	originalform = addhouse_form()
 	if request.method == 'POST':
 		form = addhouse_form(request.POST)
@@ -50,26 +53,21 @@ def add_house(request):
 def manage_house(request):
 	id = request.session['account']['id'] if 'account' in request.session else 0
 	sql = """select * from house"""
-	houses_ = RunSQL(sql)
-	houses = []
-	for h in houses_:
-		if h["user_id"] == id:
-			try:
-				picture = House_Picture.objects.get(house_id = h["id"])
-				h["picture"] = picture
-			except:
-				continue
-			houses.append(h)
-
-	return render(request, 'landlord/manage_house.html', {'houses': houses})
+	houses = RunSQL(sql)
+	house_r = []
+	for house in houses:
+		if house["user_id"] == id:
+			picture = House_Picture.objects.all()
+			for pic in picture:
+				if pic.house_id == house['id']:
+					house["picture"] = pic
+					break
+			house_r.append(house)
+	return render(request, 'landlord/manage_house.html', {'houses': house_r})
 
 def add_house_pic(request, id):
 	originalform = addimage_form()
-	house_pic = House_Picture.objects.all()
 	pic_list = []
-	for house_p in house_pic:
-		if house_p.house_id == id:
-			pic_list.append(house_p)
 
 	if request.method == 'POST':
 		form = addimage_form(request.POST,request.FILES)
@@ -79,7 +77,10 @@ def add_house_pic(request, id):
 				house_pic = House_Picture(house_id = id, photo = image)
 				house_pic.save()
 
-			return render(request, 'landlord/add_house_pic.html', {'form': originalform, 'pic_list': pic_list})
+	house_pic = House_Picture.objects.all()			
+	for house_p in house_pic:
+		if house_p.house_id == id:
+			pic_list.append(house_p)
 
 	return render(request, 'landlord/add_house_pic.html', {'form': originalform, 'pic_list': pic_list})
 
@@ -128,7 +129,63 @@ def edit_house(request, id):
 		return render(request, 'landlord/edit_house.html',{'form': originalform})
 
 def history(request):
-	return render(request, 'landlord/history.html')
+	sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
+	lease_period = RunSQL(sql)
+	list_info = []
+	for lp in lease_period:
+		# sql = """SELECT * FROM user;"""
+		# users = RunSQL(sql)
+		# for user in users:
+		# 	if user['id'] == lp['user_id']:
+		# 		user["period_start"] = lp["period_start"]
+		# 		user["period_end"] = lp["period_end"]
+		# 		list_info.append(user)
+		user = User.objects.get(pk=lp['user_id'])
+		user_r = User_Rate.objects.all()
+		user_rate = 0
+		num = 0
+		for u in user_r:
+			if u.user2_id == lp['user_id']:
+				user_rate += u.reputation
+				num += 1
+		user_rate = round(float(user_rate)/num)
 
-def add_comm(request):
-	return render(request, 'landlord/add_comm.html')
+		list_info.append({"id":lp['user_id'],"rate":user_rate,"photo":user.photo,"name":user.username,"period_start":lp['period_start'],"period_end":lp['period_end']})
+
+	return render(request, 'landlord/history.html', {'lp_list':list_info})
+
+def add_comm(request, id):
+	landlord_id = request.session['account']['id'] if 'account' in request.session else 0
+	user_id = id
+	originalform = tcomment_form()
+	if request.method == 'POST':
+		form = tcomment_form(request.POST)
+		if form.is_valid():
+			reputation = form.cleaned_data.get("reputation")
+			user_rate = User_Rate.objects.all()
+			for user_r in user_rate:
+				if user_r.user1_id == landlord_id and user_r.user2_id == user_id:
+					print('already added')
+					break
+			else:
+				user_rate = User_Rate(user1_id = landlord_id, user2_id = user_id, reputation = reputation)
+				user_rate.save()
+
+			sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
+			lease_period = RunSQL(sql)
+			list_info = []
+			for lp in lease_period:
+				user = User.objects.get(pk=lp['user_id'])
+				user_r = User_Rate.objects.all()
+				user_rate = 0
+				num = 0
+				for u in user_r:
+					if u.user2_id == lp['user_id']:
+						user_rate += u.reputation
+						num += 1
+				user_rate = round(float(user_rate)/num)
+				list_info.append({"id":lp['user_id'],"rate":user_rate,"photo":user.photo,"name":user.username,"period_start":lp['period_start'],"period_end":lp['period_end']})
+
+			return render(request, 'landlord/history.html', {'lp_list':list_info})	
+
+	return render(request, 'landlord/add_comm.html', {'form': originalform})
