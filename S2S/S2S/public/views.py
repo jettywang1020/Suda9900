@@ -197,7 +197,7 @@ def view_detail(request, id):
 				if u.id == user_id:
 					photo = u.photo
 					c_name = u.username
-			house_comment_.append({'comment':comment, 'comment_date':comment_date, 'photo':photo, 'comment_user':c_name})
+			house_comment_.append({'user_id':user_id, 'comment':comment, 'comment_date':comment_date, 'photo':photo, 'comment_user':c_name})
 	
 	context = {'house_id':house.id,'house_name':house.name,'house_postcode':house.postcode,'house_address':house.address,'guests_num':house.max_guests
 				,'bedrooms_num':house.no_of_bedrooms,'beds_num':house.no_of_beds,'baths_num':house.no_of_baths,'house_parking':house.no_of_parking
@@ -336,5 +336,13 @@ def book(request):
 
 def other_profile(request, id):
 	user = User.objects.get(pk=id)
-	return render(request, 'public/other_profile.html', {'user':user})
+	user_rate = User_Rate.objects.all()
+	user_r = 0
+	num = 0
+	for ur in user_rate:
+		if ur.user2_id == id:
+			user_r += ur.reputation
+			num += 1
+	user_r = round(float(user_r)/num)
+	return render(request, 'public/other_profile.html', {'user':user, 'user_rate':user_r})
 

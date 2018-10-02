@@ -324,7 +324,7 @@ min-height: 200px;max-width: 850px;min-width: 840px" name="img-area">
             {% for comment in house_comment %}
             <div class="form-group row">
                 <div id="icon">
-                    <img src="{{ comment.photo.url }}" height="49" width="65" class="img-rounded"/>
+                    <a href="{% url 'public:other_profile' comment.user_id %}"><img src="{{ comment.photo.url }}" height="49" width="65" class="img-rounded"/></a>
                 </div>
                 <div>
                     <label>{{ comment.comment_user }}</label><br>

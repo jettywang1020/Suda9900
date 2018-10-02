@@ -32,8 +32,40 @@
         <div class="col-6 col-form-label">
             <label>Male</label>
         </div>
-        {% endif %}
+        {% endif %}           
     </div>
+    <div class="form-group row" style="margin: auto">
+         <div class="col-sm-4 col-form-label">
+            <label>Reputation</label>
+        </div>
+        <div class="col-6 col-form-label">
+                   {% if user.rate == 0 %}
+        <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+        {% endif %}
+        {% if user_rate == 1 %}
+        <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+        {% endif %}
+        {% if user_rate == 2 %}
+        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+        {% endif %}
+        {% if user_rate == 3 %}
+        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+        {% endif %}
+        {% if user_rate == 4 %}
+        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+        {% endif %}
+        {% if user_rate == 5 %}
+        <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+        {% endif %} 
+
+        </div>
+    </div>
+
+
+
+
+
+
     <div class="form-group row" style="margin: auto">
          <div class="col-sm-4 col-form-label">
             <label>Profile</label>
