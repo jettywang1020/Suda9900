@@ -8,6 +8,7 @@ import re
 from public.models import *
 from public.forms import *
 from public.help import *
+from public.KNN import knn_model
 
 ##### login page #####
 def login(request):
@@ -211,17 +212,51 @@ def view_detail(request, id):
 
 
 def display(request):
+	id = request.session['account']['id'] if 'account' in request.session else 0
+	
+	result_ = 0
+	relate = []
 	sql = """select * from house"""
 	houses = RunSQL(sql)
-	
+	house_tag_list = {}
+	sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
+	lease_period = RunSQL(sql)
+	list_info = [0 for _ in range(len(Tag.objects.all()))]
+	for lp in lease_period:
+		if lp['user_id'] == id:
+			house_tag = House_Tag.objects.all()
+			for h in house_tag:
+				if h.house_id == lp['house_id']:
+					list_info[h.tag_id - 1] += 1
+	for i in range(len(list_info)):
+		list_info[i] = list_info[i]/sum(list_info)
+
+	result = knn_model([list_info])
+	sql = """select * from house_tag"""
+	house_relate = RunSQL(sql)
+	for i in house_relate:
+		house_tag_list[i['house_id']] = 0
+	for i in house_relate:
+		house_tag_list[i['house_id']] = house_tag_list[i['house_id']]*10 + i['tag_id']
+
+	for i in range(len(result)):
+		if result[i] == 1:
+			result_ = result_*10+(i+1)
+	for house in houses:
+		try:
+			if house_tag_list[house['id']] == result_:
+
+				relate.append(house)
+		except:
+			continue
+
 	for house in houses:
 		picture = House_Picture.objects.all()
 		for pic in picture:
 			if pic.house_id == house["id"]:
 				house["picture"] = pic
 				break
-
-	return render(request, 'public/display.html', locals())
+	return render(request, 'public/display.html', {'houses':houses,'r_houses':relate})
 
 def profile(request):
 	id = request.session['account']['id'] if 'account' in request.session else 0
