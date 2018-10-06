@@ -212,12 +212,20 @@ def view_detail(request, id):
 
 
 def display(request):
-	id = request.session['account']['id'] if 'account' in request.session else 0
-	
-	result_ = 0
-	relate = []
 	sql = """select * from house"""
 	houses = RunSQL(sql)
+	relate = []
+	try:
+		id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		for house in houses:
+			picture = House_Picture.objects.all()
+			for pic in picture:
+				if pic.house_id == house["id"]:
+					house["picture"] = pic
+					break
+		return render(request, 'public/display.html', {'houses':houses,'r_houses':relate})
+	result_ = 0
 	house_tag_list = {}
 	sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
 	lease_period = RunSQL(sql)
