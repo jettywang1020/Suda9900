@@ -149,6 +149,8 @@ def adv_search(request):
 def view_detail(request, id):
 	house_feature_r = [0 for _ in range(12)]
 	reviews = 0
+	pic_1 = None
+	pic_list = []
 	house_feature = {'accuracy':0,'location':0,'communication':0,'check_in':0,'cleanliness':0,'value':0}
 	house = House.objects.get(pk=id)
 	house_rate = House_Rate.objects.all()
@@ -199,7 +201,16 @@ def view_detail(request, id):
 					photo = u.photo
 					c_name = u.username
 			house_comment_.append({'user_id':user_id, 'comment':comment, 'comment_date':comment_date, 'photo':photo, 'comment_user':c_name})
-	
+
+	house_pic = House_Picture.objects.all()	
+	num = 1		
+	for house_p in house_pic:
+		if num == 1 and house_p.house_id == id:
+			pic_1 = house_p
+			num += 1
+		elif house_p.house_id == id:
+			pic_list.append(house_p)
+			num += 1
 	context = {'house_id':house.id,'house_name':house.name,'house_postcode':house.postcode,'house_address':house.address,'guests_num':house.max_guests
 				,'bedrooms_num':house.no_of_bedrooms,'beds_num':house.no_of_beds,'baths_num':house.no_of_baths,'house_parking':house.no_of_parking
 				,'house_profile':house.profile,'house_price':house.price,'house_rule':house.house_rule,'house_cancellation':house.cancellation
@@ -207,7 +218,7 @@ def view_detail(request, id):
 				,'house_fridge':house.fridge,'house_conditioner':house.conditioner,'house_wifi':house.wifi,'house_studyroom':house.study_room
 				,'house_pool':house.pool,'house_accuracy':house_feature['accuracy'],'house_location':house_feature['location']
 				,'house_communication':house_feature['communication'],'house_checkin':house_feature['check_in'],'house_cleanliness':house_feature['cleanliness']
-				,'house_value':house_feature['value'],'house_reviews':reviews, 'house_comment':house_comment_}
+				,'house_value':house_feature['value'],'house_reviews':reviews, 'house_comment':house_comment_, 'house_pic':pic_list, 'pic_1':pic_1}
 	return render(request, 'public/view_detail.html', context)
 
 
@@ -217,6 +228,7 @@ def display(request):
 	relate = []
 	try:
 		id = request.session['account']['id'] if 'account' in request.session else 0
+
 	except:
 		for house in houses:
 			picture = House_Picture.objects.all()
@@ -227,7 +239,8 @@ def display(request):
 		return render(request, 'public/display.html', {'houses':houses,'r_houses':relate})
 	result_ = 0
 	house_tag_list = {}
-	sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
+	# sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
+	sql = """SELECT * FROM lease_period """
 	lease_period = RunSQL(sql)
 	list_info = [0 for _ in range(len(Tag.objects.all()))]
 	for lp in lease_period:
@@ -236,35 +249,44 @@ def display(request):
 			for h in house_tag:
 				if h.house_id == lp['house_id']:
 					list_info[h.tag_id - 1] += 1
-	for i in range(len(list_info)):
-		list_info[i] = list_info[i]/sum(list_info)
+	if sum(list_info) == 0:
+		for house in houses:
+			picture = House_Picture.objects.all()
+			for pic in picture:
+				if pic.house_id == house["id"]:
+					house["picture"] = pic
+					break
+		return render(request, 'public/display.html', {'houses':houses,'r_houses':relate})
+	else:
+		for i in range(len(list_info)):
+			list_info[i] = list_info[i]/sum(list_info)
 
-	result = knn_model([list_info])
-	sql = """select * from house_tag"""
-	house_relate = RunSQL(sql)
-	for i in house_relate:
-		house_tag_list[i['house_id']] = 0
-	for i in house_relate:
-		house_tag_list[i['house_id']] = house_tag_list[i['house_id']]*10 + i['tag_id']
+		result = knn_model([list_info])
+		sql = """select * from house_tag"""
+		house_relate = RunSQL(sql)
+		for i in house_relate:
+			house_tag_list[i['house_id']] = 0
+		for i in house_relate:
+			house_tag_list[i['house_id']] = house_tag_list[i['house_id']]*10 + i['tag_id']
 
-	for i in range(len(result)):
-		if result[i] == 1:
-			result_ = result_*10+(i+1)
-	for house in houses:
-		try:
-			if house_tag_list[house['id']] == result_:
+		for i in range(len(result)):
+			if result[i] == 1:
+				result_ = result_*10+(i+1)
+		for house in houses:
+			try:
+				if house_tag_list[house['id']] == result_:
 
-				relate.append(house)
-		except:
-			continue
+					relate.append(house)
+			except:
+				continue
 
-	for house in houses:
-		picture = House_Picture.objects.all()
-		for pic in picture:
-			if pic.house_id == house["id"]:
-				house["picture"] = pic
-				break
-	return render(request, 'public/display.html', {'houses':houses,'r_houses':relate})
+		for house in houses:
+			picture = House_Picture.objects.all()
+			for pic in picture:
+				if pic.house_id == house["id"]:
+					house["picture"] = pic
+					break
+		return render(request, 'public/display.html', {'houses':houses,'r_houses':relate})
 
 def profile(request):
 	id = request.session['account']['id'] if 'account' in request.session else 0
