@@ -349,12 +349,12 @@ def book(request):
 			records = RunSQL(sql)
 			available = 1;
 			for record in records:
-				start = record['period_start'].split("-")
-				new_start = int(start[2])*10000 + int(start[1])*100 + int(start[0])*1
-				end = record['period_end'].split("-")
-				new_end = int(end[2])*10000 + int(end[1])*100 + int(end[0])*1
+				start = record['period_start']
+				new_start = start.year*10000 + start.month*100 + start.day*1
+				end = record['period_end']
+				new_end = end.year*10000 + end.month*100 + end.day*1
 
-				if start > check_out or end < check_in:
+				if new_start > check_out or new_end < check_in:
 					continue
 				else:
 					available = 0
