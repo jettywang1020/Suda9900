@@ -64,5 +64,19 @@ Doing the demo and decide what to do next two weeks and set tasks in trello, com
 Teammembers to make sure we are in a right track.
 
 
+Week 9
+
+Finish all the front-end task to make sure every page from our proposal is done, try to 
+Improve some page.
+
+week 10
+Do the demo, after break
+Preparing for the week12 demo
+
+week 11
+
+Following the advice of the tutor, adding three pages(house for tenant to view, post the house, house detail review).
+
+
 
 
