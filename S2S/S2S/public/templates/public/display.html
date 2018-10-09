@@ -41,7 +41,38 @@
 		</div>
 		{% endfor %}
 	</div>
-
+	{% if r_houses %}
+	<hr>
+	<div style="font-weight: 800;line-height: 30px;padding:2px 0px;">
+			You may like to choose
+		</div>
+	<div class="col-sm-13 row">
+		{% for relate in r_houses %}
+		<div class="col-sm-3">
+			<a href="{% url 'public:view_detail' relate.id %}">
+				<div style="padding-bottom: 100%;position: relative;">
+					<img src="{{ relate.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;">
+				</div>
+				<div>
+					<div class="display-house-address">
+						{{ relate.address }}
+					</div>
+					<div class="display-house-name">
+						{{ relate.name }}
+					</div>
+					<div class="display-house-price">
+						${{ relate.price }} per night
+					</div>
+					<div class="display-house-star-and-number">
+						<span>stars</span>
+						<span>number</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
 </div>
 
 {% endblock %}

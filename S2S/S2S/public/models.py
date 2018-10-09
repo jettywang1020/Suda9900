@@ -87,7 +87,7 @@ class Tag(models.Model):
 	tag = models.CharField(max_length=64, null=False)
 
 	def __str__(self):
-		return self.tag
+		return str(self.tag)
 
 	class Meta:
 		db_table = "tag"

@@ -4,6 +4,7 @@
 
 <div class="container">
 	{% for user in lp_list %}
+	<hr>
 	<div class="row">
 		<div class="col-sm">
 			<!-- <div style="padding-bottom: 100%;position: relative;"> -->
@@ -43,7 +44,8 @@
 			<a href="{% url 'landlord:add_comm' user.id %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Add Comment</a>
 		</div>
 	</div>
+	<br>
 	{% endfor %}
 </div>
-
+<hr>
 {% endblock %}

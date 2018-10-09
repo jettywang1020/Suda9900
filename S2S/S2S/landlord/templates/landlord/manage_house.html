@@ -4,13 +4,15 @@
 
 <div class="container">
 	{% for house in houses %}
-	<div class="row">
-		<div class="col-sm-3">
+	<hr>
+	<div class="row" >
+		<div class="col-sm-3" >
 			<!-- <div style="padding-bottom: 100%;position: relative;"> -->
 				<img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;">
 				<!-- <img src="" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
 				<!-- <img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
 		</div>
+
 		<div class="col-sm-4">
 			<div class="display-house-address">
 				{{house.address}}
@@ -34,7 +36,8 @@
 			</span>
 		</div>
 	</div>
+	<br>
 	{% endfor %}
 </div>
-
+<hr>
 {% endblock %}

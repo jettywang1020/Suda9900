@@ -8,6 +8,7 @@ import re
 from public.models import *
 from public.forms import *
 from public.help import *
+from public.KNN import knn_model
 
 ##### login page #####
 def login(request):
@@ -185,6 +186,19 @@ def view_detail(request, id):
 			house_feature['value'] = round(house_feature_r[10]/house_feature_r[11])
 			reviews += house_feature['value']
 		reviews = round(reviews/6)
+	house_comment = House_Comment.objects.all()
+	house_comment_ = []
+	for temp in house_comment:
+		if temp.house_id == id:
+			comment = temp.comment
+			comment_date = temp.time_stamp
+			user_id = temp.user_id
+			user = User.objects.all()
+			for u in user:
+				if u.id == user_id:
+					photo = u.photo
+					c_name = u.username
+			house_comment_.append({'user_id':user_id, 'comment':comment, 'comment_date':comment_date, 'photo':photo, 'comment_user':c_name})
 	
 	context = {'house_id':house.id,'house_name':house.name,'house_postcode':house.postcode,'house_address':house.address,'guests_num':house.max_guests
 				,'bedrooms_num':house.no_of_bedrooms,'beds_num':house.no_of_beds,'baths_num':house.no_of_baths,'house_parking':house.no_of_parking
@@ -193,22 +207,64 @@ def view_detail(request, id):
 				,'house_fridge':house.fridge,'house_conditioner':house.conditioner,'house_wifi':house.wifi,'house_studyroom':house.study_room
 				,'house_pool':house.pool,'house_accuracy':house_feature['accuracy'],'house_location':house_feature['location']
 				,'house_communication':house_feature['communication'],'house_checkin':house_feature['check_in'],'house_cleanliness':house_feature['cleanliness']
-				,'house_value':house_feature['value'],'house_reviews':reviews}
+				,'house_value':house_feature['value'],'house_reviews':reviews, 'house_comment':house_comment_}
 	return render(request, 'public/view_detail.html', context)
 
 
 def display(request):
 	sql = """select * from house"""
 	houses = RunSQL(sql)
-	
+	relate = []
+	try:
+		id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		for house in houses:
+			picture = House_Picture.objects.all()
+			for pic in picture:
+				if pic.house_id == house["id"]:
+					house["picture"] = pic
+					break
+		return render(request, 'public/display.html', {'houses':houses,'r_houses':relate})
+	result_ = 0
+	house_tag_list = {}
+	sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
+	lease_period = RunSQL(sql)
+	list_info = [0 for _ in range(len(Tag.objects.all()))]
+	for lp in lease_period:
+		if lp['user_id'] == id:
+			house_tag = House_Tag.objects.all()
+			for h in house_tag:
+				if h.house_id == lp['house_id']:
+					list_info[h.tag_id - 1] += 1
+	for i in range(len(list_info)):
+		list_info[i] = list_info[i]/sum(list_info)
+
+	result = knn_model([list_info])
+	sql = """select * from house_tag"""
+	house_relate = RunSQL(sql)
+	for i in house_relate:
+		house_tag_list[i['house_id']] = 0
+	for i in house_relate:
+		house_tag_list[i['house_id']] = house_tag_list[i['house_id']]*10 + i['tag_id']
+
+	for i in range(len(result)):
+		if result[i] == 1:
+			result_ = result_*10+(i+1)
+	for house in houses:
+		try:
+			if house_tag_list[house['id']] == result_:
+
+				relate.append(house)
+		except:
+			continue
+
 	for house in houses:
 		picture = House_Picture.objects.all()
 		for pic in picture:
 			if pic.house_id == house["id"]:
 				house["picture"] = pic
 				break
-
-	return render(request, 'public/display.html', locals())
+	return render(request, 'public/display.html', {'houses':houses,'r_houses':relate})
 
 def profile(request):
 	id = request.session['account']['id'] if 'account' in request.session else 0
@@ -323,5 +379,13 @@ def book(request):
 
 def other_profile(request, id):
 	user = User.objects.get(pk=id)
-	return render(request, 'public/other_profile.html', {'user':user})
+	user_rate = User_Rate.objects.all()
+	user_r = 0
+	num = 0
+	for ur in user_rate:
+		if ur.user2_id == id:
+			user_r += ur.reputation
+			num += 1
+	user_r = round(float(user_r)/num)
+	return render(request, 'public/other_profile.html', {'user':user, 'user_rate':user_r})
 

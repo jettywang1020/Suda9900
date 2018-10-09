@@ -319,22 +319,21 @@ min-height: 200px;max-width: 850px;min-width: 840px" name="img-area">
                     {% endif %}
                 </div>
             </div><br>
-        <div style="padding-left:10%;padding-right: 10%;" id="comment_area">
-            <div id=" header comment" class="form-group row">
+            
+        <div style="padding-left:10%;padding-right: 10%;" id="comment_area"><hr>
+            {% for comment in house_comment %}
+            <div class="form-group row">
                 <div id="icon">
-                    <img src="../../../static/image/h1u.jpg" height="49" width="65" class="img-rounded"/>
+                    <a href="{% url 'public:other_profile' comment.user_id %}"><img src="{{ comment.photo.url }}" height="49" width="65" class="img-rounded"/></a>
                 </div>
                 <div>
-                    <label>Koey</label><br>
-                    <label>September 2018</label>
+                    <label>{{ comment.comment_user }}</label><br>
+                    <label>{{ comment.comment_date }}</label>
                 </div>
             </div>
 
-            <p>Paul & Raymond's place is an adorable hidden gem in Sydney!
-                Being close to the station made traveling in and out of the CBD very convenient.
-                The space was comfy and stylish. Amenities were readily available and high quality.
-                It felt like home to me. We really enjoy our stay there. Thank you Paul and Raymond.</p><hr>
-            <div i class="form-group row">
+            <p>{{ comment.comment }}</p><hr>
+            <!-- <div i class="form-group row">
                 <div>
                     <img src="../../../static/image/h2.jpg" height="49" width="55" class="img-rounded"/>
                 </div>
@@ -347,8 +346,10 @@ min-height: 200px;max-width: 850px;min-width: 840px" name="img-area">
             <p>
                 The house was awesome with nice location. Paul kindly replied for everything that i asked him.
                 we enjoyed staying there and definitely will visit there again if I have chance.
-            </p><hr>
+            </p><hr> -->
+            {% endfor %}
         </div>
+
     </div>
 
 
@@ -365,11 +366,11 @@ min-height: 200px;max-width: 850px;min-width: 840px" name="img-area">
                         <div class="form-row">
                             <div class="form-group col-sm-6">
                                 <label for="check_in">CHECK IN</label>
-                                <input type="text" class="form-control" id="check_in" name="check_in" data-date-format="dd/mm/yyyy" data-provide="datepicker" placeholder="dd/mm/yyyy" required>
+                                <input type="text" class="form-control" id="check_in" name="check_in" data-provide="datepicker" placeholder="dd/mm/yyyy" required>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="check_out">CHECK OUT</label>
-                                <input type="text" class="form-control" id="check_out" name="check_out" data-date-format="dd/mm/yyyy" data-provide="datepicker" placeholder="dd/mm/yyyy" required>
+                                <input type="text" class="form-control" id="check_out" name="check_out" data-provide="datepicker" placeholder="dd/mm/yyyy" required>
                             </div>
                         </div>
                         <div class="form-group">
