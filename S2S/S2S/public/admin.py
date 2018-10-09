@@ -32,7 +32,44 @@ class HouseRateAdmin(admin.ModelAdmin):
 	search_fields = ['house_id']
 	list_per_page = 10
 
+class LeasePeriodAdmin(admin.ModelAdmin):
+	list_display = ['id','user_id','house_id','period_start','period_end']
+	list_filter = ['user_id']
+	search_fields = ['user_id']
+	list_per_page = 10
+
+class HouseCommentAdmin(admin.ModelAdmin):
+	list_display = ['id','user_id','house_id']
+	list_filter = ['user_id']
+	search_fields = ['user_id']
+	list_per_page = 10
+
+class HouseTagAdmin(admin.ModelAdmin):
+	list_display = ['id','house_id','tag_id']
+	list_filter = ['house_id']
+	search_fields = ['house_id']
+	list_per_page = 10
+
+class TagAdmin(admin.ModelAdmin):
+	list_display = ['id','tag']
+	list_filter = ['tag']
+	search_fields = ['tag']
+	list_per_page = 10
+
+class UserTagAdmin(admin.ModelAdmin):
+	list_display = ['id','user_id','tag_id']
+	list_filter = ['user_id']
+	search_fields = ['user_id']
+	list_per_page = 10
+
 admin.site.register(User,UserAdmin)
 admin.site.register(House,HouseAdmin)
 admin.site.register(House_Picture,HousePicAdmin)
 admin.site.register(House_Rate,HouseRateAdmin)
+admin.site.register(Lease_Period,LeasePeriodAdmin)
+admin.site.register(House_Comment,HouseCommentAdmin)
+admin.site.register(House_Tag,HouseTagAdmin)
+admin.site.register(Tag,TagAdmin)
+admin.site.register(User_Tag,UserTagAdmin)
+
+

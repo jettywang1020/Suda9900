@@ -3,36 +3,41 @@
 {% block index %}
 
 <div class="container">
-	<div class="row">
-		<div class="col-sm-3">
+	{% for house in houses %}
+	<hr>
+	<div class="row" >
+		<div class="col-sm-3" >
 			<!-- <div style="padding-bottom: 100%;position: relative;"> -->
-				<img src="" alt="..." class="img-thumbnail">
+				<img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;">
 				<!-- <img src="" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
 				<!-- <img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
 		</div>
+
 		<div class="col-sm-4">
 			<div class="display-house-address">
-				address
+				{{house.address}}
 			</div>
 			<div class="display-house-name">
-				name
+				{{house.name}}
 			</div>
 			<div class="display-house-price">
-				aaa per night
+				{{house.price}} per night
 			</div>
 		</div>
 		<div class="col-sm-5">
 			<span>
-				<a href="{% url 'landlord:add_house' %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Edit House</a>
+				<a href="{% url 'landlord:edit_house' house.id %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Edit House</a>
 			</span>
 			<span>
-				<a href="{% url 'landlord:add_house_pic' %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Edit Pics</a>
+				<a href="{% url 'landlord:add_house_pic' house.id %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Edit Pics</a>
 			</span>
 			<span>
 				<a href="{% url 'landlord:history' %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">History</a>
 			</span>
 		</div>
 	</div>
+	<br>
+	{% endfor %}
 </div>
-
+<hr>
 {% endblock %}

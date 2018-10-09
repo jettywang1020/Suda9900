@@ -63,20 +63,21 @@ class House_Picture(models.Model):
 	photo = models.ImageField(upload_to='house', null=False)
 	#is_cover = models.BooleanField(default=False)
 
-	# def __str__(self):
-	#  	return self.house_id
+	def __str__(self):
+	 	return str(self.house_id)
 
 	class Meta:
 		db_table = "house_picture"
 
 class Lease_Period(models.Model):
 	time_stamp = models.DateTimeField(auto_now_add=True)
+	user_id = models.IntegerField(null=False)
 	house_id = models.IntegerField(null=False)
 	period_start = models.DateField(null=False)
 	period_end = models.DateField(null=False)
 
 	def __str__(self):
-		return self.house_id
+		return str(self.house_id)
 
 	class Meta:
 		db_table = "lease_period"
@@ -86,7 +87,7 @@ class Tag(models.Model):
 	tag = models.CharField(max_length=64, null=False)
 
 	def __str__(self):
-		return self.tag
+		return str(self.tag)
 
 	class Meta:
 		db_table = "tag"
@@ -97,7 +98,7 @@ class User_Tag(models.Model):
 	tag_id = models.IntegerField(null=False)
 
 	def __str__(self):
-		return self.tenant_id
+		return str(self.tenant_id)
 
 	class Meta:
 		db_table = "tenant_tag"
@@ -108,7 +109,7 @@ class House_Tag(models.Model):
 	tag_id = models.IntegerField(null=False)
 
 	def __str__(self):
-		return self.house_id
+		return str(self.house_id)
 
 	class Meta:
 		db_table = "house_tag"
@@ -121,7 +122,7 @@ class User_Rate(models.Model):
 	reputation = models.IntegerField(null=False)
 
 	def __str__(self):
-		return self.tenant_id
+		return str(self.tenant_id)
 
 	class Meta:
 		db_table = "tenant_rate"
@@ -137,8 +138,8 @@ class House_Rate(models.Model):
 	check_in = models.IntegerField(null=False)
 	value = models.IntegerField(null=False)
 
-	# def __str__(self):
-	# 	return self.house_id
+	def __str__(self):
+		return str(self.house_id)
 
 	class Meta:
 		db_table = "house_rate"
@@ -150,7 +151,7 @@ class House_Comment(models.Model):
 	comment = models.TextField(null=False, blank=False)
 
 	def __str__(self):
-		return self.house_id
+		return str(self.house_id)
 
 	class Meta:
 		db_table = "house_comment"

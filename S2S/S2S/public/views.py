@@ -8,6 +8,7 @@ import re
 from public.models import *
 from public.forms import *
 from public.help import *
+from public.KNN import knn_model
 
 ##### login page #####
 def login(request):
@@ -35,7 +36,7 @@ def login(request):
 ##### logout #####
 def logout(request):
 	try:
-		del request.session['account']
+		request.session['account'] = None
 	except:
 		pass
 	return redirect('public:login')
@@ -94,11 +95,11 @@ def search(request):
 		 or lower(profile) like lower('%""" + keyword + """%')"""
 		houses = RunSQL(sql)
 		for house in houses:
-			try:
-				picture = House_Picture.objects.get(house_id = house["id"])
-				house["picture"] = picture
-			except:
-				continue
+			picture = House_Picture.objects.all()
+			for pic in picture:
+				if pic.house_id == house["id"]:
+					house["picture"] = pic
+					break
 		return render(request, 'public/display.html', locals())
 
 def adv_search(request):
@@ -135,11 +136,11 @@ def adv_search(request):
 				houses = RunSQL(sql)
 				# 日期校验在这里
 				for house in houses:
-					try:
-						picture = House_Picture.objects.get(house_id = house["id"])
-						house["picture"] = picture
-					except:
-						continue
+					picture = House_Picture.objects.all()
+					for pic in picture:
+						if pic.house_id == house["id"]:
+							house["picture"] = pic
+							break
 				return render(request, 'public/display.html', locals())
 		return render(request, 'public/adv_search.html',{"form":originalform})
 	else:
@@ -148,6 +149,8 @@ def adv_search(request):
 def view_detail(request, id):
 	house_feature_r = [0 for _ in range(12)]
 	reviews = 0
+	pic_1 = None
+	pic_list = []
 	house_feature = {'accuracy':0,'location':0,'communication':0,'check_in':0,'cleanliness':0,'value':0}
 	house = House.objects.get(pk=id)
 	house_rate = House_Rate.objects.all()
@@ -185,29 +188,105 @@ def view_detail(request, id):
 			house_feature['value'] = round(house_feature_r[10]/house_feature_r[11])
 			reviews += house_feature['value']
 		reviews = round(reviews/6)
-	
-	context = {'house_name':house.name,'house_postcode':house.postcode,'house_address':house.address,'guests_num':house.max_guests
+	house_comment = House_Comment.objects.all()
+	house_comment_ = []
+	for temp in house_comment:
+		if temp.house_id == id:
+			comment = temp.comment
+			comment_date = temp.time_stamp
+			user_id = temp.user_id
+			user = User.objects.all()
+			for u in user:
+				if u.id == user_id:
+					photo = u.photo
+					c_name = u.username
+			house_comment_.append({'user_id':user_id, 'comment':comment, 'comment_date':comment_date, 'photo':photo, 'comment_user':c_name})
+
+	house_pic = House_Picture.objects.all()	
+	num = 1		
+	for house_p in house_pic:
+		if num == 1 and house_p.house_id == id:
+			pic_1 = house_p
+			num += 1
+		elif house_p.house_id == id:
+			pic_list.append(house_p)
+			num += 1
+	context = {'house_id':house.id,'house_name':house.name,'house_postcode':house.postcode,'house_address':house.address,'guests_num':house.max_guests
 				,'bedrooms_num':house.no_of_bedrooms,'beds_num':house.no_of_beds,'baths_num':house.no_of_baths,'house_parking':house.no_of_parking
 				,'house_profile':house.profile,'house_price':house.price,'house_rule':house.house_rule,'house_cancellation':house.cancellation
 				,'house_extra':house.extra,'house_tv':house.tv,'house_kitchen':house.kitchen,'house_washer':house.washer
 				,'house_fridge':house.fridge,'house_conditioner':house.conditioner,'house_wifi':house.wifi,'house_studyroom':house.study_room
 				,'house_pool':house.pool,'house_accuracy':house_feature['accuracy'],'house_location':house_feature['location']
 				,'house_communication':house_feature['communication'],'house_checkin':house_feature['check_in'],'house_cleanliness':house_feature['cleanliness']
-				,'house_value':house_feature['value'],'house_reviews':reviews}
+				,'house_value':house_feature['value'],'house_reviews':reviews, 'house_comment':house_comment_, 'house_pic':pic_list, 'pic_1':pic_1}
 	return render(request, 'public/view_detail.html', context)
 
 
 def display(request):
 	sql = """select * from house"""
 	houses = RunSQL(sql)
-	
-	for house in houses:
-		try:
-			picture = House_Picture.objects.get(house_id = house["id"])
-			house["picture"] = picture
-		except:
-			continue
-	return render(request, 'public/display.html', locals())
+	relate = []
+	try:
+		id = request.session['account']['id'] if 'account' in request.session else 0
+
+	except:
+		for house in houses:
+			picture = House_Picture.objects.all()
+			for pic in picture:
+				if pic.house_id == house["id"]:
+					house["picture"] = pic
+					break
+		return render(request, 'public/display.html', {'houses':houses,'r_houses':relate})
+	result_ = 0
+	house_tag_list = {}
+	# sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
+	sql = """SELECT * FROM lease_period """
+	lease_period = RunSQL(sql)
+	list_info = [0 for _ in range(len(Tag.objects.all()))]
+	for lp in lease_period:
+		if lp['user_id'] == id:
+			house_tag = House_Tag.objects.all()
+			for h in house_tag:
+				if h.house_id == lp['house_id']:
+					list_info[h.tag_id - 1] += 1
+	if sum(list_info) == 0:
+		for house in houses:
+			picture = House_Picture.objects.all()
+			for pic in picture:
+				if pic.house_id == house["id"]:
+					house["picture"] = pic
+					break
+		return render(request, 'public/display.html', {'houses':houses,'r_houses':relate})
+	else:
+		for i in range(len(list_info)):
+			list_info[i] = list_info[i]/sum(list_info)
+
+		result = knn_model([list_info])
+		sql = """select * from house_tag"""
+		house_relate = RunSQL(sql)
+		for i in house_relate:
+			house_tag_list[i['house_id']] = 0
+		for i in house_relate:
+			house_tag_list[i['house_id']] = house_tag_list[i['house_id']]*10 + i['tag_id']
+
+		for i in range(len(result)):
+			if result[i] == 1:
+				result_ = result_*10+(i+1)
+		for house in houses:
+			try:
+				if house_tag_list[house['id']] == result_:
+
+					relate.append(house)
+			except:
+				continue
+
+		for house in houses:
+			picture = House_Picture.objects.all()
+			for pic in picture:
+				if pic.house_id == house["id"]:
+					house["picture"] = pic
+					break
+		return render(request, 'public/display.html', {'houses':houses,'r_houses':relate})
 
 def profile(request):
 	id = request.session['account']['id'] if 'account' in request.session else 0
@@ -228,7 +307,7 @@ def profile(request):
 			user.phone = form.cleaned_data.get("phone")
 			user.profile = form.cleaned_data.get("profile")
 			user.save(update_fields = ["username","first_name","last_name","email","gender","dob","phone","profile"])
-			request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email}
+			request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email, 'activate':user.activate, 'is_landlord':user.is_landlord}
 			return redirect('public:profile')
 	else:
 		originalform = profile_form(initial = {'username': user.username, 'firstname': user.first_name, 'lastname': user.last_name, 'gender':user.gender, 'dob':user.dob, 'phone':user.phone, 'email':user.email, 'profile':user.profile})						   
@@ -248,8 +327,87 @@ def upload_photo(request):
 	return render(request, 'public/upload_photo.html', {'form':originalform, 'photo':user.photo})
 
 
+def book(request):
+	user_id = request.session['account']['id'] if 'account' in request.session else 0
+	if request.method == 'POST':
+		house_id = request.POST.get("house_id",None)
+		check_in = request.POST.get("check_in",None)
+		check_out = request.POST.get("check_out",None)
+		adult = request.POST.get("adult",None)
+		children = request.POST.get("children",None)
+
+		if house_id and check_in and check_out and adult and children:
+			print(house_id, check_in, check_out, adult, children)
+			house_id = int(house_id)
+			check_in = check_in.split("/")
+			check_out = check_out.split("/")
+			new_check_in = check_in[2] + "-" + check_in[1] + "-" + check_in[0]
+			new_check_out = check_out[2] + "-" + check_out[1] + "-" + check_out[0]
+			check_in = int(check_in[2])*10000 + int(check_in[1])*100 + int(check_in[0])*1
+			check_out = int(check_out[2])*10000 + int(check_out[1])*100 + int(check_out[0])*1
+			current_date = datetime.datetime.now().year*10000 +  datetime.datetime.now().month*100 +  datetime.datetime.now().day
+			adult =  int(adult)
+			children =  int(children)
+
+
+			# date check
+			if check_in < current_date:
+				print(current_date)
+				message = "Invalid Date Period!"
+				return render(request, 'public/blank.html', {'message':message})
+			elif check_out <= check_in:
+				message = "Invalid Date Period!"
+				return render(request, 'public/blank.html', {'message':message})
+
+			# guest amount check
+			sql = """ select * from house where id = """ + str(house_id) + """;""";
+			house = RunSQL(sql)[0]
+			if house['max_guests'] < adult + children:
+				message = "Too many guests!"
+				return render(request, 'public/blank.html', {'message':message})
+
+			# date check again
+			sql = """ select * from lease_period where house_id = """ + str(house_id) + """ and period_end > CURDATE();""";
+			records = RunSQL(sql)
+			available = 1;
+			for record in records:
+				start = record['period_start']
+				new_start = start.year*10000 + start.month*100 + start.day*1
+				end = record['period_end']
+				new_end = end.year*10000 + end.month*100 + end.day*1
+
+				if new_start > check_out or new_end < check_in:
+					continue
+				else:
+					available = 0
+			if(available == 0):
+				message = "House is not available during this period!"
+				return render(request, 'public/blank.html', {'message':message})
+			else:
+				book = Lease_Period(house_id = house_id, user_id = user_id, period_start = new_check_in, period_end = new_check_out)
+				book.save()
+				message = "Success!"
+				return render(request, 'public/blank.html', {'message':message})
+			
+		else:
+			message = "Bad Request!"
+			return render(request, 'public/blank.html', {'message':message})
+	else:
+		message = "Bad Request!"
+		return render(request, 'public/blank.html', {'message':message})
 
 
 
 
+def other_profile(request, id):
+	user = User.objects.get(pk=id)
+	user_rate = User_Rate.objects.all()
+	user_r = 0
+	num = 0
+	for ur in user_rate:
+		if ur.user2_id == id:
+			user_r += ur.reputation
+			num += 1
+	user_r = round(float(user_r)/num)
+	return render(request, 'public/other_profile.html', {'user':user, 'user_rate':user_r})
 
