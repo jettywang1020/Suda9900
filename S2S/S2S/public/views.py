@@ -23,7 +23,7 @@ def login(request):
 			if len(user) == 1 :
 				if check_password(password, user[0].password):
 					request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'activate':user[0].activate, 'is_landlord':user[0].is_landlord}
-					return render(request, 'public/index.html')
+					return redirect('public:display')
 				else:
 					error = "Incorrect password!"
 					return render(request, 'public/login.html', {'form': originalform, 'error': error}) 
@@ -73,15 +73,11 @@ def signup(request):
 					user.save()
 					request.session['account'] = {'id':user.id, 'username':username, 'email':email, 'activate':False, 'is_landlord':False}
 
-					return render(request, 'public/login.html')
+					return redirect('public:profile')
 
 	else:
 		return render(request, 'public/signup.html', {'form': originalform})
 
-
-def index(request):
-	hello = 'hello, everyone'
-	return render(request, 'public/index.html', {'hello': hello})
 
 def other_profile(request):
 	return render(request,'public/other_profile.html')
@@ -320,9 +316,8 @@ def upload_photo(request):
 	if request.method == 'POST':
 		form = upload_photo_form(request.POST, request.FILES)
 		if form.is_valid():
-			photo = request.FILES.getlist("photo")[0]
-			user = User(pk=id, photo=photo)
-			user.save()
+			user.photo = request.FILES.getlist("photo")[0]
+			user.save(update_fields = ["photo"])
 			return redirect('public:upload_photo')
 	return render(request, 'public/upload_photo.html', {'form':originalform, 'photo':user.photo})
 
