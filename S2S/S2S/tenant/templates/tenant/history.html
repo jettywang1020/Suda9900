@@ -6,17 +6,16 @@
 	{% for house in lp_list %}
 	<hr>
 	<div class="row">
-		<div class="col-sm">
-			<!-- <div style="padding-bottom: 100%;position: relative;"> -->
-				<img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;width:35%;position:absolute;">
-				<!-- <img src="" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
-				<!-- <img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
+		<div class="col-sm-2">
+			<div style="padding-bottom: 100%;position: relative;">
+				<img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;">
+			</div>
 		</div>
-		<div class="col-sm">
+		<div class="col-sm-5">
 			<div class="display-house-address">
 				{{house.address}}
 			</div>
-			<div class="display-house-name">
+			<div class="display-house-name" style="white-space: inherit;">
 				{{house.name}}
 			</div>
 		</div>

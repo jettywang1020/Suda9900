@@ -376,11 +376,13 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                         <div class="form-row">
                             <div class="form-group col-sm-6">
                                 <label for="check_in">CHECK IN</label>
-                                <input type="text" class="form-control" id="check_in" name="check_in" data-provide="datepicker" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" required>
+                                <input type="text" class="form-control"
+                                       id="check_in" name="check_in" data-provide="datepicker" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" required>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="check_out">CHECK OUT</label>
-                                <input type="text" class="form-control" id="check_out" name="check_out" data-provide="datepicker" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" required>
+                                <input type="text" class="form-control"
+                                       id="check_out" name="check_out" data-provide="datepicker" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -399,7 +401,10 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                         </div><hr>
                     <div class="form-group">
                         <label>Fee</label>
-                        <span class="float-right" = class="text-right" >${{ house_price }}</span><hr>
+
+
+                        <span class="float-right"  class="text-right" id="price">{{house_price}}</span><hr>
+
                     </div>
                     <div  class="form-group">
                         <button type="submit" class="btn btn-danger" style="width: 50%;margin: 10px 25%;">Book</button>
@@ -467,6 +472,83 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
         onOff=!onOff;
         return false;
        }
+
+     var value = document.getElementById('price').innerHTML;
+     var text = document.getElementById('price');
+     text.innerHTML = "$" + text.innerHTML;
+     var today = new Date();
+     var dd = today.getDate();
+     var mm = today.getMonth();
+     var yy = today.getFullYear()
+
+
+      //text.attr('min', todaydate);
+
+    check_out.onchange = function () {
+
+        var date1 = $("#check_in").datepicker("getDate");
+
+        var date2 = $("#check_out").datepicker("getDate")
+        if ($("#check_in").val()!= null){
+            if((parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>=mm && date1.getDate()>=dd)
+                ||(parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>mm && date1.getDate()<dd)){
+            var new_day = date2.getDate() - date1.getDate();
+            var diff =Math.floor((date2.getTime()-date1.getTime())/86400000);
+                if(parseInt(diff)>=0)
+                {
+                    //text.innerHTML =  diff;
+                    text.innerHTML="$"+parseInt(value) * parseInt(diff);
+                }
+                else{
+                    text.innerHTML =  "Not qualified date";
+                }
+            }
+            else{
+                 text.innerHTML =  "cannot choose day before today";
+            }
+        }
+
+
+
+    }
+    check_in.onchange = function () {
+
+        var date1 = $("#check_in").datepicker("getDate");
+        var date2 = $("#check_out").datepicker("getDate");
+
+        if ($("#check_out").val()!= null){
+            if((parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>=mm && date1.getDate()>=dd)
+                ||(parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>mm && date1.getDate()<dd))
+            {
+
+
+                 var diff = Math.floor((date2.getTime()-date1.getTime())/86400000);
+
+                if(diff>=0)
+                {
+                     //text.innerHTML =  diff;
+                    text.innerHTML="$"+parseInt(value) * parseInt(diff);
+                }
+                else
+                {
+                    text.innerHTML = "Not qualified date";
+                }
+            }
+            else {
+                text.innerHTML =  "cannot choose day before today";
+            }
+        }
+
+
+
+    }
+
+
+
+
+    //var text = document.getElementById('price');
+    //text.innerHTML ="$"+parseInt(text.innerHTML) * 2;
+
 
 
 
