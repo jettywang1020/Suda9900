@@ -23,7 +23,7 @@ def login(request):
 			if len(user) == 1 :
 				if check_password(password, user[0].password):
 					request.session['account'] = {'id':user[0].id, 'username':user[0].username, 'email':user[0].email, 'activate':user[0].activate, 'is_landlord':user[0].is_landlord}
-					return render(request, 'public/index.html')
+					return redirect('public:display')
 				else:
 					error = "Incorrect password!"
 					return render(request, 'public/login.html', {'form': originalform, 'error': error}) 
@@ -72,19 +72,10 @@ def signup(request):
 
 					user.save()
 					request.session['account'] = {'id':user.id, 'username':username, 'email':email, 'activate':False, 'is_landlord':False}
-
-					return render(request, 'public/display.html')
-
+					return redirect('public:profile')
 	else:
 		return render(request, 'public/signup.html', {'form': originalform})
 
-
-def index(request):
-	hello = 'hello, everyone'
-	return render(request, 'public/index.html', {'hello': hello})
-
-def other_profile(request):
-	return render(request,'public/other_profile.html')
 
 def search(request):
 	if request.method == 'POST':
@@ -300,12 +291,17 @@ def profile(request):
 			user.last_name = form.cleaned_data.get("lastname")
 			user.email = form.cleaned_data.get("email")
 			user.gender = form.cleaned_data.get("gender")
-			user.dob = form.cleaned_data.get("dob")
-			dob = re.search(r'^(\d{2}/)?(\d{2}/)?(\d{4})$',user.dob)
-			new_dob = dob.group(3) + '-' + dob.group(2)[:-1] + '-' + dob.group(1)[:-1]
-			user.dob = new_dob
 			user.phone = form.cleaned_data.get("phone")
 			user.profile = form.cleaned_data.get("profile")
+			user.dob = form.cleaned_data.get("dob")
+			if user.dob:
+				dob = re.search(r'^(\d{2}/)?(\d{2}/)?(\d{4})$',user.dob)
+				new_dob = dob.group(3) + '-' + dob.group(2)[:-1] + '-' + dob.group(1)[:-1]
+				user.dob = new_dob
+			else:
+				user.save(update_fields = ["username","first_name","last_name","email","gender","phone","profile"])
+				request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email, 'activate':user.activate, 'is_landlord':user.is_landlord}
+				return redirect('public:profile')
 			user.save(update_fields = ["username","first_name","last_name","email","gender","dob","phone","profile"])
 			request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email, 'activate':user.activate, 'is_landlord':user.is_landlord}
 			return redirect('public:profile')
@@ -320,9 +316,8 @@ def upload_photo(request):
 	if request.method == 'POST':
 		form = upload_photo_form(request.POST, request.FILES)
 		if form.is_valid():
-			photo = request.FILES.getlist("photo")[0]
-			user = User(pk=id, photo=photo)
-			user.save()
+			user.photo = request.FILES.getlist("photo")[0]
+			user.save(update_fields = ["photo"])
 			return redirect('public:upload_photo')
 	return render(request, 'public/upload_photo.html', {'form':originalform, 'photo':user.photo})
 
