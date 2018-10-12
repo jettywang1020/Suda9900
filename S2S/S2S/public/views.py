@@ -77,9 +77,6 @@ def signup(request):
 		return render(request, 'public/signup.html', {'form': originalform})
 
 
-def other_profile(request):
-	return render(request,'public/other_profile.html')
-
 def search(request):
 	if request.method == 'POST':
 		keyword = request.POST.get("keyword", "keyword")
