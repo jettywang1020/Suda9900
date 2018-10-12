@@ -291,12 +291,17 @@ def profile(request):
 			user.last_name = form.cleaned_data.get("lastname")
 			user.email = form.cleaned_data.get("email")
 			user.gender = form.cleaned_data.get("gender")
-			user.dob = form.cleaned_data.get("dob")
-			dob = re.search(r'^(\d{2}/)?(\d{2}/)?(\d{4})$',user.dob)
-			new_dob = dob.group(3) + '-' + dob.group(2)[:-1] + '-' + dob.group(1)[:-1]
-			user.dob = new_dob
 			user.phone = form.cleaned_data.get("phone")
 			user.profile = form.cleaned_data.get("profile")
+			user.dob = form.cleaned_data.get("dob")
+			if user.dob:
+				dob = re.search(r'^(\d{2}/)?(\d{2}/)?(\d{4})$',user.dob)
+				new_dob = dob.group(3) + '-' + dob.group(2)[:-1] + '-' + dob.group(1)[:-1]
+				user.dob = new_dob
+			else:
+				user.save(update_fields = ["username","first_name","last_name","email","gender","phone","profile"])
+				request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email, 'activate':user.activate, 'is_landlord':user.is_landlord}
+				return redirect('public:profile')
 			user.save(update_fields = ["username","first_name","last_name","email","gender","dob","phone","profile"])
 			request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email, 'activate':user.activate, 'is_landlord':user.is_landlord}
 			return redirect('public:profile')

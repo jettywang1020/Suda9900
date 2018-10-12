@@ -27,23 +27,25 @@ def house_detail(requet):
 	return render(requet,'tenant/house_detail.html');
 
 def history(request):
+	id = request.session['account']['id'] if 'account' in request.session else 0
 	sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
 	lease_period = RunSQL(sql)
 	list_info = []
 	for lp in lease_period:
-		house = House.objects.get(pk=lp['house_id'])
-		house_info = {}
-		house_info["id"] = lp['house_id']
-		house_info["name"] = house.name
-		house_info["address"] = house.address
-		house_info["period_start"] = lp['period_start']
-		house_info["period_end"] = lp['period_end']
-		try:
-			picture = House_Picture.objects.get(house_id = lp['house_id'])
-			house_info["picture"] = picture	
-		except:
-			continue
-		list_info.append(house_info)
+		if lp['user_id'] == id:
+			house = House.objects.get(pk=lp['house_id'])
+			house_info = {}
+			house_info["id"] = lp['house_id']
+			house_info["name"] = house.name
+			house_info["address"] = house.address
+			house_info["period_start"] = lp['period_start']
+			house_info["period_end"] = lp['period_end']
+			picture = House_Picture.objects.all()
+			for pic in picture:
+				if pic.house_id == lp['house_id']:
+					house_info["picture"] = pic
+					break
+			list_info.append(house_info)
 
 	return render(request,'tenant/history.html', {'lp_list':list_info})
 
