@@ -144,8 +144,8 @@ def view_detail(request, id):
 	reviews = 0
 	pic_1 = None
 	pic_list = []
-	house_feature = {'accuracy':0,'location':0,'communication':0,'check_in':0,'cleanliness':0,'value':0}
 	house = House.objects.get(pk=id)
+	house_feature = {'accuracy':0,'location':0,'communication':0,'check_in':0,'cleanliness':0,'value':0}
 	house_rate = House_Rate.objects.all()
 	if house_rate:
 		for house_r in house_rate:
@@ -268,13 +268,17 @@ def display(request):
 		for house in houses:
 			try:
 				if house_tag_list[house['id']] == result_:
-
+					reviews = reivew_calculate(house['id'])
+					house["reviews"] = reviews
 					relate.append(house)
 			except:
 				continue
 
 		for house in houses:
+			reviews = reivew_calculate(house['id'])
+			house["reviews"] = reviews
 			picture = House_Picture.objects.all()
+
 			for pic in picture:
 				if pic.house_id == house["id"]:
 					house["picture"] = pic
