@@ -58,7 +58,7 @@ class House(models.Model):
 		return self.name
 
 class House_Picture(models.Model):
-	time_stamp = models.DateTimeField(auto_now_add=True)
+	time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True)
 	house_id = models.IntegerField(null=False)
 	photo = models.ImageField(upload_to='house', null=False)
 	#is_cover = models.BooleanField(default=False)
@@ -70,7 +70,7 @@ class House_Picture(models.Model):
 		db_table = "house_picture"
 
 class Lease_Period(models.Model):
-	time_stamp = models.DateTimeField(auto_now_add=True)
+	time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True)
 	user_id = models.IntegerField(null=False)
 	house_id = models.IntegerField(null=False)
 	period_start = models.DateField(null=False)
@@ -83,7 +83,7 @@ class Lease_Period(models.Model):
 		db_table = "lease_period"
 
 class Tag(models.Model):
-	time_stamp = models.DateTimeField(auto_now_add=True)
+	time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True)
 	tag = models.CharField(max_length=64, null=False)
 
 	def __str__(self):
@@ -93,7 +93,7 @@ class Tag(models.Model):
 		db_table = "tag"
 
 class User_Tag(models.Model):
-	time_stamp = models.DateTimeField(auto_now_add=True)
+	time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True)
 	user_id = models.IntegerField(null=False)
 	tag_id = models.IntegerField(null=False)
 
@@ -104,7 +104,7 @@ class User_Tag(models.Model):
 		db_table = "tenant_tag"
 
 class House_Tag(models.Model):
-	time_stamp = models.DateTimeField(auto_now_add=True)
+	time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True)
 	house_id = models.IntegerField(null=False)
 	tag_id = models.IntegerField(null=False)
 
@@ -115,7 +115,7 @@ class House_Tag(models.Model):
 		db_table = "house_tag"
 
 class User_Rate(models.Model):
-	time_stamp = models.DateTimeField(auto_now_add=True)
+	time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True)
 	# user1 is tenant, user2 is landlord
 	user1_id = models.IntegerField(null=False)
 	user2_id = models.IntegerField(null=False)
@@ -128,7 +128,7 @@ class User_Rate(models.Model):
 		db_table = "tenant_rate"
 
 class House_Rate(models.Model):
-	time_stamp = models.DateTimeField(auto_now_add=True)
+	time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True)
 	user_id = models.IntegerField(null=False)
 	house_id = models.IntegerField(null=False)
 	accuracy = models.IntegerField(null=False)
@@ -145,7 +145,7 @@ class House_Rate(models.Model):
 		db_table = "house_rate"
 
 class House_Comment(models.Model):
-	time_stamp = models.DateTimeField(auto_now_add=True)
+	time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True)
 	user_id = models.IntegerField(null=False)
 	house_id = models.IntegerField(null=False)
 	comment = models.TextField(null=False, blank=False)
@@ -155,3 +155,21 @@ class House_Comment(models.Model):
 
 	class Meta:
 		db_table = "house_comment"
+
+class Post(models.Model):
+	rent_type_choices = (('S','Share'),('W','Whole'),)
+	time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True)
+	user_id = models.IntegerField(null=False)
+	title = models.CharField(max_length=256, null=False)
+	area = models.CharField(max_length=128, null=False)
+	rent_type = models.CharField(max_length=1, choices=rent_type_choices, default='S')
+	description = models.TextField(null=True, blank=True)
+	name = models.CharField(max_length=256, null=False)
+	email = models.CharField(max_length=256, null=False)
+	mobile = models.CharField(max_length=256, null=False)
+
+	def __str__(self):
+		return self.title
+
+	class Meta:
+		db_table = "post"
