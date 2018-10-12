@@ -25,7 +25,11 @@
 			</div>
 		</div>
 		<div class="col-sm">
+			<!-- {% if %} -->
 			<a href="{% url 'tenant:add_comm' house.id %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Add Comment</a>
+			<!-- {% else %}
+			<a href="{% url 'tenant:edit_comm' house.id %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Edit Comment</a>
+			{% endif %} -->
 		</div>
 	</div>
 	<br>
