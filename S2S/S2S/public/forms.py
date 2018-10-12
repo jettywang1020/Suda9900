@@ -45,10 +45,10 @@ class profile_form(forms.Form):
 	lastname = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control'}),required = False)
 	email = forms.EmailField(widget = forms.EmailInput(attrs = {'class':'form-control'}), required = True)
 	gender = forms.ChoiceField(widget = forms.Select(attrs = {'class':'form-control'}),choices = ([('M','Male'), ('F','Female'), ]), initial='1', required = False)
-	phone = forms.CharField(max_length = 9, widget = forms.TextInput(attrs={'class':'form-control','placeholder':'61-00000000'}),required = False)
+	phone = forms.CharField(max_length = 10, widget = forms.TextInput(attrs={'class':'form-control','placeholder':'61-00000000'}),required = False)
 	profile = forms.CharField(max_length = 5000, widget = forms.Textarea(attrs={'class':'form-control','rows':5}),required = False)
 	dob = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control', 'data-provide':'datepicker', 'data-date-format':'dd/mm/yyyy', 'placeholder':'dd/mm/yyyy'}),required = False)
-	phone = forms.CharField(max_length = 9, widget = forms.TextInput(attrs={'class':'form-control','placeholder':'00-00000000'}),required = False)
+	phone = forms.CharField(max_length = 10, widget = forms.TextInput(attrs={'class':'form-control','placeholder':'00-00000000'}),required = False)
 	profile = forms.CharField(max_length = 5000, widget = forms.Textarea(attrs={'class':'form-control','rows':5}),required = False)
 
 class upload_photo_form(forms.Form):

@@ -17,6 +17,15 @@ def test(request):
 def help(request):
 	return render(request, 'tenant/help.html')
 
+def house_list(request):
+	return render(request, 'tenant/house_list.html')
+
+def post(request):
+	return render(request,'tenant/post.html')
+
+def house_detail(requet):
+	return render(requet,'tenant/house_detail.html');
+
 def history(request):
 	id = request.session['account']['id'] if 'account' in request.session else 0
 	sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""

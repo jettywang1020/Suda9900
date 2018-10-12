@@ -67,4 +67,37 @@ Week 6
 
 28 Aug	Tue 2-4	demo
 
+-------
 
+Week 7
+
+-------
+
+Week 8
+
+-------
+
+Week 9
+
+-------
+
+Week 10
+
+-------
+
+Week 11
+
+-------
+
+Week 12
+
+
+Deadlines: 
+Report and project submissions: Sunday 21 October 2018 @ 23.59 (Week 12) 
+Optional peer assessment submission: Monday 22 October 2018 @ 23.59 (Week 13) 
+
+give cs9900 report report.pdf
+
+give cs9900 project project.zip OR give cs9900 project project.tgz
+
+give cs9900 peers peers.txt

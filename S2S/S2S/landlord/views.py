@@ -191,3 +191,11 @@ def add_comm(request, id):
 			return render(request, 'landlord/history.html', {'lp_list':list_info})	
 
 	return render(request, 'landlord/add_comm.html', {'form': originalform})
+
+
+# apply to be the landlord
+def apply(request):
+	return render(request, 'landlord/apply.html')
+
+
+

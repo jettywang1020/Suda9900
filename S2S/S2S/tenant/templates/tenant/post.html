@@ -1,0 +1,52 @@
+{% extends 'public/index.html' %}
+{% load staticfiles %}
+{% block index %}
+<div class="form-group">
+    <div >
+        <p class="text-center" style="font-size: 30px;font-weight: bold;"> Post Information</p>
+    </div><br>
+    <div class="form-group row">
+        <label class="col-2 ">Title</label>
+        <input type="text" class="col-9"></div>
+    </div><br>
+    <div class="form-group row">
+        <label class="col-2 ">Rent Area</label>
+        <input type="radio" >
+        <label class="col-3">Single</label>
+        <input type="radio">
+        <label class="col-3">Double</label>
+        <input type="radio">
+        <label class="col-sm-3">Whole House</label>
+    </div>
+   <div class="form-group row">
+        <label class="col-2 ">Description</label>
+        <textarea class="form-control" rows="5" style="width: 75%"></textarea>
+    </div><br><br>
+    <div class="form-group row">
+        <label class="col-8 " style="font-size: 30px;font-weight: bold;">Contact Information</label>
+
+    </div><hr><br>
+    <div class="form-group row">
+        <div class="form-group">
+        <label class="col-3 ">Name</label>
+        <input type="text" class="col-8">
+        </div>
+        <div class="form-group">
+        <label class="col-5 ">Emall Account</label>
+        <input type="text" class="col-6">
+        </div>
+    </div><br>
+    <div class="form-group row">
+        <div class="form-group">
+        <label class="col-3 ">Mobile</label>
+        <input type="text" class="col-8">
+        </div>
+        <div class="form-group">
+        <label class="col-5 ">WeChat Num </label>
+        <input type="text" class="col-6">
+        </div>
+        <button type="submit" class="btn btn-danger btn-lg" style="width: 50%;margin: 10px 25%;">Submit</button>
+    </div>
+
+</div>
+{% endblock %}
