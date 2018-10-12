@@ -13,4 +13,5 @@ urlpatterns = [
 	path('edit_house/<int:id>', views.edit_house, name='edit_house'),
 	path('history', views.history, name='history'),
 	path('add_comm/<int:id>',views.add_comm,name='add_comm'),
+	path('apply',views.apply,name='apply'),
 ]
