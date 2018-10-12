@@ -3,6 +3,7 @@
 {% block index %}
 
 <div class="container">
+	<div class="card-header"> The house you have checked out </div>
 	{% for house in lp_list %}
 	<hr>
 	<div class="row">
@@ -32,4 +33,33 @@
 	{% endfor %}
 </div>
 <hr>
+<div class="container">
+	<div class="card-header"> The house you've ordered in the future </div>
+	{% for house in lp_list_future %}
+	<hr>
+	<div class="row">
+		<div class="col-sm-2">
+			<div style="padding-bottom: 100%;position: relative;">
+				<img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;">
+			</div>
+		</div>
+		<div class="col-sm-5">
+			<div class="display-house-address">
+				{{house.address}}
+			</div>
+			<div class="display-house-name" style="white-space: inherit;">
+				{{house.name}}
+			</div>
+		</div>
+		<div class="col-sm">
+			<div class="display-housr-date">
+				{{house.period_start}} - {{house.period_end}}
+			</div>
+		</div>
+	</div>
+	<br>
+	{% endfor %}
+</div>
+	
+
 {% endblock %}
