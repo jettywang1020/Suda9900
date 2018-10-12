@@ -128,7 +128,7 @@ def edit_house(request, id):
 											  	, 'extra':house.extra})						   
 		return render(request, 'landlord/edit_house.html',{'form': originalform})
 
-def history(request):
+def history(request, id):
 	sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
 	lease_period = RunSQL(sql)
 	list_info = []
@@ -140,17 +140,19 @@ def history(request):
 		# 		user["period_start"] = lp["period_start"]
 		# 		user["period_end"] = lp["period_end"]
 		# 		list_info.append(user)
-		user = User.objects.get(pk=lp['user_id'])
-		user_r = User_Rate.objects.all()
-		user_rate = 0
-		num = 0
-		for u in user_r:
-			if u.user2_id == lp['user_id']:
-				user_rate += u.reputation
-				num += 1
-		user_rate = round(float(user_rate)/num)
+		if lp['house_id'] == id:
+			user = User.objects.get(pk=lp['user_id'])
+			user_r = User_Rate.objects.all()
+			user_rate = 0
+			num = 0
+			for u in user_r:
+				if u.user2_id == lp['user_id']:
+					user_rate += u.reputation
+					num += 1
+			if num != 0:
+				user_rate = round(float(user_rate)/num)
 
-		list_info.append({"id":lp['user_id'],"rate":user_rate,"photo":user.photo,"name":user.username,"period_start":lp['period_start'],"period_end":lp['period_end']})
+			list_info.append({"id":lp['user_id'],"rate":user_rate,"photo":user.photo,"name":user.username,"period_start":lp['period_start'],"period_end":lp['period_end']})
 
 	return render(request, 'landlord/history.html', {'lp_list':list_info})
 
