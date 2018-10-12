@@ -475,22 +475,29 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
 
      var value = document.getElementById('price').innerHTML;
      var text = document.getElementById('price');
+     text.innerHTML = "$" + text.innerHTML;
      var today = new Date();
      var dd = today.getDate();
+     var mm = today.getMonth();
+     var yy = today.getFullYear()
 
 
       //text.attr('min', todaydate);
 
     check_out.onchange = function () {
 
-        var date1 = $("#check_in").datepicker("getDate").getDate();
-        var date2 = $("#check_out").datepicker("getDate").getDate();
+        var date1 = $("#check_in").datepicker("getDate");
+
+        var date2 = $("#check_out").datepicker("getDate")
         if ($("#check_in").val()!= null){
-            if(parseInt(date1) >=parseInt(dd)){
-            var new_day = date2 - date1;
-                if(parseInt(new_day)>=0)
+            if((parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>=mm && date1.getDate()>=dd)
+                ||(parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>mm && date1.getDate()<dd)){
+            var new_day = date2.getDate() - date1.getDate();
+            var diff =Math.floor((date2.getTime()-date1.getTime())/86400000);
+                if(parseInt(diff)>=0)
                 {
-                    text.innerHTML="$"+parseInt(value) * parseInt(new_day);
+                    //text.innerHTML =  diff;
+                    text.innerHTML="$"+parseInt(value) * parseInt(diff);
                 }
                 else{
                     text.innerHTML =  "Not qualified date";
@@ -506,18 +513,21 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
     }
     check_in.onchange = function () {
 
-        var date1 = $("#check_in").datepicker("getDate").getDate();
-        var date2 = $("#check_out").datepicker("getDate").getDate();
+        var date1 = $("#check_in").datepicker("getDate");
+        var date2 = $("#check_out").datepicker("getDate");
 
         if ($("#check_out").val()!= null){
-            if(parseInt(date1) >= parseInt(dd)){
+            if((parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>=mm && date1.getDate()>=dd)
+                ||(parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>mm && date1.getDate()<dd))
+            {
 
 
-            var new_day = date2 - date1;
+                 var diff = Math.floor((date2.getTime()-date1.getTime())/86400000);
 
-                if(parseInt(new_day)>=0)
+                if(diff>=0)
                 {
-                    text.innerHTML="$"+parseInt(value) * parseInt(new_day);
+                     //text.innerHTML =  diff;
+                    text.innerHTML="$"+parseInt(value) * parseInt(diff);
                 }
                 else
                 {
