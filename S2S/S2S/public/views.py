@@ -141,6 +141,8 @@ def adv_search(request):
 		return render(request, 'public/adv_search.html',{"form":originalform})
 
 def view_detail(request, id):
+	sql = """select * from lease_period"""
+	lease_period = RunSQL(sql)
 	house_feature_r = [0 for _ in range(12)]
 	reviews = 0
 	pic_1 = None
@@ -212,7 +214,7 @@ def view_detail(request, id):
 				,'house_fridge':house.fridge,'house_conditioner':house.conditioner,'house_wifi':house.wifi,'house_studyroom':house.study_room
 				,'house_pool':house.pool,'house_accuracy':house_feature['accuracy'],'house_location':house_feature['location']
 				,'house_communication':house_feature['communication'],'house_checkin':house_feature['check_in'],'house_cleanliness':house_feature['cleanliness']
-				,'house_value':house_feature['value'],'house_reviews':reviews, 'house_comment':house_comment_, 'house_pic':pic_list, 'pic_1':pic_1}
+				,'house_value':house_feature['value'],'house_reviews':reviews, 'house_comment':house_comment_, 'house_pic':pic_list, 'pic_1':pic_1, 'lease_period':lease_period}
 	return render(request, 'public/view_detail.html', context)
 
 
@@ -406,6 +408,8 @@ def other_profile(request, id):
 		if ur.user2_id == id:
 			user_r += ur.reputation
 			num += 1
-	user_r = round(float(user_r)/num)
+	if user_r != 0:
+		user_r = round(float(user_r)/num)
+	
 	return render(request, 'public/other_profile.html', {'user':user, 'user_rate':user_r})
 
