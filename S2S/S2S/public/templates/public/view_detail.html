@@ -339,7 +339,7 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                 &nbsp;&nbsp;&nbsp;
                 <div>
                     <label>{{ comment.comment_user }}</label><br>
-                    <label style="font-size: 5px">{{ comment.comment_date }}</label>
+                    <label style="font-size: 10px">{{ comment.comment_date }}</label>
                 </div>
             </div>
 
@@ -482,13 +482,22 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
      var yy = today.getFullYear()
 
 
+
+
+    $("#check_in").datepicker({
+        startDate: '+0d'
+    });
+
+    // test */
+
+
       //text.attr('min', todaydate);
 
     check_out.onchange = function () {
 
         var date1 = $("#check_in").datepicker("getDate");
 
-        var date2 = $("#check_out").datepicker("getDate")
+        var date2 = $("#check_out").datepicker("getDate");
         if ($("#check_in").val()!= null){
             if((parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>=mm && date1.getDate()>=dd)
                 ||(parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>mm && date1.getDate()<dd)){
@@ -510,7 +519,10 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
 
 
 
+
+
     }
+
     check_in.onchange = function () {
 
         var date1 = $("#check_in").datepicker("getDate");
@@ -538,9 +550,6 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                 text.innerHTML =  "cannot choose day before today";
             }
         }
-
-
-
     }
 
 
