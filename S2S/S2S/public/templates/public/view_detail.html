@@ -334,7 +334,7 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
             {% for comment in house_comment %}
             <div class="form-group row">
                 <div style="width: 50px;height: 50px; border-radius:50px; overflow: hidden;">
-                    <a href="{% url 'public:other_profile' comment.user_id %}"><img src="{{ comment.photo.url }}" height="49" width="65" class="img-rounded"/></a>
+                    <a href="{% url 'public:other_profile' comment.user_id %}"><img src="{{ comment.photo.url }}" height="50" width="50" class="img-rounded"/></a>
                 </div>
                 &nbsp;&nbsp;&nbsp;
                 <div>
@@ -376,13 +376,14 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                         <div class="form-row">
                             <div class="form-group col-sm-6">
                                 <label for="check_in">CHECK IN</label>
-                                <input type="text" class="form-control"
-                                       id="check_in" name="check_in" data-provide="datepicker" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" required>
+                                <input type="text" class="form-control" id="check_in" name="check_in" data-provide="datepicker" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" required>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="check_out">CHECK OUT</label>
+
                                 <input type="text" class="form-control"
                                        id="check_out" name="check_out" data-provide="datepicker" data-date-format="dd/mm/yyyy"  placeholder="dd/mm/yyyy" required>
+
                             </div>
                         </div>
                         <div class="form-group">
@@ -401,10 +402,7 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                         </div><hr>
                     <div class="form-group">
                         <label>Fee</label>
-
-
-                        <span class="float-right"  class="text-right" id="price">{{house_price}}</span><hr>
-
+                        <span class="float-right" = class="text-right" >${{ house_price }}</span><hr>
                     </div>
                     <div  class="form-group">
                         <button type="submit" class="btn btn-danger" style="width: 50%;margin: 10px 25%;">Book</button>
@@ -474,6 +472,7 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
         return false;
        }
 
+<<<<<<< HEAD
      var value = document.getElementById('price').innerHTML;
      var text = document.getElementById('price');
      text.innerHTML = "$" + text.innerHTML;
@@ -567,6 +566,8 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
     //text.innerHTML ="$"+parseInt(text.innerHTML) * 2;
 
 
+=======
+>>>>>>> acfac5ba540a1c8022b09b564899669ef6e3bcd3
 
 
 </script>
