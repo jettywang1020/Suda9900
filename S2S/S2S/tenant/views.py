@@ -8,7 +8,9 @@ def help(request):
 	return render(request, 'tenant/help.html')
 
 def post_list(request):
-	return render(request, 'tenant/post_list.html')
+	sql = """select * from post"""
+	posts = RunSQL(sql)
+	return render(request, 'tenant/post_list.html',{'posts': posts})
 
 def post(request):
 	user_id = request.session['account']['id'] if 'account' in request.session else 0

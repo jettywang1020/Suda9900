@@ -2,10 +2,11 @@
 {% load staticfiles %}
 {% block index %}
 <div class="container">
-
+	{% for post in posts %}
     <div class="row">
-        <label>The house Title and some information</label>
+        <a href="{% url 'tenant:post_detail' post.id %}">{{ post.title }}</a>
     </div>
+    {% endfor %}
 </div>
 
 
