@@ -138,12 +138,14 @@ def adv_search(request):
 		return render(request, 'public/adv_search.html',{"form":originalform})
 
 def view_detail(request, id):
+	sql = """select * from lease_period"""
+	lease_period = RunSQL(sql)
 	house_feature_r = [0 for _ in range(12)]
 	reviews = 0
 	pic_1 = None
 	pic_list = []
-	house_feature = {'accuracy':0,'location':0,'communication':0,'check_in':0,'cleanliness':0,'value':0}
 	house = House.objects.get(pk=id)
+	house_feature = {'accuracy':0,'location':0,'communication':0,'check_in':0,'cleanliness':0,'value':0}
 	house_rate = House_Rate.objects.all()
 	if house_rate:
 		for house_r in house_rate:
@@ -209,7 +211,7 @@ def view_detail(request, id):
 				,'house_fridge':house.fridge,'house_conditioner':house.conditioner,'house_wifi':house.wifi,'house_studyroom':house.study_room
 				,'house_pool':house.pool,'house_accuracy':house_feature['accuracy'],'house_location':house_feature['location']
 				,'house_communication':house_feature['communication'],'house_checkin':house_feature['check_in'],'house_cleanliness':house_feature['cleanliness']
-				,'house_value':house_feature['value'],'house_reviews':reviews, 'house_comment':house_comment_, 'house_pic':pic_list, 'pic_1':pic_1}
+				,'house_value':house_feature['value'],'house_reviews':reviews, 'house_comment':house_comment_, 'house_pic':pic_list, 'pic_1':pic_1, 'lease_period':lease_period}
 	return render(request, 'public/view_detail.html', context)
 
 
@@ -266,13 +268,17 @@ def display(request):
 		for house in houses:
 			try:
 				if house_tag_list[house['id']] == result_:
-
+					reviews = reivew_calculate(house['id'])
+					house["reviews"] = reviews
 					relate.append(house)
 			except:
 				continue
 
 		for house in houses:
+			reviews = reivew_calculate(house['id'])
+			house["reviews"] = reviews
 			picture = House_Picture.objects.all()
+
 			for pic in picture:
 				if pic.house_id == house["id"]:
 					house["picture"] = pic
@@ -293,15 +299,14 @@ def profile(request):
 			user.gender = form.cleaned_data.get("gender")
 			user.phone = form.cleaned_data.get("phone")
 			user.profile = form.cleaned_data.get("profile")
-			user.dob = form.cleaned_data.get("dob")
-			if user.dob:
-				dob = re.search(r'^(\d{2}/)?(\d{2}/)?(\d{4})$',user.dob)
+			dob = form.cleaned_data.get("dob")
+			if dob:
+				dob = re.search(r'^(\d{2}/)?(\d{2}/)?(\d{4})$',dob)
 				new_dob = dob.group(3) + '-' + dob.group(2)[:-1] + '-' + dob.group(1)[:-1]
 				user.dob = new_dob
 			else:
-				user.save(update_fields = ["username","first_name","last_name","email","gender","phone","profile"])
-				request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email, 'activate':user.activate, 'is_landlord':user.is_landlord}
-				return redirect('public:profile')
+				new_dob = '1990' + '-' + '01' + '-' + '01'
+				user.dob = new_dob
 			user.save(update_fields = ["username","first_name","last_name","email","gender","dob","phone","profile"])
 			request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email, 'activate':user.activate, 'is_landlord':user.is_landlord}
 			return redirect('public:profile')
@@ -403,6 +408,8 @@ def other_profile(request, id):
 		if ur.user2_id == id:
 			user_r += ur.reputation
 			num += 1
-	user_r = round(float(user_r)/num)
+	if user_r != 0:
+		user_r = round(float(user_r)/num)
+	
 	return render(request, 'public/other_profile.html', {'user':user, 'user_rate':user_r})
 

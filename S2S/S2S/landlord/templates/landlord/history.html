@@ -3,17 +3,20 @@
 {% block index %}
 
 <div class="container">
+	<div class="card-header"> The users have already checked out </div>
 	{% for user in lp_list %}
 	<hr>
 	<div class="row">
-		<div class="col-sm">
+		<div class="col-sm-2">
+			<div style="padding-bottom: 100%;position: relative;">
 			<!-- <div style="padding-bottom: 100%;position: relative;"> -->
 				<a href="{% url 'public:other_profile' user.id %}">
 				<img src="{{ user.photo.url }}" alt="客户头像" class="img-thumbnail" style="height: 100%;position:absolute;"></a>
 				<!-- <img src="" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
 				<!-- <img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
+			</div>
 		</div>
-		<div class="col-sm display-house-name">
+		<div class="col-sm-2 display-house-name">
 					{% if user.rate == 0 %}
                     <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
                     {% endif %}
@@ -33,7 +36,7 @@
                     <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
                     {% endif %}
 		</div>
-		<div class="col-sm display-house-name">
+		<div class="col-sm-2 display-house-name">
 				{{ user.name }}
 		</div>
 		<div class="col-sm">
@@ -49,4 +52,50 @@
 	{% endfor %}
 </div>
 <hr>
+<div class="container">
+	<div class="card-header"> The users will check in later </div>
+	{% for user in lp_list_future %}
+	<hr>
+	<div class="row">
+		<div class="col-sm-2">
+			<!-- <div style="padding-bottom: 100%;position: relative;"> -->
+			<div style="padding-bottom: 100%;position: relative;">
+				<a href="{% url 'public:other_profile' user.id %}">
+				<img src="{{ user.photo.url }}" alt="客户头像" class="img-thumbnail" style="height: 100%;position:absolute;"></a>
+				<!-- <img src="" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
+				<!-- <img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
+			</div>
+		</div>
+		<div class="col-sm-2 display-house-name">
+					{% if user.rate == 0 %}
+                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                    {% endif %}
+                    {% if user.rate == 1 %}
+                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                    {% endif %}
+                    {% if user.rate == 2 %}
+                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                    {% endif %}
+                    {% if user.rate == 3 %}
+                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                    {% endif %}
+                    {% if user.rate == 4 %}
+                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                    {% endif %}
+                    {% if user.rate == 5 %}
+                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+                    {% endif %}
+		</div>
+		<div class="col-sm-2 display-house-name">
+				{{ user.name }}
+		</div>
+		<div class="col-sm">
+			<div class="display-housr-date">
+				{{ user.period_start }} - {{ user.period_end }}
+			</div>
+		</div>
+	</div>
+	<br>
+	{% endfor %}
+</div>
 {% endblock %}

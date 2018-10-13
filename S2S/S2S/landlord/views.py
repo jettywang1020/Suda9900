@@ -132,14 +132,8 @@ def history(request, id):
 	sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
 	lease_period = RunSQL(sql)
 	list_info = []
+	list_info_future = []
 	for lp in lease_period:
-		# sql = """SELECT * FROM user;"""
-		# users = RunSQL(sql)
-		# for user in users:
-		# 	if user['id'] == lp['user_id']:
-		# 		user["period_start"] = lp["period_start"]
-		# 		user["period_end"] = lp["period_end"]
-		# 		list_info.append(user)
 		if lp['house_id'] == id:
 			user = User.objects.get(pk=lp['user_id'])
 			user_r = User_Rate.objects.all()
@@ -153,8 +147,23 @@ def history(request, id):
 				user_rate = round(float(user_rate)/num)
 
 			list_info.append({"id":lp['user_id'],"rate":user_rate,"photo":user.photo,"name":user.username,"period_start":lp['period_start'],"period_end":lp['period_end']})
+	sql = """SELECT * FROM lease_period WHERE period_end >= CURDATE();"""
+	lease_period = RunSQL(sql)
+	for lp in lease_period:
+		if lp['house_id'] == id:
+			user = User.objects.get(pk=lp['user_id'])
+			user_r = User_Rate.objects.all()
+			user_rate = 0
+			num = 0
+			for u in user_r:
+				if u.user2_id == lp['user_id']:
+					user_rate += u.reputation
+					num += 1
+			if num != 0:
+				user_rate = round(float(user_rate)/num)
 
-	return render(request, 'landlord/history.html', {'lp_list':list_info})
+			list_info_future.append({"id":lp['user_id'],"rate":user_rate,"photo":user.photo,"name":user.username,"period_start":lp['period_start'],"period_end":lp['period_end']})
+	return render(request, 'landlord/history.html', {'lp_list':list_info,'lp_list_future':list_info_future})
 
 def add_comm(request, id):
 	landlord_id = request.session['account']['id'] if 'account' in request.session else 0

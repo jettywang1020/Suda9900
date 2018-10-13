@@ -6,18 +6,22 @@
 	{% for house in houses %}
 	<hr>
 	<div class="row" >
-		<div class="col-sm-3" >
+		<div class="col-sm-2" >
+			<div style="padding-bottom: 100%;position: relative;">
 			<!-- <div style="padding-bottom: 100%;position: relative;"> -->
+				<a href="{% url 'public:view_detail' house.id %}">
 				<img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;">
+				</a>
 				<!-- <img src="" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
 				<!-- <img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
+			</div>
 		</div>
 
-		<div class="col-sm-4">
+		<div class="col-sm-5">
 			<div class="display-house-address">
 				{{house.address}}
 			</div>
-			<div class="display-house-name">
+			<div class="display-house-name" style="white-space: inherit;">
 				{{house.name}}
 			</div>
 			<div class="display-house-price">

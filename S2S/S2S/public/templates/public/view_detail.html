@@ -334,7 +334,7 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
             {% for comment in house_comment %}
             <div class="form-group row">
                 <div style="width: 50px;height: 50px; border-radius:50px; overflow: hidden;">
-                    <a href="{% url 'public:other_profile' comment.user_id %}"><img src="{{ comment.photo.url }}" height="49" width="65" class="img-rounded"/></a>
+                    <a href="{% url 'public:other_profile' comment.user_id %}"><img src="{{ comment.photo.url }}" height="50" width="50" class="img-rounded"/></a>
                 </div>
                 &nbsp;&nbsp;&nbsp;
                 <div>
@@ -368,21 +368,18 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
     <div class="col-4" id="child" style="position: fixed; margin-left: 65%;" >
         <div  class="col-sm-2" >
             <div  style="margin:1% auto;max-width: 300px;min-width: 300px;min-height: 200px;max-height: 300px">
-                <form method="post" enctype="multipart/form-data" action="{% url 'public:book'%}">
+                <form method="post" enctype="multipart/form-data" action="{% url 'public:book'%}" id="book" name="book">
                     {% csrf_token %}
                     <input type="hidden" id="house_id" name="house_id" value={{ house_id }}>
                     <div class="form-group ">
-
                         <div class="form-row">
                             <div class="form-group col-sm-6">
                                 <label for="check_in">CHECK IN</label>
-                                <input type="text" class="form-control"
-                                       id="check_in" name="check_in" data-provide="datepicker" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" required>
+                                <input type="text" class="form-control" id="check_in" name="check_in" data-provide="datepicker" placeholder="dd/mm/yyyy" required>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="check_out">CHECK OUT</label>
-                                <input type="text" class="form-control"
-                                       id="check_out" name="check_out" data-provide="datepicker" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" required>
+                                <input type="text" class="form-control" id="check_out" name="check_out" data-provide="datepicker" placeholder="dd/mm/yyyy" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -399,21 +396,22 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                                 </div>
                             </div>
                         </div><hr>
-                    <div class="form-group">
-                        <label>Fee</label>
 
+                        <div class="form-group">
+                            <label>Price</label>
+                            <span class="float-right" = class="text-right">${{ house_price }}</span><hr>
+                        </div>
 
-                        <span class="float-right"  class="text-right" id="price">{{house_price}}</span><hr>
-
-                    </div>
-                    <div  class="form-group">
-                        <button type="submit" class="btn btn-danger" style="width: 50%;margin: 10px 25%;">Book</button>
-                    </div>
-                    <div class="form-group">
-                        <p class="text-center" style="font-size:15px;color: slategrey">Price shown is price per night.</p>
-                    </div>
-
-
+                        <div class="form-group">
+                            <label>Total Fee</label>
+                            <span class="float-right" = class="text-right" id="price">{{ house_price }}</span><hr>
+                        </div>
+                        <div  class="form-group">
+                            <button type="submit" class="btn btn-danger" style="width: 50%;margin: 10px 25%;">Book</button>
+                        </div>
+                        <!-- <div class="form-group">
+                            <p class="text-center" style="font-size:15px;color: slategrey">Price shown is price per night.</p>
+                        </div> -->
 
                         </div>
                     </form>
@@ -473,22 +471,25 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
         return false;
        }
 
-     var value = document.getElementById('price').innerHTML;
-     var text = document.getElementById('price');
-     text.innerHTML = "$" + text.innerHTML;
-     var today = new Date();
-     var dd = today.getDate();
-     var mm = today.getMonth();
-     var yy = today.getFullYear()
 
-
-
+    var value = document.getElementById('price').innerHTML;
+    var text = document.getElementById('price');
+    text.innerHTML = "$" + text.innerHTML;
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth();
+    var yy = today.getFullYear()
 
     $("#check_in").datepicker({
-        startDate: '+0d'
+        startDate: '-1d',
+        format: "dd/mm/yyyy",
+
     });
 
-    // test */
+    $("#check_out").datepicker({
+        startDate: '+0d',
+        format: "dd/mm/yyyy",
+    });
 
 
       //text.attr('min', todaydate);
@@ -496,31 +497,29 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
     check_out.onchange = function () {
 
         var date1 = $("#check_in").datepicker("getDate");
-
         var date2 = $("#check_out").datepicker("getDate");
-        if ($("#check_in").val()!= null){
+
+        if (date1 != null && date2 != null){
             if((parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>=mm && date1.getDate()>=dd)
-                ||(parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>mm && date1.getDate()<dd)){
-            var new_day = date2.getDate() - date1.getDate();
-            var diff =Math.floor((date2.getTime()-date1.getTime())/86400000);
+                ||(parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>mm && date1.getDate()<dd))
+            {
+                var new_day = date2.getDate() - date1.getDate();
+                var diff =Math.floor((date2.getTime()-date1.getTime())/86400000);
                 if(parseInt(diff)>=0)
                 {
                     //text.innerHTML =  diff;
-                    text.innerHTML="$"+parseInt(value) * parseInt(diff);
+                    text.innerHTML="$"+parseInt(value) * parseInt(diff) + " (" + parseInt(diff) + "D)";
                 }
-                else{
+                else
+                {
                     text.innerHTML =  "Not qualified date";
                 }
             }
-            else{
+            else
+            {
                  text.innerHTML =  "cannot choose day before today";
             }
         }
-
-
-
-
-
     }
 
     check_in.onchange = function () {
@@ -528,25 +527,23 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
         var date1 = $("#check_in").datepicker("getDate");
         var date2 = $("#check_out").datepicker("getDate");
 
-        if ($("#check_out").val()!= null){
+        if (date1 != null && date2 != null){
             if((parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>=mm && date1.getDate()>=dd)
                 ||(parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>mm && date1.getDate()<dd))
             {
-
-
-                 var diff = Math.floor((date2.getTime()-date1.getTime())/86400000);
-
+                var diff = Math.floor((date2.getTime()-date1.getTime())/86400000);
                 if(diff>=0)
                 {
-                     //text.innerHTML =  diff;
-                    text.innerHTML="$"+parseInt(value) * parseInt(diff);
+                    //text.innerHTML =  diff;
+                    text.innerHTML="$"+parseInt(value) * parseInt(diff) + " (" + parseInt(diff) + "D)";
                 }
                 else
                 {
                     text.innerHTML = "Not qualified date";
                 }
             }
-            else {
+            else
+            {
                 text.innerHTML =  "cannot choose day before today";
             }
         }
@@ -557,7 +554,6 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
 
     //var text = document.getElementById('price');
     //text.innerHTML ="$"+parseInt(text.innerHTML) * 2;
-
 
 
 
