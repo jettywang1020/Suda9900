@@ -129,8 +129,16 @@ def add_comm(request, id):
 	return render(request,'tenant/add_comm.html', {'form':originalform})
 
 # apply to be the landlord
+def apply_page(request):
+	return render(request,'tenant/apply.html')
+
 def apply(request):
-	return render(request, 'tenant/apply.html')
+	id = request.session['account']['id'] if 'account' in request.session else 0
+	user = User.objects.get(pk=id)
+	user.is_landlord = True
+	user.save(update_fields = ["is_landlord"])
+	request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email, 'activate':user.activate, 'is_landlord':user.is_landlord}
+	return redirect('public:profile')
 
 def edit_comm(request):
 	return render(request,'tenant/edit_comm.html')
