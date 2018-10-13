@@ -43,6 +43,7 @@ def history(request):
 	sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
 	lease_period = RunSQL(sql)
 	list_info = []
+	list_info_future = []
 	for lp in lease_period:
 		if lp['user_id'] == id:
 			house = House.objects.get(pk=lp['house_id'])
@@ -58,8 +59,25 @@ def history(request):
 					house_info["picture"] = pic
 					break
 			list_info.append(house_info)
+	sql = """SELECT * FROM lease_period WHERE period_end >= CURDATE();"""
+	lease_period = RunSQL(sql)
+	for lp in lease_period:
+		if lp['user_id'] == id:
+			house = House.objects.get(pk=lp['house_id'])
+			house_info = {}
+			house_info["id"] = lp['house_id']
+			house_info["name"] = house.name
+			house_info["address"] = house.address
+			house_info["period_start"] = lp['period_start']
+			house_info["period_end"] = lp['period_end']
+			picture = House_Picture.objects.all()
+			for pic in picture:
+				if pic.house_id == lp['house_id']:
+					house_info["picture"] = pic
+					break
+			list_info_future.append(house_info)
 
-	return render(request,'tenant/history.html', {'lp_list':list_info})
+	return render(request,'tenant/history.html', {'lp_list':list_info,'lp_list_future':list_info_future})
 
 def add_comm(request, id):
 	user_id = request.session['account']['id'] if 'account' in request.session else 0
@@ -108,7 +126,9 @@ def add_comm(request, id):
 			return render(request, 'tenant/history.html', {'lp_list':list_info})	
 	return render(request,'tenant/add_comm.html', {'form':originalform})
 
-
 # apply to be the landlord
 def apply(request):
 	return render(request, 'tenant/apply.html')
+
+def edit_comm(request):
+	return render(request,'tenant/edit_comm.html')

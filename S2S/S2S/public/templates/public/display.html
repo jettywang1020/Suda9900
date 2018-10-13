@@ -33,8 +33,24 @@
 						${{ house.price }} per night
 					</div>
 					<div class="display-house-star-and-number">
-						<span>stars</span>
-						<span>number</span>
+						{% if house.reviews == 0 %}
+	                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+	                    {% endif %}
+	                    {% if house.reviews == 1 %}
+	                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+	                    {% endif %}
+	                    {% if house.reviews == 2 %}
+	                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+	                    {% endif %}
+	                    {% if house.reviews == 3 %}
+	                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+	                    {% endif %}
+	                    {% if house.reviews == 4 %}
+	                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+	                    {% endif %}
+	                    {% if house.reviews == 5 %}
+	                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+	                    {% endif %}
 					</div>
 				</div>
 			</a>
@@ -67,8 +83,24 @@
 							${{ relate.price }} per night
 						</div>
 						<div class="display-house-star-and-number">
-							<span>stars</span>
-							<span>number</span>
+							{% if relate.reviews == 0 %}
+		                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+		                    {% endif %}
+		                    {% if relate.reviews == 1 %}
+		                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+		                    {% endif %}
+		                    {% if relate.reviews == 2 %}
+		                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+		                    {% endif %}
+		                    {% if relate.reviews == 3 %}
+		                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+		                    {% endif %}
+		                    {% if relate.reviews == 4 %}
+		                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+		                    {% endif %}
+		                    {% if relate.reviews == 5 %}
+		                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+		                    {% endif %}
 						</div>
 					</div>
 				</a>

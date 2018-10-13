@@ -28,3 +28,15 @@ In this week, I have done the encryption and public detail view page back operat
 
 Week7:
 In this week, I have done the landlord add house, edit profile and landlord add picture house back operation, which allows the information from page save to the database. Picture  download a little bit different, stage one it only can achieve the function of upload multiple pics to database. In the following, I will set that achieve preview pics.
+
+Week8:
+In this week, I have done the back part of manage house and landlord history part also its add comment. Saving the info. To database. And display info. of houses in landlord manage house part to show what they gets. Also history allow landlord to see who book their houses and then add comment.
+
+Week9:
+In this week, I have done the tenant history part and add comment. It allows tenant to see what they book in record. And also they can add comment to these houses. Finally I fix some bugs made in this two weeks.
+
+Week10:
+In this week, I built our recommendation part for recommending house related to users' booking history, displayed at the bottom of display page. This learning model I have used KNN for machine learning the result for recommendation. I have added three Classes, New high price house, old low price house and old high price house. These are affected by 3 features high/low price, new/old and if completed in offer. It finally has done successfully in our site.
+
+Week11:
+In this week, I have fix some bug in our website. this bugs make page down. Also I design the our cover page, which makes our cover more vivid. And history info page I have add future record. Finally  I have do some back work for user post for house. 
