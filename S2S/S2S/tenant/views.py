@@ -1,30 +1,42 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-from public.models import User, House, Lease_Period, House_Rate, House_Comment
+from public.models import User, House, Lease_Period, House_Rate, House_Comment, Post
 from public.help import *
 from public.forms import *
-
-# Create your views here.
-def index(request):
-	# tenant = Tenant.objects.get(pk = 1)
-	return render(request, 'tenant/index.html', locals())
-
-def test(request):
-	test_id = request.GET.get("test_id")
-	data = {"test_id":test_id}
-	return JsonResponse(data)
 
 def help(request):
 	return render(request, 'tenant/help.html')
 
-def house_list(request):
-	return render(request, 'tenant/house_list.html')
+def post_list(request):
+	return render(request, 'tenant/post_list.html')
 
 def post(request):
-	return render(request,'tenant/post.html')
+	user_id = request.session['account']['id'] if 'account' in request.session else 0
+	originalform = post_form()
+	if request.method == 'POST':
+		form = post_form(request.POST)
+		if form.is_valid():
+			title = form.cleaned_data.get("title")
+			area = form.cleaned_data.get("area")
+			no_of_rooms = form.cleaned_data.get("no_of_rooms")
+			rent_type = form.cleaned_data.get("rent_type")
+			description = form.cleaned_data.get("description")
+			name = form.cleaned_data.get("name")
+			email = form.cleaned_data.get("email")
+			mobile = form.cleaned_data.get("mobile")
+			post = Post(user_id = user_id, title = title, area = area, no_of_rooms = no_of_rooms, rent_type = rent_type, description = description, name = name, email = email, mobile = mobile)
+			post.save()
+			return redirect('tenant:post_list')
+		else:
+			return render(request,'tenant/post.html', {'form':originalform})
+	return render(request,'tenant/post.html', {'form':originalform})
 
-def house_detail(requet):
-	return render(requet,'tenant/house_detail.html');
+def post_detail(request, id):
+	try:
+		post = Post.objects.get(pk=id)
+		return render(request,'tenant/post_detail.html', {'post':post})
+	except:
+		return redirect('tenant:post_list')
 
 def history(request):
 	id = request.session['account']['id'] if 'account' in request.session else 0
@@ -95,3 +107,8 @@ def add_comm(request, id):
 
 			return render(request, 'tenant/history.html', {'lp_list':list_info})	
 	return render(request,'tenant/add_comm.html', {'form':originalform})
+
+
+# apply to be the landlord
+def apply(request):
+	return render(request, 'tenant/apply.html')

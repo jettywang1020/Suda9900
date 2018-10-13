@@ -17,7 +17,8 @@
 					<a class="nav-link" href="{% url 'landlord:add_house' %}">Add House</a>
 					<a class="nav-link" href="{% url 'landlord:manage_house' %}">Manage Houses</a>
 					{% else %}
-					<a class="nav-link" href="{% url 'landlord:apply' %}">Apply</a>
+					<a class="nav-link" href="{% url 'tenant:apply' %}">Apply</a>
+					<a class="nav-link" href="{% url 'tenant:post' %}">Post</a>
 					{% endif %}
 				</nav>
 			</nav>
