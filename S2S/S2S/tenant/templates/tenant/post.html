@@ -1,52 +1,70 @@
 {% extends 'public/index.html' %}
 {% load staticfiles %}
 {% block index %}
-<div class="form-group">
-    <div class="card text-white bg-primary mb-3" style="max-width: 100%;">
-        <div class="card-header"> Post Information</div>
-    </div><br>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label " >Title</label>
-        <input type="text" class="form-control col-10">
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <div class="card text-white bg-primary mb-3" style="max-width: 100%;">
+            <div class="card-header"> Post Information</div>
+        </div><br>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label " >Title</label>
+            <!-- <input type="text" class="form-control col-10"> -->
+            {{ form.title }}
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label " >Area</label>
+            <!-- <input type="text" class="form-control col-10"></div> -->
+            {{ form.area }}
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label ">Rooms</label>
+            {{ form.no_of_rooms }}
+<!--             <select id="Rent_Area" class="form-control col-3">
+                <option selected>All</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select> -->
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label ">Type</label>
+            {{ form.rent_type }}
+<!--             <select id="Rent_Area" class="form-control col-3">
+                <option selected>All</option>
+                <option>Share</option>
+                <option>Whole House</option>
+            </select> -->
+        </div>
+       <div class="form-group row">
+            <label class="col-sm-2 col-form-label ">Description</label>
+                 {{ form.description }}
+              <!--  <textarea class="form-control" rows="5"></textarea> -->
+
+        </div><br>
+        <div class="card text-white bg-primary mb-3" style="max-width: 100%;">
+            <div class="card-header"> Contact Information</div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label " >Name</label>
+            <!-- <input type="text" class="form-control col-10"> -->
+            {{ form.name }}
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label " >Email</label>
+            <!-- <input type="text" class="form-control col-10"> -->
+            {{ form.email }}
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label " >mobile</label>
+            <!-- <input type="text" class="form-control col-10"> -->
+            {{ form.mobile }}
+        </div><br>
+     <button type="submit" class="btn btn-danger btn-lg" style="width: 50%;margin: 10px 25%;">Submit</button>
     </div>
-
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label " >Area</label>
-        <input type="text" class="form-control col-10"></div>
-    </div>
-    <div class="form-group row">
-        <label for="Rent_Area" class="col-sm-2 col-form-label ">Type</label>
-
-        <select id="Rent_Area" class="form-control col-3">
-            <option selected>Share</option>
-            <option>Whole House</option>
-        </select>
-
-    </div>
-   <div class="form-group row">
-        <label class="col-sm-2 col-form-label ">Description</label>
-
-           <textarea class="form-control col-10" rows="5" style="width: 75%"></textarea>
-
-    </div><br>
-    <div class="card text-white bg-primary mb-3" style="max-width: 100%;">
-        <div class="card-header"> Contact Information</div>
-    </div>
-    <br>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label " >Name</label>
-        <input type="text" class="form-control col-10">
-    </div>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label " >Email</label>
-        <input type="text" class="form-control col-10">
-    </div>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label " >Mobile</label>
-        <input type="text" class="form-control col-10">
-    </div><br>
- <button type="submit" class="btn btn-danger btn-lg" style="width: 50%;margin: 10px 25%;">Submit</button>
-
-
-</div>
+</form>
 {% endblock %}

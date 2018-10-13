@@ -11,13 +11,12 @@
 					<a class="nav-link" href="{% url 'public:upload_photo' %}">Photo</a>
 					<a class="nav-link" href="{% url 'tenant:history' %}">History</a>
 					
-
-
 					{% if request.session.account.is_landlord %}
 					<a class="nav-link" href="{% url 'landlord:add_house' %}">Add House</a>
 					<a class="nav-link" href="{% url 'landlord:manage_house' %}">Manage Houses</a>
 					{% else %}
-					<a class="nav-link" href="{% url 'landlord:apply' %}">Apply</a>
+					<a class="nav-link" href="{% url 'tenant:apply_page' %}">Apply</a>
+					<a class="nav-link" href="{% url 'tenant:post' %}">Post</a>
 					{% endif %}
 				</nav>
 			</nav>

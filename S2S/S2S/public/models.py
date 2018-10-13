@@ -157,12 +157,14 @@ class House_Comment(models.Model):
 		db_table = "house_comment"
 
 class Post(models.Model):
-	rent_type_choices = (('S','Share'),('W','Whole'),)
+	rent_type_choices = (('All','All'),('S','Share'),('W','Whole'),)
+	no_of_rooms_choices = (('All','All'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),)
 	time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False, null=True)
 	user_id = models.IntegerField(null=False)
 	title = models.CharField(max_length=256, null=False)
 	area = models.CharField(max_length=128, null=False)
-	rent_type = models.CharField(max_length=1, choices=rent_type_choices, default='S')
+	no_of_rooms = models.CharField(max_length=3, choices=no_of_rooms_choices, default='A')
+	rent_type = models.CharField(max_length=3, choices=rent_type_choices, default='A')
 	description = models.TextField(null=True, blank=True)
 	name = models.CharField(max_length=256, null=False)
 	email = models.CharField(max_length=256, null=False)
