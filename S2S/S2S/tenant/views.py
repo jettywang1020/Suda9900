@@ -113,3 +113,6 @@ def add_comm(request, id):
 
 			return render(request, 'tenant/history.html', {'lp_list':list_info})	
 	return render(request,'tenant/add_comm.html', {'form':originalform})
+
+def edit_comm(request):
+	return render(request,'tenant/edit_comm.html')

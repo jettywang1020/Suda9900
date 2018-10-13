@@ -15,4 +15,5 @@ urlpatterns = [
 	path('house_list',views.house_list, name ="house_list"),
 	path('post',views.post, name= "post"),
 	path('house_detail',views.house_detail, name ="house_detail"),
+	path('edit_comm/<int:id>',views.edit_comm,name='edit_comm'),
 ]
