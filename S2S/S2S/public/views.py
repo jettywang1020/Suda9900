@@ -138,7 +138,7 @@ def adv_search(request):
 		return render(request, 'public/adv_search.html',{"form":originalform})
 
 def view_detail(request, id):
-	sql = """select * from lease_period"""
+	sql = """select * from lease_period where house_id = """ + str(id) + """ and period_end < CURDATE();"""
 	lease_period = RunSQL(sql)
 	house_feature_r = [0 for _ in range(12)]
 	reviews = 0
