@@ -68,8 +68,8 @@ class hcomment_form(forms.Form):
 
 class adv_search_form(forms.Form):
 	keyword = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control'}),required = True)
-	check_in = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control', 'data-provide':'datepicker', 'data-date-format':'dd/mm/yyyy', 'placeholder':'dd/mm/yyyy'}),required = True)
-	check_out = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control', 'data-provide':'datepicker', 'data-date-format':'dd/mm/yyyy', 'placeholder':'dd/mm/yyyy'}),required = True)
+	check_in = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control', 'data-provide':'datepicker', 'data-date-format':'dd/mm/yyyy', 'placeholder':'dd/mm/yyyy', 'id':'checkin'}),required = True)
+	check_out = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control', 'data-provide':'datepicker', 'data-date-format':'dd/mm/yyyy', 'placeholder':'dd/mm/yyyy', 'id':'checkout'}),required = True)
 	adult = forms.IntegerField(min_value = 0, widget = forms.NumberInput(attrs={'class':'form-control','value':'1'}),required = True)
 	children = forms.IntegerField(min_value = 0, widget = forms.NumberInput(attrs={'class':'form-control','value':'0'}),required = True)
 

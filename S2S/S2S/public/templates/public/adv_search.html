@@ -61,13 +61,23 @@
 
 </div>
 <script type="text/javascript">
-<!-- 
 var image = document.getElementById("image")
 var p = document.getElementById("margin")
 var para = document.getElementById("margin1")
 var para1 = document.getElementById("margin2")
 var winWidth = 0;
 var winHeight = 0;
+
+$("#checkin").datepicker({
+	startDate: '+0d',
+    format: "dd/mm/yyyy",
+});
+
+$("#checkout").datepicker({
+    startDate: '+1d',
+    format: "dd/mm/yyyy",
+});
+
 function findDimensions() 
 {
 
