@@ -17,3 +17,17 @@ Demo this week. Got 8/10. Quiet good. Finish user photo upload.
 
 Week7
 Finished bootstrap datepicker. Done basic search and advanced search.
+
+Week8
+Demo this week, everything worked fine.
+
+Week9
+Finished book system. 
+
+Week10
+Finished post rent demand module which has three functions: post demands, show demand list and show demand details. Demo this week, everything worked fine.
+
+Week11
+Implemented apply function which is for common user to apply to be a landlord. Fix some bugs.
+
+Week12

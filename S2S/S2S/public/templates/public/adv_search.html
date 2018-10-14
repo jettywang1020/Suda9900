@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load staticfiles%}
-<div style="width:1380px; height:800px; background:url('../../../static/image/1.jpeg');background-size:1450px 800px;background-repeat:no-repeat;">
+<div id = "image" style="width:100%; height:100%; background:url('../../../static/image/1.jpeg');background-size:100% auto;background-repeat:no-repeat;">
+<!-- <img id = "image" src = "../../../static/image/1.jpeg" style="width:100%; height:auto;"> -->
 	<br>
-	<div style="margin:10%;width:30%;max-width: 550px;min-width: 450px;background: white;border-radius:5px; overflow: hidden;">
-	<div style="margin:10%;width:30%;max-width: 450px;min-width: 350px;">
+	<div id = "margin" style="margin:0%;width:30%;max-width: 650px;min-width: 450px;">
+	</div>
+	<div id = "margin1" style="margin:5%;width:30%;max-width: 550px;min-width: 450px;background: white;border-radius:5px; overflow: hidden;">
+	<div id = "margin2" style="margin:10%;width:30%;max-width: 450px;min-width: 350px;">
 		<form method="post" enctype="multipart/form-data">
 			{% csrf_token %}
 			<div class="form-row" >
@@ -55,6 +58,55 @@
 		{{ error }}
 	</div>
 </div>
+
 </div>
+<script type="text/javascript">
+<!-- 
+var image = document.getElementById("image")
+var p = document.getElementById("margin")
+var para = document.getElementById("margin1")
+var para1 = document.getElementById("margin2")
+var winWidth = 0;
+var winHeight = 0;
+function findDimensions() 
+{
+
+if (window.innerWidth)
+winWidth = window.innerWidth;
+if (window.innerHeight)
+winHeight = window.innerHeight
+if (winWidth < 1158){
+	image.style.minWidth = "600px"
+	p.style.margin = "25%";
+	para.style.margin = "0px";
+	para.style.width = "100%";
+	para.style.minWidth = "100%";
+	para.style.borderRadius = "0%";
+	para.style.overflow = "hidden";
+	para1.style.margin = "10%";
+	para1.style.width = "100%";
+	para1.style.minWidth = "80%";
+}else{
+	p.style.margin = "0px"
+	para.style.margin = "5%";
+	para.style.width = "30%";
+	para.style.maxWidth = "550px";
+	para.style.minWidth = "450px";
+	para.style.background = "white";
+	para.style.borderRadius = "5px";
+	para.style.overflow = "hidden";
+	para1.style.margin = "10%";
+	para1.style.width = "30%";
+	para1.style.maxWidth = "450px";
+	para1.style.minWidth = "350px";
+}
+
+
+}
+findDimensions();
+
+window.onresize=findDimensions;
+
+</script>
 
 {% endblock %}

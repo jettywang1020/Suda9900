@@ -72,3 +72,15 @@ class adv_search_form(forms.Form):
 	check_out = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control', 'data-provide':'datepicker', 'data-date-format':'dd/mm/yyyy', 'placeholder':'dd/mm/yyyy'}),required = True)
 	adult = forms.IntegerField(min_value = 0, widget = forms.NumberInput(attrs={'class':'form-control','value':'1'}),required = True)
 	children = forms.IntegerField(min_value = 0, widget = forms.NumberInput(attrs={'class':'form-control','value':'0'}),required = True)
+
+
+class post_form(forms.Form):
+	title = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control col-10'}),required = True)
+	area = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control col-10','placeholder':'eg. Kingsford'}),required = True)
+	no_of_rooms =  forms.ChoiceField(choices = (('All','All'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),),  widget = forms.Select(attrs = {'class':'form-control col-3'}), required = True)
+	rent_type =  forms.ChoiceField(choices = (('All','All'),('S','Share'),('W','Whole house'),),  widget = forms.Select(attrs = {'class':'form-control col-3'}), required = True)
+	description = forms.CharField(max_length = 5000, widget = forms.Textarea(attrs={'class':'form-control col-10','rows':5}),required = False)
+	name = forms.CharField(max_length = 50, widget = forms.TextInput(attrs={'class':'form-control col-10'}),required = True)
+	email = forms.EmailField(widget = forms.EmailInput(attrs = {'class':'form-control col-10'}), required = True)
+	mobile = forms.CharField(max_length = 10, widget = forms.TextInput(attrs={'class':'form-control col-10'}),required = False)
+
