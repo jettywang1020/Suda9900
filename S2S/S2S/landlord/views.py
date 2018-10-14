@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from public.models import User, House, House_Picture, Lease_Period, User_Rate
 from public.forms import *
@@ -117,7 +117,7 @@ def edit_house(request, id):
 						  , "no_of_parking", "tv", "kitchen", "washer", "fridge"
 						  , "conditioner", "wifi", "study_room", "pool", "house_rule"
 						  , "cancellation", "extra"])
-			return render(request, 'landlord/edit_house.html')
+			return redirect('landlord:edit_house', id)
 	else:
 		originalform = addhouse_form(initial = {'name': house.name, 'address':house.address, 'postcode':house.postcode
 											  	, 'price':house.price, 'profile':house.profile, 'maxguest':house.max_guests
