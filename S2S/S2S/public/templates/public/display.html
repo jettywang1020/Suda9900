@@ -1,9 +1,3 @@
-<!-- <style>
-	div .HandCursor {
-		cursor: pointer /*change to hand style*/
-	}
-</style> -->
-
 {% extends 'base.html' %}
 {% block content %}
 
@@ -56,57 +50,57 @@
 			</a>
 		</div>
 		{% endfor %}
-	
-</div>
-<div class="container">
 	</div>
-		{% if r_houses %}
-		<hr>
-		<div style="font-weight: 800;line-height: 30px;padding:2px 0px;">
-				You may like to choose
-			</div>
-		<div class="col-sm-13 row">
-			{% for relate in r_houses %}
-			<div class="col-sm-3">
-				<a href="{% url 'public:view_detail' relate.id %}">
-					<div style="padding-bottom: 100%;position: relative;">
-						<img src="{{ relate.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;">
+</div>
+
+<div class="container">
+	{% if r_houses %}
+	<hr>
+	<div style="font-weight: 800;line-height: 30px;padding:2px 0px;">
+			You may like to choose
+	</div>
+	<div class="col-sm-13 row">
+		{% for relate in r_houses %}
+		<div class="col-sm-3">
+			<a href="{% url 'public:view_detail' relate.id %}">
+				<div style="padding-bottom: 100%;position: relative;">
+					<img src="{{ relate.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;">
+				</div>
+				<div>
+					<div class="display-house-address">
+						{{ relate.address }}
 					</div>
-					<div>
-						<div class="display-house-address">
-							{{ relate.address }}
-						</div>
-						<div class="display-house-name">
-							{{ relate.name }}
-						</div>
-						<div class="display-house-price">
-							${{ relate.price }} per night
-						</div>
-						<div class="display-house-star-and-number">
-							{% if relate.reviews == 0 %}
-		                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-		                    {% endif %}
-		                    {% if relate.reviews == 1 %}
-		                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-		                    {% endif %}
-		                    {% if relate.reviews == 2 %}
-		                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-		                    {% endif %}
-		                    {% if relate.reviews == 3 %}
-		                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-		                    {% endif %}
-		                    {% if relate.reviews == 4 %}
-		                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-		                    {% endif %}
-		                    {% if house.reviews == 5 %}
-		                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-		                    {% endif %}
-						</div>
+					<div class="display-house-name">
+						{{ relate.name }}
 					</div>
-				</a>
-			</div>
-			{% endfor %}
+					<div class="display-house-price">
+						${{ relate.price }} per night
+					</div>
+					<div class="display-house-star-and-number">
+						{% if relate.reviews == 0 %}
+	                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+	                    {% endif %}
+	                    {% if relate.reviews == 1 %}
+	                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+	                    {% endif %}
+	                    {% if relate.reviews == 2 %}
+	                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+	                    {% endif %}
+	                    {% if relate.reviews == 3 %}
+	                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+	                    {% endif %}
+	                    {% if relate.reviews == 4 %}
+	                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+	                    {% endif %}
+	                    {% if house.reviews == 5 %}
+	                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+	                    {% endif %}
+					</div>
+				</div>
+			</a>
 		</div>
-		{% endif %}
+		{% endfor %}
+	</div>
+	{% endif %}
 </div>
 {% endblock %}
