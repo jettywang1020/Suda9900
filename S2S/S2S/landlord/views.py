@@ -168,21 +168,26 @@ def add_comm(request, id):
 	landlord_id = request.session['account']['id'] if 'account' in request.session else 0
 	user_id = id
 	originalform = tcomment_form()
+	user_rate = User_Rate.objects.all()
+	for user_r in user_rate:
+		if user_r.user1_id == landlord_id and user_r.user2_id == user_id:
+			reputation = user_r.reputation 
+			break
 	if request.method == 'POST':
 		form = tcomment_form(request.POST)
 		if form.is_valid():
 			reputation = form.cleaned_data.get("reputation")
-			user_rate = User_Rate.objects.all()
 			for user_r in user_rate:
 				if user_r.user1_id == landlord_id and user_r.user2_id == user_id:
-					print('already added')
+					user_r.reputation = reputation
+					user_r.save(update_fields = ["reputation"])
 					break
 			else:
 				user_rate = User_Rate(user1_id = landlord_id, user2_id = user_id, reputation = reputation)
 				user_rate.save()
 
 			return redirect('landlord:manage_house')	
-
+	originalform = tcomment_form(initial = {'reputation':reputation})
 	return render(request, 'landlord/add_comm.html', {'form': originalform})
 
 
