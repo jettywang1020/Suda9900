@@ -301,9 +301,16 @@ def profile(request):
 			user.profile = form.cleaned_data.get("profile")
 			dob = form.cleaned_data.get("dob")
 			if dob:
-				dob = re.search(r'^(\d{2}/)?(\d{2}/)?(\d{4})$',dob)
-				new_dob = dob.group(3) + '-' + dob.group(2)[:-1] + '-' + dob.group(1)[:-1]
-				user.dob = new_dob
+				try:
+					dob = re.search(r'^(\d{2}/)?(\d{2}/)?(\d{4})$',dob)
+					new_dob = dob.group(3) + '-' + dob.group(2)[:-1] + '-' + dob.group(1)[:-1]
+					user.dob = new_dob
+				except:
+					dob = str(user.dob).split('-')
+					user.dob = dob[2] + '/' + dob[1] + '/' + dob[0]
+					originalform = profile_form(initial = {'username': user.username, 'firstname': user.first_name, 'lastname': user.last_name, 'gender':user.gender, 'dob':user.dob, 'phone':user.phone, 'email':user.email, 'profile':user.profile})
+					error = "Invalid Date Input!"
+					return render(request, 'public/profile.html',{"form":originalform, "error":error})
 			else:
 				new_dob = '1990' + '-' + '01' + '-' + '01'
 				user.dob = new_dob
@@ -311,6 +318,8 @@ def profile(request):
 			request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email, 'activate':user.activate, 'is_landlord':user.is_landlord}
 			return redirect('public:profile')
 	else:
+		dob = str(user.dob).split('-')
+		user.dob = dob[2] + '/' + dob[1] + '/' + dob[0]
 		originalform = profile_form(initial = {'username': user.username, 'firstname': user.first_name, 'lastname': user.last_name, 'gender':user.gender, 'dob':user.dob, 'phone':user.phone, 'email':user.email, 'profile':user.profile})						   
 		return render(request, 'public/profile.html', {'form': originalform})
 
