@@ -6,7 +6,6 @@ from public.help import *
 
 import datetime
 import re
-
 # Create your views here.
 def index(request):
 	print(request.session['account']['email'])
@@ -182,22 +181,7 @@ def add_comm(request, id):
 				user_rate = User_Rate(user1_id = landlord_id, user2_id = user_id, reputation = reputation)
 				user_rate.save()
 
-			sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
-			lease_period = RunSQL(sql)
-			list_info = []
-			for lp in lease_period:
-				user = User.objects.get(pk=lp['user_id'])
-				user_r = User_Rate.objects.all()
-				user_rate = 0
-				num = 0
-				for u in user_r:
-					if u.user2_id == lp['user_id']:
-						user_rate += u.reputation
-						num += 1
-				user_rate = round(float(user_rate)/num)
-				list_info.append({"id":lp['user_id'],"rate":user_rate,"photo":user.photo,"name":user.username,"period_start":lp['period_start'],"period_end":lp['period_end']})
-
-			return render(request, 'landlord/history.html', {'lp_list':list_info})	
+			return redirect('landlord:manage_house')	
 
 	return render(request, 'landlord/add_comm.html', {'form': originalform})
 
