@@ -41,10 +41,10 @@
 			<div class="display-housr-date">
 				{{ user.period_start }} - {{ user.period_end }}
 			</div>
+			<br>
+			<a href="{% url 'landlord:add_comm' user.id %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Comment</a>
 		</div>
-		<div class="col-sm">
-			<a href="{% url 'landlord:add_comm' user.id %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Add Comment</a>
-		</div>
+		
 	</div>
 	{% endfor %}
 </div>

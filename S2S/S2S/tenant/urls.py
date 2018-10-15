@@ -15,5 +15,4 @@ urlpatterns = [
 	path('post_detail/<int:id>',views.post_detail, name ="post_detail"),
 	path('apply_page',views.apply_page,name='apply_page'),
 	path('apply',views.apply,name='apply'),
-	path('edit_comm/<int:id>',views.edit_comm,name='edit_comm'),
 ]
