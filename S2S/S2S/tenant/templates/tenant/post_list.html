@@ -2,9 +2,29 @@
 {% load staticfiles %}
 {% block index %}
 <div class="container">
+	<div class="row" style="font-weight: 800">
+    	<div class="col-sm-5">Title</div>
+        <div class="col-sm-2">Area</div>
+		<div class="col-sm-2">No.Rooms</div>
+		<div class="col-sm-2">Rent Type</div>
+    </div>
+    <hr>
 	{% for post in posts %}
     <div class="row">
-        <a href="{% url 'tenant:post_detail' post.id %}">{{ post.title }}</a>
+    	<div class="col-sm-5">
+    		<div class="display-house-name">
+        		<a href="{% url 'tenant:post_detail' post.id %}">{{ post.title }}</a>
+        	</div>
+        </div>
+        <div class="col-sm-2">
+			{{post.area}}
+		</div>
+		<div class="col-sm-2">
+			{{post.no_of_rooms}}
+		</div>
+		<div class="col-sm-2">
+			{{post.rent_type}}
+		</div>
     </div>
     {% endfor %}
 </div>
