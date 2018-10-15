@@ -9,35 +9,33 @@
 	<div class="row">
 		<div class="col-sm-2">
 			<div style="padding-bottom: 100%;position: relative;">
-			<!-- <div style="padding-bottom: 100%;position: relative;"> -->
 				<a href="{% url 'public:other_profile' user.id %}">
-				<img src="{{ user.photo.url }}" alt="客户头像" class="img-thumbnail" style="height: 100%;position:absolute;"></a>
-				<!-- <img src="" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
-				<!-- <img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
+					<img src="{{ user.photo.url }}" alt="客户头像" class="img-thumbnail" style="height: 100%;position:absolute;">
+				</a>
 			</div>
 		</div>
 		<div class="col-sm-2 display-house-name">
-					{% if user.rate == 0 %}
-                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if user.rate == 1 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if user.rate == 2 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if user.rate == 3 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if user.rate == 4 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if user.rate == 5 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-                    {% endif %}
+			{% if user.rate == 0 %}
+            <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if user.rate == 1 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if user.rate == 2 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if user.rate == 3 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if user.rate == 4 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if user.rate == 5 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+            {% endif %}
 		</div>
 		<div class="col-sm-2 display-house-name">
-				{{ user.name }}
+			{{ user.name }}
 		</div>
 		<div class="col-sm">
 			<div class="display-housr-date">
@@ -48,7 +46,6 @@
 			<a href="{% url 'landlord:add_comm' user.id %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Add Comment</a>
 		</div>
 	</div>
-	<br>
 	{% endfor %}
 </div>
 <hr>
@@ -58,36 +55,34 @@
 	<hr>
 	<div class="row">
 		<div class="col-sm-2">
-			<!-- <div style="padding-bottom: 100%;position: relative;"> -->
 			<div style="padding-bottom: 100%;position: relative;">
 				<a href="{% url 'public:other_profile' user.id %}">
-				<img src="{{ user.photo.url }}" alt="客户头像" class="img-thumbnail" style="height: 100%;position:absolute;"></a>
-				<!-- <img src="" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
-				<!-- <img src="{{ house.picture.photo.url }}" alt="..." class="img-thumbnail" style="height: 100%;position:absolute;"> -->
+					<img src="{{ user.photo.url }}" alt="客户头像" class="img-thumbnail" style="height: 100%;position:absolute;">
+				</a>
 			</div>
 		</div>
 		<div class="col-sm-2 display-house-name">
-					{% if user.rate == 0 %}
-                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if user.rate == 1 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if user.rate == 2 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if user.rate == 3 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if user.rate == 4 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if user.rate == 5 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-                    {% endif %}
+			{% if user.rate == 0 %}
+            <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if user.rate == 1 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if user.rate == 2 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if user.rate == 3 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if user.rate == 4 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+            {% endif %}
+            {% if user.rate == 5 %}
+            <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+            {% endif %}
 		</div>
 		<div class="col-sm-2 display-house-name">
-				{{ user.name }}
+			{{ user.name }}
 		</div>
 		<div class="col-sm">
 			<div class="display-housr-date">
