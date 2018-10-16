@@ -286,7 +286,10 @@ def display(request):
 		return render(request, 'public/display.html', {'houses':houses,'r_houses':relate})
 
 def profile(request):
-	id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	user = User.objects.get(pk=id)
 	originalform = profile_form()
 	if request.method == 'POST':
@@ -325,7 +328,10 @@ def profile(request):
 		return render(request, 'public/profile.html', {'form': originalform})
 
 def upload_photo(request):
-	id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	user = User.objects.get(pk=id)
 	originalform = upload_photo_form()
 	if request.method == 'POST':
@@ -338,7 +344,10 @@ def upload_photo(request):
 
 
 def book(request):
-	user_id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		user_id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	if request.method == 'POST':
 		house_id = request.POST.get("house_id",None)
 		check_in = request.POST.get("check_in",None)

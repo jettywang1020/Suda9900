@@ -22,9 +22,19 @@
 		<div class="col-sm-2">
 			{{post.no_of_rooms}}
 		</div>
-		<div class="col-sm-2">
-			{{post.rent_type}}
-		</div>
+        {% if post.rent_type == 'A' %}
+         <div class="col-sm-2">
+            All
+        </div>
+        {% elif  post.rent_type == 'S' %}
+        <div class="col-sm-2">
+            Share
+        </div>
+        {% else %}
+        <div class="col-sm-2">
+            Whole house
+        </div>
+        {% endif %}
     </div>
     {% endfor %}
 </div>

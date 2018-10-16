@@ -16,7 +16,13 @@
         </div>
         <div class="form-group row">
             <label class="col-3">Type</label>
-            <label class="col-3">{{ post.rent_type }}</label>
+            {% if post.rent_type == 'A' %}
+            <label class="col-3">All</label>
+            {% elif  post.rent_type == 'S' %}
+            <label class="col-3">Share</label>
+            {% else %}
+            <label class="col-3">Whole house</label>
+            {% endif %}
         </div>
         <div class="form-group row">
             <label class="col-3">Description</label>
