@@ -14,7 +14,10 @@ def index(request):
 
 ##### Landlord add house #####
 def add_house(request):
-	id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	originalform = addhouse_form()
 	if request.method == 'POST':
 		form = addhouse_form(request.POST)
@@ -50,7 +53,10 @@ def add_house(request):
 	return render(request, 'landlord/add_house.html',{'form': originalform})
 
 def manage_house(request):
-	id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	sql = """select * from house"""
 	houses = RunSQL(sql)
 	house_r = []
@@ -165,7 +171,10 @@ def history(request, id):
 	return render(request, 'landlord/history.html', {'lp_list':list_info,'lp_list_future':list_info_future})
 
 def add_comm(request, id):
-	landlord_id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		landlord_id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	user_id = id
 	originalform = tcomment_form()
 	user_rate = User_Rate.objects.all()

@@ -6,6 +6,7 @@ Group formed.
 Added the Trello & Github accounts into the team Suda.
 Discuss the topics about the project.
 
+Notes for the disscussion:
 For the topic 1 X-o-bot, we could make it like:
 Basiclly, a talk-able robot, then add some function like weather, event and so on. But we think that we need a theme or direction to decide which function we really need. Also need to consider the workload and time for four persons in one semester and the extension in the future. 
 In my opinion, we just need to choice a theme what the robot can answer. No need to include all things that we can do, not several small function about different part.
@@ -29,13 +30,15 @@ Week 3
 
 7 Aug	Tue 2-4
 
-Discussing about the proposal and writing done it.
+We finally decided to choose topic 3. So, in this week, we are going to discuss about the proposal by brainstorming some ideas about what we need to do, consider the functions and writing done it into the proposal.
+Next week, we will start to building the web frame.
 
 -------
 
 9 Aug	Thu 2-4
 
 Creating the environment with Django and building frame.
+We tried to use AngularJS as the front frame, but no one have the experience about it, and it doesn't work well when we connect it to the backend. So, we accept Django as the full stack frame. 
 
 -------
 
@@ -43,7 +46,7 @@ Week 4
 
 14 Aug	Tue 2-4
 
-Discussing about the database structure.
+Discussing about the database structure & familiar with the language about Django.
 
 -------
 
@@ -56,9 +59,9 @@ Done in this week:
 	Log In Page
 	Home Page to display the houses
 	Personal Profile Page
-	Landlord Add House Page
 
 Undone but in progress:
+	Landlord Add House Page
 	Landlord Manage Houses
 
 -------
@@ -67,37 +70,81 @@ Week 6
 
 28 Aug	Tue 2-4	demo
 
+Done in this week:
+	Landlord Add House Page
+	Landlord Manage Houses
+	User Add Photo
+	House Add Photo
+
+Undone but in progress:
+	search
+	advanced search
+
 -------
 
 Week 7
+
+4 Sep Tue 2-4
+
+Done in this week:
+	search 
+	advanced search
+	edit user profile
+	edit house detail
+
+Undone but in progress:
+	book system
 
 -------
 
 Week 8
 
+11 Sep Tue 2-4 demo
+
+Done in this week:
+	add bond with the date-picker
+	view history
+	add comment by landlord/tenant
+
+Undone but in progress:
+	book system
+(try to use three-handshake when book a house, but meet the technical obstacle)
+
 -------
 
 Week 9
+
+18 Sep Tue 2-4
+
+Done in this week: book system (Use the simple technical for this function)
 
 -------
 
 Week 10
 
+2 Oct Tue 2-4 demo
+
+Advice by tutor: need post rent demand module with three functions: post demand, show post list and post detail.
+
 -------
 
 Week 11
+
+9 Oct Tue 2-4
+
+Done in this week:
+	post module with three parts
+
+Undone but in progress:
+	try to fix bugs
+	adjust some structures of the web application
 
 -------
 
 Week 12
 
+17 Oct Wed 11-13 Final Demo
 
-Deadlines: 
-Report and project submissions: Sunday 21 October 2018 @ 23.59 (Week 12) 
-Optional peer assessment submission: Monday 22 October 2018 @ 23.59 (Week 13) 
-
-give cs9900 report report.pdf
-
-give cs9900 project project.zip OR give cs9900 project project.tgz
-
-give cs9900 peers peers.txt
+Done in this week:
+	adjust some structures of the web application
+	write the final report

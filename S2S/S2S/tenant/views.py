@@ -13,7 +13,11 @@ def post_list(request):
 	return render(request, 'tenant/post_list.html',{'posts': posts})
 
 def post(request):
-	user_id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		user_id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
+	
 	originalform = post_form()
 	if request.method == 'POST':
 		form = post_form(request.POST)
@@ -41,7 +45,11 @@ def post_detail(request, id):
 		return redirect('tenant:post_list')
 
 def history(request):
-	id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
+
 	sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
 	lease_period = RunSQL(sql)
 	list_info = []
@@ -82,7 +90,10 @@ def history(request):
 	return render(request,'tenant/history.html', {'lp_list':list_info,'lp_list_future':list_info_future})
 
 def add_comm(request, id):
-	user_id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		user_id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	house_id = id
 	originalform = hcomment_form()
 	house_rate = House_Rate.objects.all()
@@ -152,7 +163,10 @@ def apply_page(request):
 	return render(request,'tenant/apply.html')
 
 def apply(request):
-	id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	user = User.objects.get(pk=id)
 	user.is_landlord = True
 	user.save(update_fields = ["is_landlord"])
