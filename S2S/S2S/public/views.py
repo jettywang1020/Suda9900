@@ -400,7 +400,7 @@ def book(request):
 				else:
 					available = 0
 			if(available == 0):
-				message = "House is not available during this period!"
+				message = "Sorry, House is not available during this period!"
 				return render(request, 'public/blank.html', {'message':message})
 			else:
 				book = Lease_Period(house_id = house_id, user_id = user_id, period_start = new_check_in, period_end = new_check_out)
@@ -414,9 +414,6 @@ def book(request):
 	else:
 		message = "Bad Request!"
 		return render(request, 'public/blank.html', {'message':message})
-
-
-
 
 def other_profile(request, id):
 	user = User.objects.get(pk=id)
