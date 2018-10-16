@@ -400,7 +400,7 @@ def book(request):
 				else:
 					available = 0
 			if(available == 0):
-				message = "Sorry, House is not available during this period!"
+				message = "Sorry, this property is not available during this period!"
 				return render(request, 'public/blank.html', {'message':message})
 			else:
 				book = Lease_Period(house_id = house_id, user_id = user_id, period_start = new_check_in, period_end = new_check_out)

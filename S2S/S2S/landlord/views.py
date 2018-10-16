@@ -49,7 +49,7 @@ def add_house(request):
 						  , conditioner = conditioner, wifi = wifi, study_room = studyroom, pool = pool, house_rule = rule
 						  , cancellation = cancellation, extra = extra)
 			house.save()
-			return render(request, 'public/index.html')
+			return redirect('landlord:add_house_pic', house.id)
 	return render(request, 'landlord/add_house.html',{'form': originalform})
 
 def manage_house(request):
