@@ -87,6 +87,13 @@ def add_comm(request, id):
 	originalform = hcomment_form()
 	house_rate = House_Rate.objects.all()
 	house_comment = House_Comment.objects.all()
+	accuracy = 0
+	communication = 0
+	location = 0
+	checkin = 0
+	cleanliness = 0
+	value = 0
+	comment = ''
 	for house_r in house_rate:
 		if house_r.user_id == user_id and house_r.house_id == house_id:
 			accuracy = house_r.accuracy
@@ -136,6 +143,7 @@ def add_comm(request, id):
 				house_comment.save()	
 
 			return redirect('tenant:history')
+	
 	originalform = hcomment_form(initial = {'accuracy':accuracy,'communication':communication,'location':location,'checkin':checkin,'cleanliness':cleanliness,'value':value,'comment':comment})	
 	return render(request,'tenant/add_comm.html', {'form':originalform})
 

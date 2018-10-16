@@ -318,8 +318,9 @@ def profile(request):
 			request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email, 'activate':user.activate, 'is_landlord':user.is_landlord}
 			return redirect('public:profile')
 	else:
-		dob = str(user.dob).split('-')
-		user.dob = dob[2] + '/' + dob[1] + '/' + dob[0]
+		if user.dob:
+			dob = str(user.dob).split('-')
+			user.dob = dob[2] + '/' + dob[1] + '/' + dob[0]
 		originalform = profile_form(initial = {'username': user.username, 'firstname': user.first_name, 'lastname': user.last_name, 'gender':user.gender, 'dob':user.dob, 'phone':user.phone, 'email':user.email, 'profile':user.profile})						   
 		return render(request, 'public/profile.html', {'form': originalform})
 
