@@ -178,7 +178,7 @@ def add_comm(request, id):
 	user_id = id
 	originalform = tcomment_form()
 	user_rate = User_Rate.objects.all()
-	reputation = 0
+	reputation = None
 	for user_r in user_rate:
 		if user_r.user1_id == landlord_id and user_r.user2_id == user_id:
 			reputation = user_r.reputation 
