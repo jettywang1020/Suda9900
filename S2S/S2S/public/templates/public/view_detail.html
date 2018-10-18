@@ -20,15 +20,6 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                  <div class="carousel-item">
                     <img src="{{ pic.photo.url }}" style="max-height: 600px;min-height: 580px;;max-width: 850px;min-width: 840px">
                 </div>
-                <!-- <div class="carousel-item active banner"  >
-                    <img src="../../../static/image/hou1.jpg" style="max-height: 200px;min-height: 180px;;max-width: 850px;min-width: 840px" alt="First slide">
-                </div>
-                <div class="carousel-item ">
-                    <img src="../../../static/image/HOUSE.jpg" style="max-height: 200px;min-height: 180px;;max-width: 850px;min-width: 840px"  alt="Second slide">
-                </div>
-                <div class="carousel-item ">
-                    <img src="../../../static/image/hou2.jpg"  style="max-height: 200px;min-height: 180px;;max-width: 850px;min-width: 840px" alt="Third slide">
-                </div> -->
                 {% endfor %}
             </div>
             <a class="carousel-control-prev" href="#myCarousel" style="opacity:0" role="button" data-slide="prev">
@@ -39,63 +30,36 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
-
         </div>
 
-
         <div style="padding-left:10%;padding-right: 10%;">
-                <div id="article_detail" class="form-group" style="font-size: 25px">
-                    <div>
-                        <label style="font-weight: bold;font-size: small;color:red">ENTIRE APARTMENT</label>
-                    </div>
-                    <div>
-                        <label style=" font-weight: bold">{{ house_name }}</label>
-                    </div>
-                    <div>
-                        <label href="#" style="font-size: small">{{house_address}}</label>
-                    </div>
-                    <div style="font-size: small">
-                        <ion-icon name="contacts"></ion-icon><label>{{guests_num}} guests</label>
-                        <ion-icon name="home"></ion-icon><label>{{bedrooms_num}} bedroom </label>
-                        <ion-icon name="bed"></ion-icon><label>{{beds_num}} bed</label>
-                        <ion-icon name="water"></ion-icon><label>{{baths_num}} bath</label>
-                    </div>
+            <div id="article_detail" class="form-group" style="font-size: 25px">
+                <div>
+                    <label style="font-weight: bold;font-size: small;color:red">ENTIRE APARTMENT</label>
                 </div>
+                <div>
+                    <label style=" font-weight: bold">{{ house_name }}</label>
+                </div>
+                <div>
+                    <label href="#" style="font-size: small">{{house_address}}</label>
+                </div>
+                <div style="font-size: small">
+                    <ion-icon name="contacts"></ion-icon><label>{{guests_num}} guests</label>
+                    <ion-icon name="home"></ion-icon><label>{{bedrooms_num}} bedroom </label>
+                    <ion-icon name="bed"></ion-icon><label>{{beds_num}} bed</label>
+                    <ion-icon name="water"></ion-icon><label>{{baths_num}} bath</label>
+                </div>
+            </div>
 
-               <!-- <form>
-                    <div style="padding-left: 4%; border-style: solid;border-color: grey; font-size: small" >
-                        <br>
+            <div id="myarticle" class="form-group">
+                <label style="font-size: 16px" id="CC">{{house_profile}}</label><br><br>
+                <a  href="#" id="btn" > READ MORE </a><br>
+            </div>
 
-                        <label style="color: dimgrey;">HOME HIGHLIGHTS</label><br>
-                        <label style="font-weight: bold">Quick responses</label><br>
-                        <label style=" color:slategrey; ">· 9 recent guests said this host responded quickly.</label><br>
-
-                        <label style=" font-weight: bold">Great communication</label><br>
-                         <label style=" color:slategrey;">· 100% of recent guests gave this host a 5-star rating for communication.</label><br>
-
-                         <label style=" font-weight: bold">Great location</label><br>
-                         <label style=" color:slategrey;"> · 100% of recent guests gave this home’s location a 5-star rating.</label><br>
-
-
-                    </div>
-                </form>-->
-
-                <div id="myarticle" class="form-group">
-                    <label style="font-size: 16px" id="CC">{{house_profile}}</label><br><br>
-                    <a  href="#" id="btn" > READ MORE </a><br>
-                </div >
-
-
-               <!-- <div>
-                    <a href="#" > CONTACT HOST</a><hr>
-
-                </div>-->
-
-
-                <div class="form-group" id="con2" >
-                    <div>
-                        <label style="font-weight: bold;font-size: 25px">Amenities</label>
-                    </div>
+            <div class="form-group" id="con2" >
+                <div>
+                    <label style="font-weight: bold;font-size: 25px">Amenities</label>
+                </div>
 
                     <div class="col-sm-13 row" style="font-size: 16px">
                         {% if house_parking >= 1 %}
@@ -147,187 +111,184 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                         </div>
                         {% endif %}
 
-                        {% if house_studyromm %}
+                        {% if house_studyroom %}
                         <div class="col-sm-6">
                             <ion-icon name="laptop"></ion-icon>
                             <label>Laptop friendly workspace</label>
                         </div>
                         {% endif %}
-
-                    </div>
-
-                   <!-- <a id ="btn1" href="#"> SHOW All </a>-->
-
-                    <hr>
-                </div >
-
-                <div class="form-group">
-
-                    <span style="font-weight: bold;font-size: 25px">Policies<br></span>
-                    <span style="font-weight: bold;font-size: 16px">House Rules<br></span>
-                    <span id = "con3" style="font-size: 16px">{{house_rule}} Not suitable for children and infants<br>
-                    No smoking<br>
-                    No pets<br>
-                    No parties or events<br>
-                    Check-in is anytime after 2PM<br>
-                    Check out by 11AM</span><br><BR>
-                    <a id ="btn2" href="#"> READ ALL RULES </a><br><br><hr>
+                        {% if house_pool %}
+                        <div class="col-sm-6">
+                            <ion-icon name="water"></ion-icon>
+                            <label>pool</label>
+                        </div>
+                        {% endif %}
                 </div>
-                 <div class="form-group">
 
-                    <span style="font-weight: bold;font-size: 25px">Cancellations<br></span>
-                    <span id = "con4" style="font-size: 16px;">{{house_cancellation}}<br></span><br><BR>
-                    <a id ="btn3" href="#"> READ MORE ABOUT POLICIES </a><br><br><hr>
+                <hr>
+            </div >
+
+            <div class="form-group">
+                <span style="font-weight: bold;font-size: 25px">Policies<br></span>
+                <span style="font-weight: bold;font-size: 16px">House Rules<br></span>
+                <span id = "con3" style="font-size: 16px">{{house_rule}}</span><br><BR>
+                <a id ="btn2" href="#"> READ ALL RULES </a><br><br><hr>
+            </div>
+             <div class="form-group">
+                <span style="font-weight: bold;font-size: 25px">Cancellations<br></span>
+                <span id = "con4" style="font-size: 16px;">{{house_cancellation}}<br></span>
+                <br><BR>
+                <a id ="btn3" href="#"> READ MORE ABOUT POLICIES </a><br><br><hr>
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                <label style="font-weight: bold; font-size:25px">Reviews</label>
+                &nbsp;&nbsp;
+                {% if house_reviews == 0 %}
+                <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_reviews == 1 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_reviews == 2 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_reviews == 3 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_reviews == 4 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_reviews == 5 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+                {% endif %}
+                <br>
+
                 </div>
-                <div class="form-group row">
-                    <div class="col-6">
-                    <label style="font-weight: bold; font-size:25px">Reviews</label>
-                    &nbsp;&nbsp;
-                    {% if house_reviews == 0 %}
-                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_reviews == 1 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_reviews == 2 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_reviews == 3 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_reviews == 4 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_reviews == 5 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-                    {% endif %}
+                <div class="col-6">
                     <br>
-                    </div>
-                    <div class="col-6">
-
-                        <br>
-                    </div><hr>
-                </div>
-                <div>
-                    <label style=" font-size:15px ; width: 20%;">Accuracy</label>&nbsp;&nbsp;&nbsp;
-                    {% if house_accuracy == 0 %}
-                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_accuracy == 1 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_accuracy == 2 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_accuracy == 3 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_accuracy == 4 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_accuracy == 5 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-                    {% endif %}
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label style=" font-size:15px ; width: 20%;">Location</label>&nbsp;&nbsp;&nbsp;
-                    {% if house_location == 0 %}
-                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_location == 1 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_location == 2 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_location == 3 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_location == 4 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_location == 5 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><br>
-                    {% endif %}
-                    <label style=" font-size:15px ; width: 20%;">Communication</label>&nbsp;&nbsp;&nbsp;
-                    {% if house_communication == 0 %}
-                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_communication == 1 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_communication == 2 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_communication == 3 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_communication == 4 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_communication == 5 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-                    {% endif %}
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label style=" font-size:15px ; width: 20%;">Check-in</label>&nbsp;&nbsp;&nbsp;
-                    {% if house_checkin == 0 %}
-                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_checkin == 1 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_checkin == 2 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_checkin == 3 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_checkin == 4 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_checkin == 5 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><br>
-                    {% endif %}
-                     <label style=" font-size:15px ; width: 20%;">Cleanliness</label>&nbsp;&nbsp;&nbsp;
-                    {% if house_cleanliness == 0 %}
-                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_cleanliness == 1 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_cleanliness == 2 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_cleanliness == 3 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_cleanliness == 4 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-                    {% endif %}
-                    {% if house_cleanliness == 5 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
-                    {% endif %}
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label style=" font-size:15px ; width: 20%;">Value</label>&nbsp;&nbsp;&nbsp;
-                    {% if house_value == 0 %}
-                    <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_value == 1 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_value == 2 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_value == 3 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_value == 4 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
-                    {% endif %}
-                    {% if house_value == 5 %}
-                    <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><br>
-                    {% endif %}
-                </div>
-            </div><br>
+                </div><hr>
+            </div>
+            <div>
+                <label style=" font-size:15px ; width: 20%;">Accuracy</label>&nbsp;&nbsp;&nbsp;
+                {% if house_accuracy == 0 %}
+                <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_accuracy == 1 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_accuracy == 2 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_accuracy == 3 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_accuracy == 4 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_accuracy == 5 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+                {% endif %}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label style=" font-size:15px ; width: 20%;">Location</label>&nbsp;&nbsp;&nbsp;
+                {% if house_location == 0 %}
+                <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_location == 1 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_location == 2 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_location == 3 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_location == 4 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_location == 5 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><br>
+                {% endif %}
+                <label style=" font-size:15px ; width: 20%;">Communication</label>&nbsp;&nbsp;&nbsp;
+                {% if house_communication == 0 %}
+                <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_communication == 1 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_communication == 2 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_communication == 3 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_communication == 4 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_communication == 5 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+                {% endif %}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label style=" font-size:15px ; width: 20%;">Check-in</label>&nbsp;&nbsp;&nbsp;
+                {% if house_checkin == 0 %}
+                <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_checkin == 1 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_checkin == 2 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_checkin == 3 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_checkin == 4 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_checkin == 5 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><br>
+                {% endif %}
+                 <label style=" font-size:15px ; width: 20%;">Cleanliness</label>&nbsp;&nbsp;&nbsp;
+                {% if house_cleanliness == 0 %}
+                <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_cleanliness == 1 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_cleanliness == 2 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_cleanliness == 3 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_cleanliness == 4 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                {% endif %}
+                {% if house_cleanliness == 5 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon>
+                {% endif %}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label style=" font-size:15px ; width: 20%;">Value</label>&nbsp;&nbsp;&nbsp;
+                {% if house_value == 0 %}
+                <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_value == 1 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_value == 2 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_value == 3 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_value == 4 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><br>
+                {% endif %}
+                {% if house_value == 5 %}
+                <ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><br>
+                {% endif %}
+            </div>
+        </div><br>
             
         <div style="padding-left:10%;padding-right: 10%;" id="comment_area"><hr>
             {% for comment in house_comment %}
@@ -341,49 +302,30 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                     <label style="font-size: 10px">{{ comment.comment_date }}</label>
                 </div>
             </div>
-
             <p>{{ comment.comment }}</p><hr>
-            <!-- <div i class="form-group row">
-                <div>
-                    <img src="../../../static/image/h2.jpg" height="49" width="55" class="img-rounded"/>
-                </div>
-                <div>
-                    <label>Geon Woo</label><br>
-                    <label>Auguest 2018</label>
-                </div>
-
-            </div>
-            <p>
-                The house was awesome with nice location. Paul kindly replied for everything that i asked him.
-                we enjoyed staying there and definitely will visit there again if I have chance.
-            </p><hr> -->
             {% endfor %}
         </div>
     </div>
 
-
-
-    <!-- <div class="col-6" id="child" style="position: fixed; margin-left: 50%;height:100%;overflow:scroll;" > -->
     <div class="col-4" id="child" style="position: fixed; margin-left: 65%;" >
         <div  class="col-sm-2" >
             <div  style="margin:1% auto;max-width: 300px;min-width: 300px;min-height: 200px;max-height: 300px">
-                <form method="post" enctype="multipart/form-data" action="{% url 'public:book'%}" id="book" name="book">
+                <form method="post" enctype="multipart/form-data" action="{% url 'public:book'%}">
                     {% csrf_token %}
                     <input type="hidden" id="house_id" name="house_id" value={{ house_id }}>
                     <div class="form-group ">
                         <div class="form-row">
                             <div class="form-group col-sm-6">
                                 <label for="check_in">CHECK IN</label>
-                                <input type="text" class="form-control" id="check_in" name="check_in" data-provide="datepicker" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" required>
+                                <input type="text" class="form-control" id="check_in" name="check_in" data-provide="datepicker" placeholder="dd/mm/yyyy" required>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="check_out">CHECK OUT</label>
-                                <input type="text" class="form-control" id="check_out" name="check_out" data-provide="datepicker" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" required>
+                                <input type="text" class="form-control" id="check_out" name="check_out" data-provide="datepicker" placeholder="dd/mm/yyyy" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-group row">
-
                                 <label for="Adult" class="col-sm col-form-label">Adult</label>
                                 <div class="col-sm">
                                     <input type="number" min="1" max="6" class="form-control" id="adult" name="adult" value="1">
@@ -395,12 +337,12 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                                 </div>
                             </div>
                         </div><hr>
-
                         <div class="form-group">
-                            <label>Price</label>
-                            <span class="float-right"  class="text-right">${{ house_price }}</span><hr>
-                        </div>
 
+                            <label>Fee</label>
+                            <span class="float-right"  class="text-right" >${{ house_price }}</span><hr>
+
+                        </div>
                         <div class="form-group">
                             <label>Total Fee</label>
                             <span class="float-right"  class="text-right" id="price">{{ house_price }}</span><hr>
@@ -408,19 +350,18 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                         <div  class="form-group">
                             <button type="submit" class="btn btn-danger" style="width: 50%;margin: 10px 25%;">Book</button>
                         </div>
-                        <!-- <div class="form-group">
-                            <p class="text-center" style="font-size:15px;color: slategrey">Price shown is price per night.</p>
-                        </div> -->
-
+                        <div class="form-group">
+                            <p class="text-center" style="font-size:15px;color: slategrey">{{ error }}</p>
                         </div>
-                    </form>
-                </div>
+
+                    </div>
+                </form>
             </div>
         </div>
-
+    </div>
 </div>
 
-<script  type="text/JavaScript" >
+<script type="text/JavaScript">
     var btn=document.getElementById('btn');
     var content=document.getElementById('CC');
     var str=content.innerHTML;
@@ -471,7 +412,6 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
         return false;
        }
 
-
     var value = document.getElementById('price').innerHTML;
     var text = document.getElementById('price');
     text.innerHTML = "$" + text.innerHTML;
@@ -479,8 +419,12 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
     var dd = today.getDate();
     var mm = today.getMonth();
     var yy = today.getFullYear()
+
+
+
     $("#check_in").datepicker({
-        startDate: '0d',
+        startDate: '+0d',
+
         format: "dd/mm/yyyy",
     });
 
@@ -490,11 +434,6 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
         format: "dd/mm/yyyy",
     });
 
-
-
-
-
-      //text.attr('min', todaydate);
 
     check_out.onchange = function () {
 
@@ -507,19 +446,11 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
             {
                 var new_day = date2.getDate() - date1.getDate();
                 var diff =Math.floor((date2.getTime()-date1.getTime())/86400000);
-                if(parseInt(diff)>=0)
-                {
-                    //text.innerHTML =  diff;
+                if(parseInt(diff)>=0) {
                     text.innerHTML="$"+parseInt(value) * parseInt(diff) + " (" + parseInt(diff) + "D)";
-                }
-                else
-                {
+                } else {
                     text.innerHTML =  "Not qualified date";
                 }
-            }
-            else
-            {
-                 text.innerHTML =  "cannot choose day before today";
             }
         }
     }
@@ -534,19 +465,11 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                 ||(parseInt(date1.getFullYear()) >=parseInt(yy)&& date1.getMonth()>mm && date1.getDate()<dd))
             {
                 var diff = Math.floor((date2.getTime()-date1.getTime())/86400000);
-                if(diff>=0)
-                {
-                    //text.innerHTML =  diff;
+                if(diff>=0) {
                     text.innerHTML="$"+parseInt(value) * parseInt(diff) + " (" + parseInt(diff) + "D)";
-                }
-                else
-                {
+                } else {
                     text.innerHTML = "Not qualified date";
                 }
-            }
-            else
-            {
-                text.innerHTML =  "cannot choose day before today";
             }
         }
     }

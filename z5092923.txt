@@ -1,33 +1,34 @@
 Week2 
-Decedied to choose topic3 after discussion.
+Discussed about and evaluated three topics in detail and decided to choose topic3
 
 Week3
-Discussed topic3.
+Discussed topic3 in detail.
 Named the web application as S2S (somethere to sleep).
-Constructed the web application by Django.
+Constructed the web application by Django in a python virtual environment(python3).
 
 Week4
-Designed and constructed Database system.
+Designed and constructed Database system and depoyed this database on a Digital Ocean server. It helps developping because this keeps the database the same for all the group members all the time.
 
 Week5
 Implemented login and logout backend function. Implemented signup backend function. Implemented home page display backend function.
 
 Week6
-Demo this week. Got 8/10. Quiet good. Finish user photo upload.
+Demo this week. Got 8/10. Quiet good. Finished user photo upload.
 
 Week7
-Finished bootstrap datepicker. Done basic search and advanced search.
+Finished bootstrap datepicker. Implemented basic search. Implemented advanced search and input text checking.
 
 Week8
-Demo this week, everything worked fine.
+Demo this week, everything worked fine. Going to finish book system next week.
 
 Week9
-Finished book system. 
+Finished book system. Implemented date conflict checking.
 
 Week10
 Finished post rent demand module which has three functions: post demands, show demand list and show demand details. Demo this week, everything worked fine.
 
 Week11
-Implemented apply function which is for common user to apply to be a landlord. Fix some bugs.
+Implemented apply function which is for common user to apply to be a landlord. Fix some bugs, for insctance, user can't do post or get request if he has not signed in. Prepared for presenation.
 
 Week12
+Last demo this week.

@@ -28,15 +28,14 @@
 			</div>
 		</div>
 		<div class="col-sm">
-			<a href="{% url 'tenant:add_comm' house.id %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Add Comment</a>
+			<a href="{% url 'tenant:add_comm' house.id %}" class="btn btn-primary btn-mi" role="button" aria-pressed="true">Comment</a>
 		</div>
 	</div>
-	<br>
 	{% endfor %}
 </div>
 <hr>
 <div class="container">
-	<div class="card-header"> The houses you've ordered in the future </div>
+	<div class="card-header"> The houses you have ordered </div>
 	{% for house in lp_list_future %}
 	<hr>
 	<div class="row">

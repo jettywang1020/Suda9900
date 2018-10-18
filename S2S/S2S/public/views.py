@@ -138,7 +138,7 @@ def adv_search(request):
 		return render(request, 'public/adv_search.html',{"form":originalform})
 
 def view_detail(request, id):
-	sql = """select * from lease_period"""
+	sql = """select * from lease_period where house_id = """ + str(id) + """ and period_end < CURDATE();"""
 	lease_period = RunSQL(sql)
 	house_feature_r = [0 for _ in range(12)]
 	reviews = 0
@@ -286,7 +286,10 @@ def display(request):
 		return render(request, 'public/display.html', {'houses':houses,'r_houses':relate})
 
 def profile(request):
-	id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	user = User.objects.get(pk=id)
 	originalform = profile_form()
 	if request.method == 'POST':
@@ -301,9 +304,16 @@ def profile(request):
 			user.profile = form.cleaned_data.get("profile")
 			dob = form.cleaned_data.get("dob")
 			if dob:
-				dob = re.search(r'^(\d{2}/)?(\d{2}/)?(\d{4})$',dob)
-				new_dob = dob.group(3) + '-' + dob.group(2)[:-1] + '-' + dob.group(1)[:-1]
-				user.dob = new_dob
+				try:
+					dob = re.search(r'^(\d{2}/)?(\d{2}/)?(\d{4})$',dob)
+					new_dob = dob.group(3) + '-' + dob.group(2)[:-1] + '-' + dob.group(1)[:-1]
+					user.dob = new_dob
+				except:
+					dob = str(user.dob).split('-')
+					user.dob = dob[2] + '/' + dob[1] + '/' + dob[0]
+					originalform = profile_form(initial = {'username': user.username, 'firstname': user.first_name, 'lastname': user.last_name, 'gender':user.gender, 'dob':user.dob, 'phone':user.phone, 'email':user.email, 'profile':user.profile})
+					error = "Invalid Date Input!"
+					return render(request, 'public/profile.html',{"form":originalform, "error":error})
 			else:
 				new_dob = '1990' + '-' + '01' + '-' + '01'
 				user.dob = new_dob
@@ -311,11 +321,17 @@ def profile(request):
 			request.session['account'] = {'id':user.id, 'username':user.username, 'email':user.email, 'activate':user.activate, 'is_landlord':user.is_landlord}
 			return redirect('public:profile')
 	else:
+		if user.dob:
+			dob = str(user.dob).split('-')
+			user.dob = dob[2] + '/' + dob[1] + '/' + dob[0]
 		originalform = profile_form(initial = {'username': user.username, 'firstname': user.first_name, 'lastname': user.last_name, 'gender':user.gender, 'dob':user.dob, 'phone':user.phone, 'email':user.email, 'profile':user.profile})						   
 		return render(request, 'public/profile.html', {'form': originalform})
 
 def upload_photo(request):
-	id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	user = User.objects.get(pk=id)
 	originalform = upload_photo_form()
 	if request.method == 'POST':
@@ -328,7 +344,10 @@ def upload_photo(request):
 
 
 def book(request):
-	user_id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		user_id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	if request.method == 'POST':
 		house_id = request.POST.get("house_id",None)
 		check_in = request.POST.get("check_in",None)
@@ -381,7 +400,7 @@ def book(request):
 				else:
 					available = 0
 			if(available == 0):
-				message = "House is not available during this period!"
+				message = "Sorry, this property is not available during this period!"
 				return render(request, 'public/blank.html', {'message':message})
 			else:
 				book = Lease_Period(house_id = house_id, user_id = user_id, period_start = new_check_in, period_end = new_check_out)
@@ -395,9 +414,6 @@ def book(request):
 	else:
 		message = "Bad Request!"
 		return render(request, 'public/blank.html', {'message':message})
-
-
-
 
 def other_profile(request, id):
 	user = User.objects.get(pk=id)

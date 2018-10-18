@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from public.models import User, House, House_Picture, Lease_Period, User_Rate
 from public.forms import *
@@ -6,7 +6,6 @@ from public.help import *
 
 import datetime
 import re
-
 # Create your views here.
 def index(request):
 	print(request.session['account']['email'])
@@ -15,7 +14,10 @@ def index(request):
 
 ##### Landlord add house #####
 def add_house(request):
-	id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	originalform = addhouse_form()
 	if request.method == 'POST':
 		form = addhouse_form(request.POST)
@@ -47,11 +49,14 @@ def add_house(request):
 						  , conditioner = conditioner, wifi = wifi, study_room = studyroom, pool = pool, house_rule = rule
 						  , cancellation = cancellation, extra = extra)
 			house.save()
-			return render(request, 'public/index.html')
+			return redirect('landlord:add_house_pic', house.id)
 	return render(request, 'landlord/add_house.html',{'form': originalform})
 
 def manage_house(request):
-	id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	sql = """select * from house"""
 	houses = RunSQL(sql)
 	house_r = []
@@ -117,7 +122,7 @@ def edit_house(request, id):
 						  , "no_of_parking", "tv", "kitchen", "washer", "fridge"
 						  , "conditioner", "wifi", "study_room", "pool", "house_rule"
 						  , "cancellation", "extra"])
-			return render(request, 'landlord/edit_house.html')
+			return redirect('landlord:edit_house', id)
 	else:
 		originalform = addhouse_form(initial = {'name': house.name, 'address':house.address, 'postcode':house.postcode
 											  	, 'price':house.price, 'profile':house.profile, 'maxguest':house.max_guests
@@ -166,39 +171,33 @@ def history(request, id):
 	return render(request, 'landlord/history.html', {'lp_list':list_info,'lp_list_future':list_info_future})
 
 def add_comm(request, id):
-	landlord_id = request.session['account']['id'] if 'account' in request.session else 0
+	try:
+		landlord_id = request.session['account']['id'] if 'account' in request.session else 0
+	except:
+		return redirect('public:login')
 	user_id = id
 	originalform = tcomment_form()
+	user_rate = User_Rate.objects.all()
+	reputation = None
+	for user_r in user_rate:
+		if user_r.user1_id == landlord_id and user_r.user2_id == user_id:
+			reputation = user_r.reputation 
+			break
 	if request.method == 'POST':
 		form = tcomment_form(request.POST)
 		if form.is_valid():
 			reputation = form.cleaned_data.get("reputation")
-			user_rate = User_Rate.objects.all()
 			for user_r in user_rate:
 				if user_r.user1_id == landlord_id and user_r.user2_id == user_id:
-					print('already added')
+					user_r.reputation = reputation
+					user_r.save(update_fields = ["reputation"])
 					break
 			else:
 				user_rate = User_Rate(user1_id = landlord_id, user2_id = user_id, reputation = reputation)
 				user_rate.save()
 
-			sql = """SELECT * FROM lease_period WHERE period_end < CURDATE();"""
-			lease_period = RunSQL(sql)
-			list_info = []
-			for lp in lease_period:
-				user = User.objects.get(pk=lp['user_id'])
-				user_r = User_Rate.objects.all()
-				user_rate = 0
-				num = 0
-				for u in user_r:
-					if u.user2_id == lp['user_id']:
-						user_rate += u.reputation
-						num += 1
-				user_rate = round(float(user_rate)/num)
-				list_info.append({"id":lp['user_id'],"rate":user_rate,"photo":user.photo,"name":user.username,"period_start":lp['period_start'],"period_end":lp['period_end']})
-
-			return render(request, 'landlord/history.html', {'lp_list':list_info})	
-
+			return redirect('landlord:manage_house')	
+	originalform = tcomment_form(initial = {'reputation':reputation})
 	return render(request, 'landlord/add_comm.html', {'form': originalform})
 
 
