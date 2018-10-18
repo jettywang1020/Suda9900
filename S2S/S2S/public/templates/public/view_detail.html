@@ -176,8 +176,7 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
                  <div class="form-group">
 
                     <span style="font-weight: bold;font-size: 25px">Cancellations<br></span>
-                    <span style="font-size: 16px;">{{house_cancellation}}<br></span>
-                    <span id = "con4" style="font-size: 16px">Moderate - Free cancellation for 48 hours</span><br><BR>
+                    <span id = "con4" style="font-size: 16px;">{{house_cancellation}}<br></span><br><BR>
                     <a id ="btn3" href="#"> READ MORE ABOUT POLICIES </a><br><br><hr>
                 </div>
                 <div class="form-group row">
@@ -399,12 +398,12 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
 
                         <div class="form-group">
                             <label>Price</label>
-                            <span class="float-right" = class="text-right">${{ house_price }}</span><hr>
+                            <span class="float-right"  class="text-right">${{ house_price }}</span><hr>
                         </div>
 
                         <div class="form-group">
                             <label>Total Fee</label>
-                            <span class="float-right" = class="text-right" id="price">{{ house_price }}</span><hr>
+                            <span class="float-right"  class="text-right" id="price">{{ house_price }}</span><hr>
                         </div>
                         <div  class="form-group">
                             <button type="submit" class="btn btn-danger" style="width: 50%;margin: 10px 25%;">Book</button>
@@ -480,18 +479,19 @@ min-height: 600px;max-width: 850px;min-width: 840px" name="img-area">
     var dd = today.getDate();
     var mm = today.getMonth();
     var yy = today.getFullYear()
-
-
     $("#check_in").datepicker({
-        startDate: '-1d',
+        startDate: '0d',
         format: "dd/mm/yyyy",
-
     });
+
 
     $("#check_out").datepicker({
-        startDate: '+0d',
+        startDate: '+1d',
         format: "dd/mm/yyyy",
     });
+
+
+
 
 
       //text.attr('min', todaydate);
